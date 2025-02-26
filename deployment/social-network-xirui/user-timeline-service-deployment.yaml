@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-timeline-service
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: user-timeline-service
+  template:
+    metadata:
+      labels:
+        service: user-timeline-service
+        app: user-timeline-service
+    spec:
+      containers:
+      - name: user-timeline-service
+        image: docker.io/airis03/social-network:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+        - containerPort: 9464
+        command:
+        - UserTimelineService
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - name: user-timeline-service-config
+          mountPath: /config/jaeger-config.yml
+          subPath: jaeger-config.yml
+        - name: user-timeline-service-config
+          mountPath: /config/service-config.json
+          subPath: service-config.json
+      volumes:
+      - name: user-timeline-service-config
+        configMap:
+          name: user-timeline-service
+      hostname: user-timeline-service
+      restartPolicy: Always

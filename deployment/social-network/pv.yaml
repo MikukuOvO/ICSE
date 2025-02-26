@@ -1,0 +1,17 @@
+---
+# Source: social-network/templates/pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-social-network
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete  # 或者保留 Retain，看你是否需要数据保留
+  hostPath:
+    path: /DeathStarBench

@@ -1,0 +1,153 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: media-frontend
+  labels:
+    socialnetwork/service: media-frontend
+  namespace: social-network
+data:
+  nginx.conf: "# Checklist: Make sure that worker_processes == #cores you gave to\n\
+    # nginx process\nworker_processes  16;\n\n# error_log  logs/error.log;\n\n# Checklist:\
+    \ Make sure that worker_connections * worker_processes\n# is greater than the\
+    \ total connections between the client and Nginx.\nevents {\n  worker_connections\
+    \  1024;\n}\n\nenv fqdn_suffix;\n\nhttp {\n  include       mime.types;\n  default_type\
+    \  application/octet-stream;\n\n  log_format main '$remote_addr - $remote_user\
+    \ [$time_local] \"$request\"'\n                  '$status $body_bytes_sent \"\
+    $http_referer\" '\n                  '\"$http_user_agent\" \"$http_x_forwarded_for\"\
+    ';\n  # access_log  logs/access.log  main;\n\n  sendfile        on;\n  tcp_nopush\
+    \      on;\n  tcp_nodelay     on;\n\n  # Checklist: Make sure the keepalive_timeout\
+    \ is greateer than\n  # the duration of your experiment and keepalive_requests\n\
+    \  # is greateer than the total number of requests sent from\n  # the workload\
+    \ generator\n  keepalive_timeout  120s;\n  keepalive_requests 100000;\n\n  # Docker\
+    \ default hostname resolver\n  resolver kube-dns.kube-system.svc.cluster.local\
+    \ valid=10s ipv6=off;\n\n  lua_package_path '/usr/local/openresty/nginx/lua-scripts/?.lua;/usr/local/openresty/luajit/share/lua/5.1/?.lua;;';\n\
+    \n  lua_shared_dict config 32k;\n\n  init_by_lua_block {\n    local upload = require\
+    \ \"resty.upload\"\n    local memcached = require \"resty.memcached\"\n    local\
+    \ mongo = require \"resty-mongol\"\n  }\n\n  server {\n\n    # Checklist: Set\
+    \ up the port that nginx listens to.\n    listen       8080 reuseport;\n    server_name\
+    \  localhost;\n\n    # Checklist: Turn of the access_log and error_log if you\n\
+    \    # don't need them.\n    access_log  off;\n    # error_log off;\n\n    client_max_body_size\
+    \ 100M;\n    client_body_buffer_size 100M;\n\n    # Checklist: Make sure that\
+    \ the location here is consistent\n    # with the location you specified in wrk2.\n\
+    \    location /upload-media {\n          if ($request_method = 'OPTIONS') {\n\
+    \            add_header 'Access-Control-Allow-Origin' '*';\n            add_header\
+    \ 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';\n            add_header\
+    \ 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Max-Age' 1728000;\n            add_header\
+    \ 'Content-Type' 'text/plain; charset=utf-8';\n            add_header 'Content-Length'\
+    \ 0;\n            return 204;\n          }\n          if ($request_method = 'POST')\
+    \ {\n            add_header 'Access-Control-Allow-Origin' '*';\n            add_header\
+    \ 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';\n            add_header\
+    \ 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';\n\
+    \          }\n          if ($request_method = 'GET') {\n            add_header\
+    \ 'Access-Control-Allow-Origin' '*';\n            add_header 'Access-Control-Allow-Methods'\
+    \ 'GET, POST, OPTIONS';\n            add_header 'Access-Control-Allow-Headers'\
+    \ 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';\n\
+    \          }\n      content_by_lua '\n        local client = require \"upload-media\"\
+    \n        client.UploadMedia();\n      ';\n    }\n\n    # Checklist: Make sure\
+    \ that the location here is consistent\n    # with the location you specified\
+    \ in wrk2.\n    location /get-media {\n          if ($request_method = 'OPTIONS')\
+    \ {\n            add_header 'Access-Control-Allow-Origin' '*';\n            add_header\
+    \ 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';\n            add_header\
+    \ 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Max-Age' 1728000;\n            add_header\
+    \ 'Content-Type' 'text/plain; charset=utf-8';\n            add_header 'Content-Length'\
+    \ 0;\n            return 204;\n          }\n          if ($request_method = 'POST')\
+    \ {\n            add_header 'Access-Control-Allow-Origin' '*';\n            add_header\
+    \ 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';\n            add_header\
+    \ 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';\n\
+    \          }\n          if ($request_method = 'GET') {\n            add_header\
+    \ 'Access-Control-Allow-Origin' '*';\n            add_header 'Access-Control-Allow-Methods'\
+    \ 'GET, POST, OPTIONS';\n            add_header 'Access-Control-Allow-Headers'\
+    \ 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';\n\
+    \            add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';\n\
+    \          }\n      content_by_lua '\n        local client = require \"get-media\"\
+    \n        client.GetMedia();\n      ';\n    }\n\n  }\n}\n"
+  jaeger-config.yml: "disabled: false\nreporter:\n  logSpans: false\n  localAgentHostPort:\
+    \ \"jaeger:6831\"\n  queueSize: 1000000\n  bufferFlushInterval: 10\nsampler:\n\
+    \  type: \"probabilistic\"\n  param: 0.1\notel:\n  endpoint: \"otel-collector.default.svc.cluster.local:4317\"\
+    \n"
+  service-config.json: "{\n    \"secret\": \"secret\",\n    \"social-graph-service\"\
+    : {\n      \"addr\": \"social-graph-service\",\n      \"port\": 9090,\n      \"\
+    connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n\
+    \    },\n    \"social-graph-mongodb\": {\n      \"addr\": \"social-graph-mongodb\"\
+    ,\n      \"port\": 27017,\n      \"connections\": 512,\n      \"timeout_ms\":\
+    \ 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"social-graph-redis\": {\n\
+    \      \"addr\": \"social-graph-redis\",\n      \"port\": 6379,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    use_cluster\": 0,\n      \"use_replica\": 0\n    },\n    \"write-home-timeline-service\"\
+    : {\n      \"addr\": \"write-home-timeline-service\",\n      \"port\": 9090,\n\
+    \      \"workers\": 32,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"write-home-timeline-rabbitmq\":\
+    \ {\n      \"addr\": \"write-home-timeline-rabbitmq\",\n      \"port\": 5672,\n\
+    \      \"connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\"\
+    : 10000\n    },\n    \"home-timeline-redis\": {\n      \"addr\": \"home-timeline-redis\"\
+    ,\n      \"port\": 6379,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000,\n      \"use_cluster\": 0,\n      \"use_replica\"\
+    : 0\n    },\n    \"compose-post-service\": {\n      \"addr\": \"compose-post-service\"\
+    ,\n      \"port\": 9090,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"compose-post-redis\": {\n      \"\
+    addr\": \"compose-post-redis\",\n      \"port\": 6379,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    use_cluster\": 0,\n      \"use_replica\": 0\n    },\n    \"user-timeline-service\"\
+    : {\n      \"addr\": \"user-timeline-service\",\n      \"port\": 9090,\n     \
+    \ \"connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\"\
+    : 10000\n    },\n    \"user-timeline-mongodb\": {\n      \"addr\": \"user-timeline-mongodb\"\
+    ,\n      \"port\": 27017,\n      \"connections\": 512,\n      \"timeout_ms\":\
+    \ 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"user-timeline-redis\":\
+    \ {\n      \"addr\": \"user-timeline-redis\",\n      \"port\": 6379,\n      \"\
+    connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n\
+    \      \"use_cluster\": 0,\n      \"use_replica\": 0\n    },\n    \"post-storage-service\"\
+    : {\n      \"addr\": \"post-storage-service\",\n      \"port\": 9090,\n      \"\
+    connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n\
+    \    },\n    \"post-storage-mongodb\": {\n      \"addr\": \"post-storage-mongodb\"\
+    ,\n      \"port\": 27017,\n      \"connections\": 512,\n      \"timeout_ms\":\
+    \ 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"post-storage-memcached\"\
+    : {\n      \"addr\": \"post-storage-memcached\",\n      \"port\": 11211,\n   \
+    \   \"connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\"\
+    : 10000,\n      \"binary_protocol\": 1\n    },\n    \"unique-id-service\": {\n\
+    \      \"addr\": \"unique-id-service\",\n      \"port\": 9090,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    netif\": \"eth0\"\n    },\n    \"media-service\": {\n      \"addr\": \"media-service\"\
+    ,\n      \"port\": 9090,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"media-mongodb\": {\n      \"addr\"\
+    : \"media-mongodb\",\n      \"port\": 27017,\n      \"connections\": 512,\n  \
+    \    \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"media-memcached\"\
+    : {\n      \"addr\": \"media-memcached\",\n      \"port\": 11211,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    binary_protocol\": 1\n    },\n    \"media-frontend\": {\n      \"addr\": \"media-frontend\"\
+    ,\n      \"port\": 8081,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"text-service\": {\n      \"addr\"\
+    : \"text-service\",\n      \"port\": 9090,\n      \"connections\": 512,\n    \
+    \  \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"user-mention-service\"\
+    : {\n      \"addr\": \"user-mention-service\",\n      \"port\": 9090,\n      \"\
+    connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n\
+    \    },\n    \"url-shorten-service\": {\n      \"addr\": \"url-shorten-service\"\
+    ,\n      \"port\": 9090,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"url-shorten-memcached\": {\n   \
+    \   \"addr\": \"url-shorten-memcached\",\n      \"port\": 11211,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    binary_protocol\": 1\n    },\n    \"url-shorten-mongodb\": {\n      \"addr\":\
+    \ \"url-shorten-mongodb\",\n      \"port\": 27017,\n      \"connections\": 512,\n\
+    \      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000\n    },\n    \"user-service\"\
+    : {\n      \"addr\": \"user-service\",\n      \"port\": 9090,\n      \"connections\"\
+    : 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\": 10000,\n      \"\
+    netif\": \"eth0\"\n    },\n    \"user-memcached\": {\n      \"addr\": \"user-memcached\"\
+    ,\n      \"port\": 11211,\n      \"connections\": 512,\n      \"timeout_ms\":\
+    \ 10000,\n      \"keepalive_ms\": 10000,\n      \"binary_protocol\": 1\n    },\n\
+    \    \"user-mongodb\": {\n      \"addr\": \"user-mongodb\",\n      \"port\": 27017,\n\
+    \      \"connections\": 512,\n      \"timeout_ms\": 10000,\n      \"keepalive_ms\"\
+    : 10000\n    },\n    \"home-timeline-service\": {\n      \"addr\": \"home-timeline-service\"\
+    ,\n      \"port\": 9090,\n      \"connections\": 512,\n      \"timeout_ms\": 10000,\n\
+    \      \"keepalive_ms\": 10000\n    },\n    \"ssl\": {\n      \"enabled\": false,\n\
+    \      \"caPath\": \"/keys/CA.pem\",\n      \"ciphers\": \"ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH\"\
+    ,\n      \"serverKeyPath\": \"/keys/server.key\",\n      \"serverCertPath\": \"\
+    /keys/server.crt\"\n    },\n    \"redis-primary\": {\n      \"keepalive_ms\":\
+    \ 10000,\n      \"addr\": \"redis-master\",\n      \"timeout_ms\": 10000,\n  \
+    \    \"port\": 6379,\n      \"connections\": 512\n    },\n    \"redis-replica\"\
+    : {\n      \"keepalive_ms\": 10000,\n      \"addr\": \"redis-replicas\",\n   \
+    \   \"timeout_ms\": 10000,\n      \"port\": 6379,\n      \"connections\": 512\n\
+    \    }\n  }\n"

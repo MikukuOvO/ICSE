@@ -1,0 +1,48 @@
+---
+# Source: social-network/charts/unique-id-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: unique-id-service
+  name: unique-id-service
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      service: unique-id-service
+  template:
+    metadata:
+      labels:
+        service: unique-id-service
+        app: unique-id-service
+    spec:
+      containers:
+      - name: "unique-id-service"
+        image: docker.io/fenglin02/social-network:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+        - containerPort: 9464
+        command: 
+        - UniqueIdService           
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi        
+        volumeMounts:
+        - name: unique-id-service-config
+          mountPath: /config/jaeger-config.yml
+          subPath: jaeger-config.yml
+        - name: unique-id-service-config
+          mountPath: /config/service-config.json
+          subPath: service-config.json
+      volumes:
+      - name: unique-id-service-config
+        configMap:
+          name: unique-id-service
+      hostname: unique-id-service
+      restartPolicy: Always

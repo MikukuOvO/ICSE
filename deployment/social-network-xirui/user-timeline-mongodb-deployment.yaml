@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: user-timeline-mongodb
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: user-timeline-mongodb
+  template:
+    metadata:
+      labels:
+        service: user-timeline-mongodb
+        app: user-timeline-mongodb
+    spec:
+      containers:
+      - name: user-timeline-mongodb
+        image: docker.io/library/mongo:4.4.6
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 27017
+        - containerPort: 9464
+        args:
+        - --config
+        - /config/mongod.conf
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - name: user-timeline-mongodb-config
+          mountPath: /config/mongod.conf
+          subPath: mongod.conf
+      volumes:
+      - name: user-timeline-mongodb-config
+        configMap:
+          name: user-timeline-mongodb
+      hostname: user-timeline-mongodb
+      restartPolicy: Always

@@ -1,0 +1,44 @@
+rabbitmq:
+  manager:
+    exchange:
+      exchange_name: high_level
+      exchange_type: direct
+    queues:
+    - auto_delete: true
+      name: manager
+      routing_keys:
+      - manager
+  message_collector:
+    exchange:
+      exchange_name: collector
+      exchange_type: direct
+    queues:
+    - auto_delete: true
+      name: collector
+      routing_keys:
+      - collector
+  service_maintainer:
+    exchange:
+      exchange_name: high_level
+      exchange_type: direct
+    queues:
+    - auto_delete: true
+      name: '{{component}}'
+      routing_keys:
+      - '{{component}}'
+  url: pyamqp://guest@localhost//
+
+heartbeat:
+  task: |-
+    This task is a regular check for the state of your microservice component. If a microservice component does not meet any criteria for a healthy state, you need to analyze the root cause and take corrective actions to recover it.
+
+    # The healthy state of the microservice component is defined as the average P99 latency is below 200ms.
+
+    # Follow the steps below to complete the task:
+      1. Check the state of the microservice component to see if the healthy state is maintained.
+      2. If NONE of the above healthy state criteria is violated, you can report the result directly.
+      3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
+        - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause.
+        - You are allowed to repeat the above steps a few times until the root cause is identified.
+  group_task_prefix: |-
+    TASK: You are a manager of kubernetes cluster, you need to check the status of all components you maintaining with below: \n

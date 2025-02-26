@@ -1,0 +1,5 @@
+backend: "OpenAI" # ["OpenAI", "AzureOpenAI", "Other"]
+
+OpenAI:
+  model: "o1-mini"
+  api_key: "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"

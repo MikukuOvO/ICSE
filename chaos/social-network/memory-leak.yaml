@@ -1,0 +1,56 @@
+---
+# Source: social-network/charts/home-timeline-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: home-timeline-service
+  name: home-timeline-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: home-timeline-service
+  template:
+    metadata:
+      labels:
+        service: home-timeline-service
+        app: home-timeline-service
+    spec:
+      containers:
+      - name: "home-timeline-service"
+        image: docker.io/fenglin02/social-network:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+        - containerPort: 9464
+        command:
+        - HomeTimelineService
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - name: home-timeline-service-config
+          mountPath: /config/jaeger-config.yml
+          subPath: jaeger-config.yml
+        - name: home-timeline-service-config
+          mountPath: /config/service-config.json
+          subPath: service-config.json
+      - name: stress-ng-memory
+        image: polinux/stress-ng:latest
+        resources:
+          limits:
+            memory: "512Mi"
+          requests:
+            memory: "512Mi"
+        command: ["stress-ng", "--vm", "1", "--vm-bytes", "256M", "--vm-keep", "--timeout", "300s"]
+      volumes:
+      - name: home-timeline-service-config
+        configMap:
+          name: home-timeline-service
+      hostname: home-timeline-service
+      restartPolicy: Always

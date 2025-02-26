@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  type: ClusterIP
+  ports:
+  - name: '11211'
+    port: 11211
+    targetPort: 11211
+  - name: '9464'
+    port: 9464
+    targetPort: 9464
+  selector:
+    service: url-shorten-memcached
