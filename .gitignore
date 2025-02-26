@@ -1,3 +1,5 @@
 RE1-SS/
 deployment/DeathStarBench/
 baseline/
+.cache/
+*.pyc

@@ -15,11 +15,14 @@ class Prompter:
         self._user_content = ""
         self._function_descptions = ""
         self._promql_descriptions = ""
+        self._service_slo_descriptions = ""
 
     @property
     def system_message(self):
         return (
             self._system_message
+            + "\n"
+            + self._service_slo_descriptions
             + "\n"
             + self._function_descptions
             + "\n"
@@ -57,6 +60,43 @@ class Prompter:
     def fill_user_content(self, placeholders: dict):
         template = Template(self.prompt["user"])
         self._user_content = template.render(**placeholders)
+
+    def generate_service_slos(self, deployment_name: str, slo_path: str):
+        """
+        Loads SLO configurations from a YAML file, filters by the specified deployment_name,
+        and generates a prompt that describes the relevant SLO threshold(s).
+        """
+        import yaml
+
+        # Load the SLO YAML file
+        with open(slo_path, "r", encoding="utf-8") as f:
+            slo_data = yaml.safe_load(f)
+
+        # Extract data under 'social-network' and filter entries matching the deployment_name
+        network_data = slo_data.get("social-network", {})
+        filtered_data = {}
+        for slo_key, slo_info in network_data.items():
+            if isinstance(slo_info, dict) and slo_info.get("deploymentName") == deployment_name:
+                filtered_data[slo_key] = slo_info
+
+        # If we found matches, generate a prompt template; otherwise, note no matches
+        if filtered_data:
+            slo_str = yaml.dump(filtered_data, sort_keys=False)
+            prompt_template = f"""
+            # Service SLO
+            Below is the content defining the Service SLO(s) for the deployment '{deployment_name}'.
+            Any observed latency below the listed threshold indicates a healthy state.
+
+            {slo_str}
+            """
+        else:
+            prompt_template = (
+                f"No SLO data found for the deployment '{deployment_name}'."
+            )
+
+        # Store or return the generated description
+        self._service_slo_descriptions = prompt_template
+
 
     def generate_function_descriptions(self, tool_functions_path: str):
         def load_module(module_path: str):

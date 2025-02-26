@@ -1,0 +1,45 @@
+social-network:
+  # SLO settings for each service
+  user-service-slo:
+    deploymentName: "user-service"
+    latency: 10ms
+
+  media-service-slo:
+    deploymentName: "media-service"
+    latency: 10ms
+
+  compose-post-service-slo:
+    deploymentName: "compose-post-service"
+    latency: 1000ms
+
+  text-service-slo:
+    deploymentName: "text-service"
+    latency: 200ms
+
+  unique-id-service-slo:
+    deploymentName: "unique-id-service"
+    latency: 10ms
+
+  url-shorten-service-slo:
+    deploymentName: "url-shorten-service"
+    latency: 200ms
+
+  user-mention-service-slo:
+    deploymentName: "user-mention-service"
+    latency: 50ms
+
+  social-graph-service-slo:
+    deploymentName: "social-graph-service"
+    latency: 50ms
+
+  home-timeline-service-slo:
+    deploymentName: "home-timeline-service"
+    latency: 50ms
+
+  post-storage-service-slo:
+    deploymentName: "post-storage-service"
+    latency: 50ms
+
+  user-timeline-service-slo:
+    deploymentName: "user-timeline-service"
+    latency: 50ms

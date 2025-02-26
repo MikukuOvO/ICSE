@@ -230,7 +230,7 @@ def inject():
     injection_time = datetime.utcnow()
 
     print("Stress-ng has been started. Waiting for stability...")
-    time.sleep(1200)
+    time.sleep(1)
     print("The system is assumed to be stable.")
 
     # 保存相关信息到字典

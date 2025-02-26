@@ -131,6 +131,7 @@ class ServiceMaintainer(SocietyOfMindAgent):
         prompter = Prompter()
         prompter.load_prompt_template(os.path.join(base_path, 'prompts', f'service_manager.yaml'))
         prompter.fill_system_message(service_maintainer_config)
+        prompter.generate_service_slos(deployment_name=service_name, slo_path=service_maintainer_config['slo_path'])
         prompter.generate_function_descriptions(service_maintainer_config['tool_functions_path'])
         prompter.generate_promQL(deployment_name=service_name, promQL_path=service_maintainer_config['promQL_path'])
 

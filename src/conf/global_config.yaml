@@ -30,10 +30,7 @@ rabbitmq:
 
 heartbeat:
   task: |-
-    This task is a regular check for the state of your microservice component. If a microservice component does not meet any criteria for a healthy state, you need to analyze the root cause and take corrective actions to recover it.
-
-    # The healthy state of the microservice component is defined as the average P99 latency is below 200ms.
-
+    This task is a regular check for the state of your microservice component. If a microservice component does not meet any criteria for a healthy state (violation SLOs), you need to analyze the root cause.
     # Follow the steps below to complete the task:
       1. Check the state of the microservice component to see if the healthy state is maintained.
       2. If NONE of the above healthy state criteria is violated, you can report the result directly.
