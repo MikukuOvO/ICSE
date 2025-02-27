@@ -5,6 +5,7 @@ import math
 import sys
 import time
 from datetime import datetime
+import yaml
 
 def extract_service_name(pod_name):
     """
@@ -126,102 +127,112 @@ def parse_memory_limit(mem_str):
         print(f"Error parsing memory limit '{mem_str}': {e}")
         return mem_str
 
-def inject():
-    # Step 1: 选择 namespace
+def inject(config_path="src/conf/global_config.yaml"):
+    # 读取配置信息
+    try:
+        with open(config_path, "r") as f:
+            config = yaml.safe_load(f)
+    except Exception as e:
+        print(f"Error loading YAML config: {e}")
+        sys.exit(1)
+
+    chaos_cfg = config.get("chaos_injection", {})
+    # 获取配置中的信息
+    desired_namespace = chaos_cfg.get("namespace")
+    desired_service = chaos_cfg.get("service")
+    desired_container = chaos_cfg.get("container")
+    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # default to CPU hog
+    desired_duration = chaos_cfg.get("duration", "40m")         # default 40m
+
+    # Step 1: 验证并使用 namespace
     namespaces = list_namespaces()
     if not namespaces:
         print("No namespaces found. Exiting.")
         sys.exit(1)
 
-    print("Available namespaces:")
-    for ns in namespaces:
-        print(f" - {ns}")
-    namespace = input("Enter the namespace to target: ").strip()
-    if namespace not in namespaces:
-        print(f"Namespace '{namespace}' not found. Exiting.")
+    if not desired_namespace:
+        print("No namespace provided in config. Exiting.")
         sys.exit(1)
 
-    # Step 2: 选择 pod（组件），这里只显示 service 名称
+    if desired_namespace not in namespaces:
+        print(f"Namespace '{desired_namespace}' not found. Exiting.")
+        sys.exit(1)
+
+    namespace = desired_namespace
+
+    # Step 2: 验证并使用 service -> pod
     service_to_pod = list_pods(namespace)
     if not service_to_pod:
         print(f"No pods found in namespace '{namespace}'. Exiting.")
         sys.exit(1)
-    print(f"\nAvailable services (derived from pod names) in namespace '{namespace}':")
-    for service in service_to_pod.keys():
-        print(f" - {service}")
-    service_name = input("Enter the service (derived from pod name) to target: ").strip()
-    if service_name not in service_to_pod:
-        print(f"Service '{service_name}' not found in namespace '{namespace}'. Exiting.")
-        sys.exit(1)
-    # 通过字典取出完整的 Pod 名称
-    pod_name = service_to_pod[service_name]
 
+    if not desired_service:
+        print("No service (derived from pod name) provided in config. Exiting.")
+        sys.exit(1)
+
+    if desired_service not in service_to_pod:
+        print(f"Service '{desired_service}' not found in namespace '{namespace}'. Exiting.")
+        sys.exit(1)
+
+    pod_name = service_to_pod[desired_service]
+
+    # 获取 Pod JSON
     pod_data = get_pod_json(namespace, pod_name)
     if not pod_data:
         sys.exit(1)
 
-    # 如果 Pod 中包含多个容器，则让用户选择具体容器
+    # 如果 Pod 中包含多个容器，且配置文件没有指定，则默认为第一个容器
     container_names = [c["name"] for c in pod_data["spec"]["containers"]]
-    if len(container_names) > 1:
-        print("\nMultiple containers found in the pod:")
-        for cn in container_names:
-            print(f" - {cn}")
-        container_name = input("Enter the container name to target: ").strip()
-        if container_name not in container_names:
-            print(f"Container '{container_name}' not found in pod '{pod_name}'. Exiting.")
+    if desired_container:
+        if desired_container not in container_names:
+            print(f"Container '{desired_container}' not found in pod '{pod_name}'. Exiting.")
             sys.exit(1)
+        container_name = desired_container
     else:
-        container_name = container_names[0]
+        # 如果仅有 1 个容器，则直接使用
+        if len(container_names) == 1:
+            container_name = container_names[0]
+        else:
+            print("Multiple containers exist but none specified in config. Exiting.")
+            sys.exit(1)
 
-    # 获取指定容器的资源限制
+    # 获取容器资源限制
     limits = get_container_resource_limits(pod_data, container_name)
     cpu_limit = limits.get("cpu")
     mem_limit = limits.get("memory")
 
-    print(f"\nResource limits for container '{container_name}': {limits}")
-
-    # Step 3: 选择要注入的混沌类型
-    print("\nSelect chaos type to inject:")
-    print(" 1) CPU hog")
-    print(" 2) Memory leak")
-    chaos_choice = input("Enter your choice (1 or 2): ").strip()
-
-    # 默认混沌注入持续时间
-    duration = input("Enter duration for chaos injection (e.g., 60s) [default 60s]: ").strip()
-    if not duration:
-        duration = "40m"
-
-    if chaos_choice == "1":
-        # CPU hog: stress-ng --cpu <workers> --timeout <duration>
+    # Step 3: 根据 chaos_type 注入混沌
+    if "cpu" in desired_chaos_type.lower():
+        # CPU hog
         if cpu_limit is None:
             print("No CPU limit defined. Defaulting to 1 CPU worker.")
             num_workers = 1
         else:
             num_workers = parse_cpu_limit(cpu_limit)
-        stress_cmd = f"stress-ng --cpu {num_workers} --timeout {duration}"
-        print(f"\nInjecting CPU hog chaos with command: {stress_cmd}")
-    elif chaos_choice == "2":
-        # Memory leak: stress-ng --vm 1 --vm-bytes <memory> --timeout <duration>
+        stress_cmd = f"stress-ng --cpu {num_workers} --timeout {desired_duration}"
+        chaos_type = "CPU hog"
+    elif "memory" in desired_chaos_type.lower():
+        # Memory leak
         if mem_limit is None:
             print("No memory limit defined. Defaulting to 100M.")
             mem_for_stress = "100M"
         else:
             mem_for_stress = parse_memory_limit(mem_limit)
-        stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {duration}"
-        print(f"\nInjecting Memory leak chaos with command: {stress_cmd}")
+        stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {desired_duration}"
+        chaos_type = "Memory leak"
     else:
-        print("Invalid chaos choice. Exiting.")
+        print(f"Invalid chaos type '{desired_chaos_type}' specified in config. Exiting.")
         sys.exit(1)
 
-    # 构造 kubectl exec 命令，注意使用 "-c" 指定容器
+    # 构造 kubectl exec 命令
     exec_cmd = ["kubectl", "exec", "-n", namespace, pod_name, "-c", container_name, "--"] + stress_cmd.split()
     print("\nExecuting the following command in the pod:")
     print(" ".join(exec_cmd))
-    
+
     try:
         process = subprocess.Popen(exec_cmd)
         print("\nChaos command has been started in the background.")
-        status = "launched"  # 或者根据你的需求设置状态
+        status = "launched"
     except Exception as e:
         print(f"\nError executing chaos command: {e}")
         status = "failed"
@@ -230,19 +241,19 @@ def inject():
     injection_time = datetime.utcnow()
 
     print("Stress-ng has been started. Waiting for stability...")
-    time.sleep(1)
+    time.sleep(1200)  # adjust as needed
     print("The system is assumed to be stable.")
 
     # 保存相关信息到字典
     injection_info = {
         "injection_time": injection_time.isoformat(),
         "namespace": namespace,
-        "service": service_name,
+        "service": desired_service,
         "pod": pod_name,
         "container": container_name,
         "resource_limits": limits,
-        "chaos_type": "CPU hog" if chaos_choice == "1" else "Memory leak",
-        "duration": duration,
+        "chaos_type": chaos_type,
+        "duration": desired_duration,
         "stress_command": stress_cmd,
         "kubectl_exec_command": " ".join(exec_cmd),
         "status": status
@@ -254,4 +265,8 @@ def inject():
     return injection_info
 
 if __name__ == "__main__":
-    inject()
+    # If you want to pass a custom config path, e.g. python script.py /path/to/config.yaml
+    if len(sys.argv) > 1:
+        inject(sys.argv[1])
+    else:
+        inject()

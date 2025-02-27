@@ -28,6 +28,13 @@ rabbitmq:
       - '{{component}}'
   url: pyamqp://guest@localhost//
 
+chaos_injection:
+  namespace: "social-network"
+  service: "home-timeline-service"
+  container: ""
+  chaos_type: "CPU hog"
+  duration: "40m"
+
 heartbeat:
   task: |-
     This task is a regular check for the state of your microservice component. If a microservice component does not meet any criteria for a healthy state (violation SLOs), you need to analyze the root cause.

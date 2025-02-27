@@ -3,3 +3,4 @@ deployment/DeathStarBench/
 baseline/
 .cache/
 *.pyc
+src/results/

@@ -144,3 +144,56 @@ social-network:
   user-timeline-service-memory:
     deploymentName: "user-timeline-service"
     promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="user-timeline-service"}[5m]))'
+
+  user-service-workload:
+    deploymentName: "user-service"
+    promql: 'avg by (pod) (rate(read_user_timeline_requests_total[5m]))'
+
+  media-service-workload:
+    deploymentName: "media-service"
+    promql: 'avg by (pod) (rate(compose_media_requests_total[5m]))'
+
+  compose-post-service-workload:
+    deploymentName: "compose-post-service"
+    promql: 'avg by (pod) (rate(compose_post_requests_total[5m]))'
+  
+  text-service-workload:
+    deploymentName: "text-service"
+    promql: 'avg by (pod) (rate(compose_text_requests_total[5m]))'
+
+  unique-id-service-workload:
+    deploymentName: "unique-id-service"
+    promql: 'avg by (pod) (rate(compose_unique_id_requests_total[5m]))'
+
+  url-shorten-service-workload:
+    deploymentName: "url-shorten-service"
+    promql: 'avg by (pod) (rate(compose_urls_requests_total[5m]))'
+  
+  user-mention-service-workload:
+    deploymentName: "user-mention-service"
+    promql: 'avg by (pod) (rate(compose_user_mentions_requests_total[5m]))'
+  
+  social-graph-service-workload:
+    deploymentName: "social-graph-service"
+    promql: 'avg by (pod) (rate(get_followers_requests_total[5m]))'
+  
+  home-timeline-service-read-workload:
+    deploymentName: "home-timeline-service"
+    promql: 'avg by (pod) (rate(read_home_timeline_requests_total[5m]))'
+  
+  home-timeline-service-write-workload:
+    deploymentName: "home-timeline-service"
+    promql: 'avg by (pod) (rate(write_home_timeline_requests_total[5m]))'
+
+  post-storage-service-workload:
+    deploymentName: "post-storage-service"
+    promql: 'avg by (pod) (rate(read_posts_requests_total[5m]))'
+
+  user-timeline-service-read-workload:
+    deploymentName: "user-timeline-service"
+    promql: 'avg by (pod) (rate(read_user_timeline_requests_total[5m]))'
+  
+  user-timeline-service-write-workload:
+    deploymentName: "user-timeline-service"
+    promql: 'avg by (pod) (rate(write_user_timeline_requests_total[5m]))'
+  

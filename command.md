@@ -5,7 +5,7 @@ python export_csv.py http://localhost:9090 2025-02-24T06:40:00Z 2025-02-24T06:53
 
 locust -f traffic_rasing/social-network/mixed_traffic.py
 
-pgrep -fl locust
+ps -fp "$(pgrep -f locust)"
 
 kubectl delete -f deployment/prometheus/
 kubectl apply -f deployment/prometheus/
