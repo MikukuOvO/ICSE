@@ -17,9 +17,9 @@ def query_prometheus(promQL: str, **kwargs) -> list:
     Example: 
     >>> from src.agent.tool_functions_for_maintainer import query_prometheus
     >>> promQL = '<metric_name>{<label_selector>}'
-    >>> result = query_prometheus(promQL=promQL, duration='2m', step='1m')
+    >>> result = query_prometheus(promQL=promQL, duration='20m', step='1m')
     >>> print(result) # output the result so that planner can get it.
-    [['2024-06-20 02:17:20', 0.0], ['2024-06-20 02:18:20', 0.0], ['2024-06-20 02:19:20', 0.0]]
+    [['2024-06-20 02:17:20', 0.0], ['2024-06-20 02:18:20', 0.0], ['2024-06-20 02:19:20', 0.0]], ...
     """
     from intent_exec.module.prometheus_client import PrometheusClient
     prometheus_client = PrometheusClient()

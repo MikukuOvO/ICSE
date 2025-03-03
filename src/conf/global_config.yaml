@@ -41,7 +41,7 @@ heartbeat:
       1. Check the state of the microservice component to see if the healthy state is maintained.
       2. If NONE of the above healthy state criteria is violated, you can report healthy directly.
       3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
-        - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause.
+        - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause. DO NOT take any action to fix the unhealthy state.
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
   healing_task: |-
     This task is a healing check for the state of your microservice component. 

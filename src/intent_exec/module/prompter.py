@@ -80,10 +80,7 @@ class Prompter:
             slo_str = yaml.dump(filtered_data, sort_keys=False)
             prompt_template = f"""
             # Healthy State Judgement
-            Below is the content indicating the normal latency for the deployment '{deployment_name}'.
-
-            {slo_str}
-
+            
             To determine whether the service is anomaly, you should judge based on following rules:
             - A service is considered an anomaly if it is part of a sequence of at least one consecutive anomalous points or if its latency continues to plummet or surge abruptly.
             - A service is considered an anomaly if it is identified as a continuous high latency anomaly, remaining above a normal level for a prolonged duration, thereby deviating from the anticipated norm.

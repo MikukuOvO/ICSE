@@ -16,6 +16,8 @@ kubectl apply -f deployment/social-network-xirui/ && \
 kubectl apply -f deployment/prometheus/ && \
 kubectl apply -f deployment/otel-collector/
 
+
 kubectl delete -f deployment/social-network-xirui/ && \
 kubectl delete -f deployment/prometheus/ && \
-kubectl delete -f deployment/otel-collector/
+kubectl delete -f deployment/otel-collector/ && \
+kubectl delete namespace social-network 
