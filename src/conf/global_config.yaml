@@ -33,16 +33,35 @@ chaos_injection:
   service: "home-timeline-service"
   container: ""
   chaos_type: "CPU hog"
-  duration: "40m"
-
+  # chaos_type: "DIST stress"
 heartbeat:
-  task: |-
-    This task is a regular check for the state of your microservice component. If a microservice component does not meet any criteria for a healthy state (violation SLOs), you need to analyze the root cause.
+  detection_task: |-
+    This task is a detection for the state of your microservice component. 
     # Follow the steps below to complete the task:
       1. Check the state of the microservice component to see if the healthy state is maintained.
-      2. If NONE of the above healthy state criteria is violated, you can report the result directly.
+      2. If NONE of the above healthy state criteria is violated, you can report healthy directly.
       3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause.
-        - You are allowed to repeat the above steps a few times until the root cause is identified.
+        - You are allowed to repeat the above steps a few times to fix the unhealthy state.
+  healing_task: |-
+    This task is a healing check for the state of your microservice component. 
+    # Follow the steps below to complete the task:
+      1. Check the state of the microservice component to see if the healthy state is maintained.
+      2. If NONE of the above healthy state criteria is violated, you can report healthy directly.
+      3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
+        - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause.
+        - After the root cause is identified, you should take the necessary actions to fix the unhealthy state.
+        - You are allowed to repeat the above steps a few times to fix the unhealthy state.
+  optimization_task: |-
+    This task is a optimization task for your microservice component.
+    # Follow the steps below to complete the task:
+      1. Check the state of the microservice component to see if the resource usage is efficient.
+      2. If the resource usage is already at the optimal level, you can report the optimization task as completed.
+      3. If the resource usage is not at the optimal level, you should follow the steps below:
+        - Analyze the resource usage and performance of the microservice component.
+        - After the analysis is done, you should take the necessary actions to optimize the resource usage.
+        - You are allowed to repeat the above steps a few times to optimize the resource usage.
+
   group_task_prefix: |-
-    TASK: You are a manager of kubernetes cluster, you need to check the status of all components you maintaining with below: \n
+    TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n
+

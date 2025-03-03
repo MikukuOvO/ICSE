@@ -31,11 +31,13 @@ global_config = load_config()
 
 base_path = get_ancestor_path(2)
 
-timeout = 1200
+timeout = 600
 
 def main():
     process = start_traffic()
     inject_info = inject()
+
+    export_metrics()
 
     # Refresh the API
     subprocess.run(["bash", "scripts/ops/api.sh"])
@@ -98,7 +100,7 @@ def main():
     for queue in queues:
         rabbitmq.add_queue(**queue)
 
-    task = f'{global_config["heartbeat"]["group_task_prefix"]}{global_config["heartbeat"]["task"]}'
+    task = f'{global_config["heartbeat"]["group_task_prefix"]}{global_config["heartbeat"]["detection_task"]}'
     rabbitmq.publish(task, routing_keys=['manager'])
 
     # Task execution loop
@@ -115,7 +117,6 @@ def main():
 
     logger.info('Stopping the task...')
     end_traffic(process)
-    export_metrics()
 
 if __name__ == '__main__':
     main()

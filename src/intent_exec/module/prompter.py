@@ -62,10 +62,6 @@ class Prompter:
         self._user_content = template.render(**placeholders)
 
     def generate_service_slos(self, deployment_name: str, slo_path: str):
-        """
-        Loads SLO configurations from a YAML file, filters by the specified deployment_name,
-        and generates a prompt that describes the relevant SLO threshold(s).
-        """
         import yaml
 
         # Load the SLO YAML file
@@ -83,11 +79,15 @@ class Prompter:
         if filtered_data:
             slo_str = yaml.dump(filtered_data, sort_keys=False)
             prompt_template = f"""
-            # Service SLO
-            Below is the content defining the Service SLO(s) for the deployment '{deployment_name}'.
-            Any observed latency below the listed threshold indicates a healthy state.
+            # Healthy State Judgement
+            Below is the content indicating the normal latency for the deployment '{deployment_name}'.
 
             {slo_str}
+
+            To determine whether the service is anomaly, you should judge based on following rules:
+            - A service is considered an anomaly if it is part of a sequence of at least one consecutive anomalous points or if its latency continues to plummet or surge abruptly.
+            - A service is considered an anomaly if it is identified as a continuous high latency anomaly, remaining above a normal level for a prolonged duration, thereby deviating from the anticipated norm.
+            - Normal service latency may exhibit variability, which should not be confused with anomalies.
             """
         else:
             prompt_template = (

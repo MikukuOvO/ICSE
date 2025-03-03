@@ -1,0 +1,36 @@
+apiVersion: v1
+data:
+  prometheus.yml: |
+    scrape_configs:
+    - job_name: 'otel-collector'
+      static_configs:
+        - targets: ['otel-collector.default.svc.cluster.local:9464']
+    - job_name: 'kubelet-cadvisor'
+      scheme: https
+      metrics_path: /metrics/cadvisor
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      kubernetes_sd_configs:
+        - role: node
+      relabel_configs:
+        - source_labels: [__address__]
+          regex: '(.*):10250'
+          target_label: __address__
+          replacement: '$1:10250'
+      # 这里对采集到的指标做二次 relabel，提取出 deployment 名称，并只保留指定的
+      metric_relabel_configs:
+      - source_labels: [pod]
+        regex: '^(.+)-[^-]+-[^-]+$'
+        target_label: deployment
+        replacement: '$1'
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"prometheus.yml":"scrape_configs:\n- job_name: 'otel-collector'\n  static_configs:\n    - targets: ['otel-collector.default.svc.cluster.local:9464']\n- job_name: 'kubelet-cadvisor'\n  scheme: https\n  metrics_path: /metrics/cadvisor\n  tls_config:\n    insecure_skip_verify: true\n  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n  kubernetes_sd_configs:\n    - role: node\n  relabel_configs:\n    - source_labels: [__address__]\n      regex: '(.*):10250'\n      target_label: __address__\n      replacement: '$1:10250'\n  # 这里对采集到的指标做二次 relabel，提取出 deployment 名称，并只保留指定的\n  metric_relabel_configs:\n  - source_labels: [pod]\n    regex: '^(.+)-[^-]+-[^-]+$'\n    target_label: deployment\n    replacement: '$1'\n"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"prometheus-config","namespace":"kube-system"}}
+  creationTimestamp: "2025-03-03T05:14:45Z"
+  name: prometheus-config
+  namespace: kube-system
+  resourceVersion: "5558"
+  uid: f7c6c5da-be71-4f35-a45e-9abc6f8b8853

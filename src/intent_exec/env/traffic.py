@@ -10,8 +10,8 @@ def start_traffic():
         "--headless",
         "-u", "20",
         "-r", "20",
-        "--host", "http://localhost:8080",
-        "--run-time", "60m"
+        "--host", "http://192.168.76.2:30080",
+        "--run-time", "40m"
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
@@ -25,7 +25,7 @@ def start_traffic():
     print("Locust has been started. Waiting for stability...")
     
     # Wait for 10 minutes (600 seconds) for the system to stabilize.
-    time.sleep(1200)
+    time.sleep(900)
     print("The system is assumed to be stable.")
     
     return process

@@ -2,44 +2,55 @@ social-network:
   # SLO settings for each service
   user-service-slo:
     deploymentName: "user-service"
-    latency: 10ms
+    peakLatency: 0ms
+    minimumLatency: 0ms
 
   media-service-slo:
     deploymentName: "media-service"
-    latency: 10ms
+    peakLatency: 0ms
+    minimumLatency: 0ms
 
   compose-post-service-slo:
     deploymentName: "compose-post-service"
-    latency: 1000ms
+    peakLatency: 25ms
+    minimumLatency: 225ms
 
   text-service-slo:
     deploymentName: "text-service"
-    latency: 200ms
+    peakLatency: 10ms
+    minimumLatency: 70ms
 
   unique-id-service-slo:
     deploymentName: "unique-id-service"
-    latency: 10ms
+    peakLatency: 0ms
+    minimumLatency: 0ms
 
   url-shorten-service-slo:
     deploymentName: "url-shorten-service"
-    latency: 200ms
+    peakLatency: 4.94ms
+    minimumLatency: 5.00ms
 
   user-mention-service-slo:
     deploymentName: "user-mention-service"
-    latency: 50ms
+    peakLatency: 4.95ms
+    minimumLatency: 4.97ms
 
   social-graph-service-slo:
     deploymentName: "social-graph-service"
-    latency: 50ms
+    peakLatency: 4.94ms
+    minimumLatency: 4.97ms
 
   home-timeline-service-slo:
     deploymentName: "home-timeline-service"
-    latency: 50ms
+    peakLatency: 4.55ms
+    minimumLatency: 4.97ms
 
   post-storage-service-slo:
     deploymentName: "post-storage-service"
-    latency: 50ms
+    peakLatency: 5ms
+    minimumLatency: 60ms
 
   user-timeline-service-slo:
     deploymentName: "user-timeline-service"
-    latency: 50ms
+    peakLatency: 4.94ms
+    minimumLatency: 9ms

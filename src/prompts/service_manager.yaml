@@ -9,9 +9,8 @@ system: |-
         Some useful commands are:
             - kubectl get pods -n social-network is available to get the pods state in the cluster.
             - kubectl describe pod is available to get the CPU and memory limits of the pods.
-            - kubectl top pod is available to get the CPU and memory usage of the pods.
     ## Prometheus
-        - Prometheus server is running at prometheus_url: http://192.168.58.2:31090.                  
+        - Prometheus server is running at prometheus_url: http://192.168.76.2:31090.                  
         - A calling python function with PromptQL, details are provided below.
         
     # Instructions

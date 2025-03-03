@@ -8,11 +8,6 @@ from datetime import datetime
 import yaml
 
 def extract_service_name(pod_name):
-    """
-    根据 Pod 名称提取 service 名称
-    例如：my-service-5d9fc8f5cc-8h49m  ->  my-service
-    规则：如果名称以 '-' 分隔后的段数>=3，则去掉最后两个段。
-    """
     parts = pod_name.split('-')
     if len(parts) >= 3:
         return '-'.join(parts[:-2])
@@ -35,11 +30,6 @@ def list_namespaces():
         return []
 
 def list_pods(namespace):
-    """
-    返回一个字典：
-      key: 从 Pod 名称提取出来的 service 名称（不含随机字符串）
-      value: 对应的完整 Pod 名称（取第一个匹配到的）
-    """
     try:
         result = subprocess.run(
             ["kubectl", "get", "pods", "-n", namespace, "-o", "json"],
@@ -74,9 +64,6 @@ def get_pod_json(namespace, pod):
         return None
 
 def get_container_resource_limits(pod_data, container_name=None):
-    """
-    返回指定容器的资源限制（如果未指定，则返回第一个容器的限制）。
-    """
     containers = pod_data["spec"]["containers"]
     if container_name:
         container = next((c for c in containers if c["name"] == container_name), None)
@@ -91,9 +78,6 @@ def get_container_resource_limits(pod_data, container_name=None):
     return limits
 
 def parse_cpu_limit(cpu_str):
-    """
-    解析 CPU 限制字符串（例如 "500m" 或 "1"），返回 stress-ng 所需的 CPU worker 数量（向上取整）。
-    """
     try:
         if cpu_str.endswith("m"):
             millicores = float(cpu_str[:-1])
@@ -107,9 +91,6 @@ def parse_cpu_limit(cpu_str):
         return 1
 
 def parse_memory_limit(mem_str):
-    """
-    将内存限制字符串（例如 "512Mi", "1Gi"）转换为 stress-ng 可接受的格式（例如 "512M" 或 "1G"）。
-    """
     try:
         if mem_str.endswith("Gi"):
             value = mem_str[:-2]
@@ -128,7 +109,6 @@ def parse_memory_limit(mem_str):
         return mem_str
 
 def inject(config_path="src/conf/global_config.yaml"):
-    # 读取配置信息
     try:
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
@@ -137,14 +117,12 @@ def inject(config_path="src/conf/global_config.yaml"):
         sys.exit(1)
 
     chaos_cfg = config.get("chaos_injection", {})
-    # 获取配置中的信息
     desired_namespace = chaos_cfg.get("namespace")
     desired_service = chaos_cfg.get("service")
     desired_container = chaos_cfg.get("container")
-    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # default to CPU hog
-    desired_duration = chaos_cfg.get("duration", "40m")         # default 40m
+    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")
+    desired_duration = chaos_cfg.get("duration", "20m")
 
-    # Step 1: 验证并使用 namespace
     namespaces = list_namespaces()
     if not namespaces:
         print("No namespaces found. Exiting.")
@@ -159,8 +137,6 @@ def inject(config_path="src/conf/global_config.yaml"):
         sys.exit(1)
 
     namespace = desired_namespace
-
-    # Step 2: 验证并使用 service -> pod
     service_to_pod = list_pods(namespace)
     if not service_to_pod:
         print(f"No pods found in namespace '{namespace}'. Exiting.")
@@ -175,13 +151,10 @@ def inject(config_path="src/conf/global_config.yaml"):
         sys.exit(1)
 
     pod_name = service_to_pod[desired_service]
-
-    # 获取 Pod JSON
     pod_data = get_pod_json(namespace, pod_name)
     if not pod_data:
         sys.exit(1)
 
-    # 如果 Pod 中包含多个容器，且配置文件没有指定，则默认为第一个容器
     container_names = [c["name"] for c in pod_data["spec"]["containers"]]
     if desired_container:
         if desired_container not in container_names:
@@ -189,21 +162,19 @@ def inject(config_path="src/conf/global_config.yaml"):
             sys.exit(1)
         container_name = desired_container
     else:
-        # 如果仅有 1 个容器，则直接使用
         if len(container_names) == 1:
             container_name = container_names[0]
         else:
             print("Multiple containers exist but none specified in config. Exiting.")
             sys.exit(1)
 
-    # 获取容器资源限制
     limits = get_container_resource_limits(pod_data, container_name)
     cpu_limit = limits.get("cpu")
     mem_limit = limits.get("memory")
+    chaos_type = None
+    stress_cmd = None
 
-    # Step 3: 根据 chaos_type 注入混沌
     if "cpu" in desired_chaos_type.lower():
-        # CPU hog
         if cpu_limit is None:
             print("No CPU limit defined. Defaulting to 1 CPU worker.")
             num_workers = 1
@@ -212,7 +183,6 @@ def inject(config_path="src/conf/global_config.yaml"):
         stress_cmd = f"stress-ng --cpu {num_workers} --timeout {desired_duration}"
         chaos_type = "CPU hog"
     elif "memory" in desired_chaos_type.lower():
-        # Memory leak
         if mem_limit is None:
             print("No memory limit defined. Defaulting to 100M.")
             mem_for_stress = "100M"
@@ -220,11 +190,13 @@ def inject(config_path="src/conf/global_config.yaml"):
             mem_for_stress = parse_memory_limit(mem_limit)
         stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {desired_duration}"
         chaos_type = "Memory leak"
+    elif "disk" in desired_chaos_type.lower():
+        stress_cmd = f"stress-ng --hdd 1 --hdd-bytes 50M --timeout {desired_duration} --metrics-brief"
+        chaos_type = "Disk hog"
     else:
-        print(f"Invalid chaos type '{desired_chaos_type}' specified in config. Exiting.")
+        print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
         sys.exit(1)
 
-    # 构造 kubectl exec 命令
     exec_cmd = ["kubectl", "exec", "-n", namespace, pod_name, "-c", container_name, "--"] + stress_cmd.split()
     print("\nExecuting the following command in the pod:")
     print(" ".join(exec_cmd))
@@ -239,12 +211,10 @@ def inject(config_path="src/conf/global_config.yaml"):
         sys.exit(1)
     
     injection_time = datetime.utcnow()
-
     print("Stress-ng has been started. Waiting for stability...")
-    time.sleep(1200)  # adjust as needed
+    time.sleep(600)
     print("The system is assumed to be stable.")
 
-    # 保存相关信息到字典
     injection_info = {
         "injection_time": injection_time.isoformat(),
         "namespace": namespace,
@@ -265,7 +235,6 @@ def inject(config_path="src/conf/global_config.yaml"):
     return injection_info
 
 if __name__ == "__main__":
-    # If you want to pass a custom config path, e.g. python script.py /path/to/config.yaml
     if len(sys.argv) > 1:
         inject(sys.argv[1])
     else:

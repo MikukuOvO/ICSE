@@ -4,11 +4,12 @@ metadata:
   name: nginx-thrift
   namespace: social-network
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: '8080'
     port: 8080
     targetPort: 8080
+    nodePort: 30080
   - name: '9464'
     port: 9464
     targetPort: 9464

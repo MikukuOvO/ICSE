@@ -1303,3 +1303,122 @@ TASK: Check the Memory usage
 2025-02-26 15:18:30,438 - main.py - WARNING - Connection closed by user.
 2025-02-26 15:18:30,439 - main.py - INFO - Task execution complete.
 2025-02-26 15:18:30,455 - main.py - INFO - Stopping the task...
+2025-02-27 06:26:46,343 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-062646/injection.json
+2025-02-27 06:26:50,809 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-062646/logs
+2025-02-27 06:36:50,921 - main.py - INFO - Task execution complete.
+2025-02-27 06:36:51,039 - main.py - INFO - Stopping the task...
+2025-02-27 07:03:54,340 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-070354/injection.json
+2025-02-27 07:03:58,892 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-070354/logs
+2025-02-27 07:09:04,089 - main.py - WARNING - Connection closed by user.
+2025-02-27 07:09:04,090 - main.py - INFO - Task execution complete.
+2025-02-27 07:09:04,127 - main.py - INFO - Stopping the task...
+2025-02-27 08:44:20,957 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-084420/injection.json
+2025-02-27 08:44:25,362 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-084420/logs
+2025-02-27 08:54:25,461 - main.py - INFO - Task execution complete.
+2025-02-27 08:54:25,620 - main.py - INFO - Stopping the task...
+2025-02-27 09:26:03,263 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-092603/injection.json
+2025-02-27 09:26:07,869 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-092603/logs
+2025-02-27 09:31:09,533 - main.py - WARNING - Connection closed by user.
+2025-02-27 09:31:09,533 - main.py - INFO - Task execution complete.
+2025-02-27 09:31:09,551 - main.py - INFO - Stopping the task...
+2025-02-27 09:53:48,188 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-095348/injection.json
+2025-02-27 09:53:52,385 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-095348/logs
+2025-02-27 10:03:52,484 - main.py - INFO - Task execution complete.
+2025-02-27 10:03:52,628 - main.py - INFO - Stopping the task...
+2025-02-27 10:32:04,589 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-103204/injection.json
+2025-02-27 10:32:08,592 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-103204/logs
+2025-02-27 10:42:08,706 - main.py - INFO - Task execution complete.
+2025-02-27 10:42:08,845 - main.py - INFO - Stopping the task...
+2025-02-27 11:42:05,802 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-114205/injection.json
+2025-02-27 11:42:10,272 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-114205/logs
+2025-02-27 11:52:10,384 - main.py - INFO - Task execution complete.
+2025-02-27 11:52:10,546 - main.py - INFO - Stopping the task...
+2025-02-27 12:43:40,181 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-124340/injection.json
+2025-02-27 12:43:44,624 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-124340/logs
+2025-02-27 12:53:44,720 - main.py - INFO - Task execution complete.
+2025-02-27 12:53:44,865 - main.py - INFO - Stopping the task...
+2025-02-27 13:36:22,462 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-133622/injection.json
+2025-02-27 13:36:26,935 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-133622/logs
+2025-02-27 13:46:27,049 - main.py - INFO - Task execution complete.
+2025-02-27 13:46:27,182 - main.py - INFO - Stopping the task...
+2025-02-27 14:34:12,570 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-143412/injection.json
+2025-02-27 14:34:17,107 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-143412/logs
+2025-02-27 14:44:17,209 - main.py - INFO - Task execution complete.
+2025-02-27 14:44:17,339 - main.py - INFO - Stopping the task...
+2025-02-27 15:14:14,284 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-151414/injection.json
+2025-02-27 15:14:18,672 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-151414/logs
+2025-02-27 15:24:18,748 - main.py - INFO - Task execution complete.
+2025-02-27 15:24:18,881 - main.py - INFO - Stopping the task...
+2025-02-27 16:40:23,659 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-164023/injection.json
+2025-02-27 16:40:28,331 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-164023/logs
+2025-02-27 16:50:28,442 - main.py - INFO - Task execution complete.
+2025-02-27 16:50:28,583 - main.py - INFO - Stopping the task...
+2025-02-27 17:16:15,264 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-171615/injection.json
+2025-02-27 17:16:19,884 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250227-171615/logs
+2025-02-27 17:26:19,997 - main.py - INFO - Task execution complete.
+2025-02-27 17:26:20,149 - main.py - INFO - Stopping the task...
+2025-02-28 02:49:11,400 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-024911/injection.json
+2025-02-28 02:49:15,908 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-024911/logs
+2025-02-28 02:51:47,713 - main.py - WARNING - Connection closed by user.
+2025-02-28 02:51:47,714 - main.py - INFO - Task execution complete.
+2025-02-28 02:51:47,729 - main.py - INFO - Stopping the task...
+2025-02-28 03:24:23,718 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-032423/injection.json
+2025-02-28 03:24:28,208 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-032423/logs
+2025-02-28 03:34:28,321 - main.py - INFO - Task execution complete.
+2025-02-28 03:34:28,472 - main.py - INFO - Stopping the task...
+2025-02-28 04:18:32,692 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-041832/injection.json
+2025-02-28 04:18:37,158 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-041832/logs
+2025-02-28 04:28:37,269 - main.py - INFO - Task execution complete.
+2025-02-28 04:28:37,404 - main.py - INFO - Stopping the task...
+2025-02-28 08:34:53,623 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-083453/injection.json
+2025-02-28 08:34:57,960 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-083453/logs
+2025-02-28 08:44:58,009 - main.py - INFO - Task execution complete.
+2025-02-28 08:44:58,136 - main.py - INFO - Stopping the task...
+2025-02-28 11:31:07,363 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-113107/injection.json
+2025-02-28 11:31:11,688 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-113107/logs
+2025-02-28 11:41:11,800 - main.py - INFO - Task execution complete.
+2025-02-28 11:41:11,912 - main.py - INFO - Stopping the task...
+2025-02-28 12:31:20,788 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-123120/injection.json
+2025-02-28 12:31:24,916 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-123120/logs
+2025-02-28 12:41:25,005 - main.py - INFO - Task execution complete.
+2025-02-28 12:41:25,137 - main.py - INFO - Stopping the task...
+2025-02-28 13:53:30,401 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-135330/injection.json
+2025-02-28 13:53:34,769 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250228-135330/logs
+2025-02-28 14:03:34,799 - main.py - INFO - Task execution complete.
+2025-02-28 14:03:34,924 - main.py - INFO - Stopping the task...
+2025-03-01 07:02:38,460 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-070238/injection.json
+2025-03-01 07:02:42,805 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-070238/logs
+2025-03-01 07:12:42,920 - main.py - INFO - Task execution complete.
+2025-03-01 07:12:43,051 - main.py - INFO - Stopping the task...
+2025-03-01 11:14:40,077 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-111440/injection.json
+2025-03-01 11:14:44,412 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-111440/logs
+2025-03-01 11:24:44,527 - main.py - INFO - Task execution complete.
+2025-03-01 11:24:44,671 - main.py - INFO - Stopping the task...
+2025-03-01 12:09:04,200 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-120904/injection.json
+2025-03-01 12:09:08,584 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-120904/logs
+2025-03-01 12:19:08,672 - main.py - INFO - Task execution complete.
+2025-03-01 12:19:08,788 - main.py - INFO - Stopping the task...
+2025-03-01 14:49:51,185 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-144951/injection.json
+2025-03-01 14:49:55,503 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-144951/logs
+2025-03-01 14:59:55,556 - main.py - INFO - Task execution complete.
+2025-03-01 14:59:55,684 - main.py - INFO - Stopping the task...
+2025-03-01 15:45:58,162 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-154558/injection.json
+2025-03-01 15:46:02,583 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250301-154558/logs
+2025-03-01 15:56:02,695 - main.py - INFO - Task execution complete.
+2025-03-01 15:56:02,820 - main.py - INFO - Stopping the task...
+2025-03-02 03:03:30,042 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-030330/injection.json
+2025-03-02 03:03:34,516 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-030330/logs
+2025-03-02 03:13:34,624 - main.py - INFO - Task execution complete.
+2025-03-02 03:13:34,748 - main.py - INFO - Stopping the task...
+2025-03-02 09:59:14,333 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-095914/injection.json
+2025-03-02 09:59:18,921 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-095914/logs
+2025-03-02 10:09:19,032 - main.py - INFO - Task execution complete.
+2025-03-02 10:09:19,160 - main.py - INFO - Stopping the task...
+2025-03-02 16:24:53,421 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-162453/injection.json
+2025-03-02 16:24:57,887 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250302-162453/logs
+2025-03-02 16:34:57,997 - main.py - INFO - Task execution complete.
+2025-03-02 16:34:58,112 - main.py - INFO - Stopping the task...
+2025-03-03 05:48:47,847 - main.py - WARNING - Injection details are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250303-054847/injection.json
+2025-03-03 05:48:52,634 - main.py - WARNING - Agent chat histories are available at: /Data2/v-fenglinyu/ICSE/src/results/social-network/20250303-054847/logs
+2025-03-03 05:58:52,650 - main.py - INFO - Task execution complete.
+2025-03-03 05:58:52,833 - main.py - INFO - Stopping the task...
