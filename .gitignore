@@ -4,3 +4,6 @@ baseline/
 .cache/
 *.pyc
 src/results/
+**/__pycache__/
+*.log
+src/api/

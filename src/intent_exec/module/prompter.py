@@ -69,7 +69,7 @@ class Prompter:
             slo_data = yaml.safe_load(f)
 
         # Extract data under 'social-network' and filter entries matching the deployment_name
-        network_data = slo_data.get("social-network", {})
+        network_data = slo_data.get("train-ticket", {})
         filtered_data = {}
         for slo_key, slo_info in network_data.items():
             if isinstance(slo_info, dict) and slo_info.get("deploymentName") == deployment_name:
@@ -127,7 +127,7 @@ class Prompter:
             promql_data = yaml.safe_load(f)
 
         # Extract only entries matching the given deployment_name
-        network_data = promql_data.get("social-network", {})
+        network_data = promql_data.get("train-ticket", {})
         filtered_data = {}
         for metric_key, metric_info in network_data.items():
             # Ensure metric_info is a dict and has a matching deploymentName

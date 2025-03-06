@@ -29,12 +29,12 @@ rabbitmq:
   url: pyamqp://guest@localhost//
 
 # traffic_file_path: "traffic_rasing/social-network/diurnal_traffic.py"
-traffic_file_path: "traffic_rasing/social-network/mixed_traffic.py"
+traffic_file_path: "traffic_rasing/train-ticket/test_basic.py"
 
 chaos_injection:
-  namespace: "social-network"
-  service: "home-timeline-service"
-  container: ""
+  namespace: "train-ticket"
+  service: "ts-basic-service"
+  container: "ts-basic-service"
   chaos_type: "CPU hog"
   # chaos_type: "Socket stress"
 

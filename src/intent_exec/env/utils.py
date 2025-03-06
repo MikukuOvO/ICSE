@@ -37,7 +37,7 @@ def list_deployments(namespace, config_yaml):
     return filtered_deployments
 
 if __name__ == '__main__':
-    namespace = 'social-network'
+    namespace = 'train-ticket'
     config_yaml = "config/deployments.yaml"
     deployments = list_deployments(namespace, config_yaml)
     

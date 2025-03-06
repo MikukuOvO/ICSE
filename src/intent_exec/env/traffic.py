@@ -6,7 +6,7 @@ def start_traffic():
     with open("src/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    traffic_file = config.get("traffic_file_path", "traffic_rasing/social-network/mixed_traffic.py")
+    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/test_basic.py")
     print(f"Using traffic file: {traffic_file}")
     command = [
         "locust",
@@ -14,7 +14,7 @@ def start_traffic():
         "--headless",
         "-u", "20",
         "-r", "20",
-        "--host", "http://192.168.76.2:30080",
+        "--host", "http://192.168.58.2:32677",
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
