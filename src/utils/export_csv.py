@@ -19,7 +19,7 @@ def get_metrics_map():
     with open('src/conf/' + metrics_file, encoding="utf-8") as input_file:
         data = yaml.safe_load(input_file)
     # The YAML file is expected to have a top-level key 'social-network'
-    return data.get('social-network', {})
+    return data.get('train-ticket', {})
 
 # Validate a URL
 def check_url(url):

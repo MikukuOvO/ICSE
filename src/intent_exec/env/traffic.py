@@ -6,11 +6,11 @@ def start_traffic():
     # including --run-time to automatically stop the test after 2 hours.
     command = [
         "locust",
-        "-f", "traffic_rasing/social-network/mixed_traffic.py",
+        "-f", "traffic_rasing/train-ticket/test_basic.py",
         "--headless",
         "-u", "20",
         "-r", "20",
-        "--host", "http://localhost:8080",
+        "--host", "http://192.168.58.2:32677",
         "--run-time", "60m"
     ]
     
@@ -25,7 +25,7 @@ def start_traffic():
     print("Locust has been started. Waiting for stability...")
     
     # Wait for 10 minutes (600 seconds) for the system to stabilize.
-    time.sleep(1200)
+    time.sleep(600)
     print("The system is assumed to be stable.")
     
     return process

@@ -1303,3 +1303,32 @@ TASK: Check the Memory usage
 2025-02-26 15:18:30,438 - main.py - WARNING - Connection closed by user.
 2025-02-26 15:18:30,439 - main.py - INFO - Task execution complete.
 2025-02-26 15:18:30,455 - main.py - INFO - Stopping the task...
+2025-03-04 05:43:08,949 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250304-054308/injection.json
+2025-03-05 03:12:28,014 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-031228/injection.json
+2025-03-05 03:19:09,834 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-031909/injection.json
+2025-03-05 03:28:21,693 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-032821/injection.json
+2025-03-05 03:39:15,652 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-033915/injection.json
+2025-03-05 04:45:55,601 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-044555/injection.json
+2025-03-05 04:57:20,211 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-045720/injection.json
+2025-03-05 05:02:57,743 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-050257/injection.json
+2025-03-05 05:04:04,361 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-050404/injection.json
+2025-03-05 05:05:42,681 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-050542/injection.json
+2025-03-05 05:05:58,783 - main.py - WARNING - Agent chat histories are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-050542/logs
+2025-03-05 05:25:58,893 - main.py - INFO - Task execution complete.
+2025-03-05 05:25:59,450 - main.py - INFO - Stopping the task...
+2025-03-05 06:00:20,715 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-060020/injection.json
+2025-03-05 06:00:36,864 - main.py - WARNING - Agent chat histories are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-060020/logs
+2025-03-05 06:20:36,977 - main.py - INFO - Task execution complete.
+2025-03-05 06:20:37,577 - main.py - INFO - Stopping the task...
+2025-03-05 15:46:49,698 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-154649/injection.json
+2025-03-05 15:46:51,239 - main.py - WARNING - Agent chat histories are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250305-154649/logs
+2025-03-05 16:06:51,350 - main.py - INFO - Task execution complete.
+2025-03-05 16:06:51,402 - main.py - INFO - Stopping the task...
+2025-03-06 05:34:23,718 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250306-053423/injection.json
+2025-03-06 05:34:25,561 - main.py - WARNING - Agent chat histories are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250306-053423/logs
+2025-03-06 05:47:16,364 - main.py - WARNING - Connection closed by user.
+2025-03-06 05:47:16,365 - main.py - INFO - Task execution complete.
+2025-03-06 06:16:13,195 - main.py - WARNING - Injection details are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250306-061613/injection.json
+2025-03-06 06:16:14,868 - main.py - WARNING - Agent chat histories are available at: /Data2/v-xiruiliu/ICSE/src/results/train-ticket/20250306-061613/logs
+2025-03-06 06:36:14,980 - main.py - INFO - Task execution complete.
+2025-03-06 06:36:15,040 - main.py - INFO - Stopping the task...

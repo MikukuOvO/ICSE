@@ -241,7 +241,7 @@ def inject(config_path="src/conf/global_config.yaml"):
     injection_time = datetime.utcnow()
 
     print("Stress-ng has been started. Waiting for stability...")
-    time.sleep(1200)  # adjust as needed
+    time.sleep(600)  # adjust as needed
     print("The system is assumed to be stable.")
 
     # 保存相关信息到字典

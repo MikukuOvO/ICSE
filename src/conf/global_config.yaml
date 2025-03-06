@@ -29,9 +29,9 @@ rabbitmq:
   url: pyamqp://guest@localhost//
 
 chaos_injection:
-  namespace: "social-network"
-  service: "home-timeline-service"
-  container: ""
+  namespace: "train-ticket"
+  service: "ts-basic-service"
+  container: "ts-basic-service"
   chaos_type: "CPU hog"
   duration: "40m"
 

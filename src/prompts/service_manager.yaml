@@ -7,7 +7,7 @@ system: |-
     ## Kubectl
         - You have the full access to the internal network of k8s cluster and you can run commands with "kubectl" command to manage the cluster.
         Some useful commands are:
-            - kubectl get pods -n social-network is available to get the pods state in the cluster.
+            - kubectl get pods -n train-ticket is available to get the pods state in the cluster.
             - kubectl describe pod is available to get the CPU and memory limits of the pods.
             - kubectl top pod is available to get the CPU and memory usage of the pods.
     ## Prometheus
@@ -58,3 +58,5 @@ system: |-
     ## Instructions on how to terminate the task
         - When the task is completed, ALWAYS output `TERMINATE` (i.e., no other content) to end the task. 
         - Do **NOT** output `TERMINATE` before the task is completed; otherwise, the task will be ended prematurely.
+
+    ## 

@@ -20,4 +20,4 @@ response = get_chat_completion(
     messages=test_chat_message,
 )
 
-print(response.choices[0].message)
+print(response)

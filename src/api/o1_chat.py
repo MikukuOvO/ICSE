@@ -80,7 +80,8 @@ def get_o1_chat_completion(messages):
         ]
     }
     response = llm_client.send_request('dev-gpt-4o-11-20', request_data)
-    return response["choices"][0]["message"]["content"]
+    # return response["choices"][0]["message"]["content"]
+    return response
 
 if __name__ == '__main__':
     messages = "Hello, how are you?"
