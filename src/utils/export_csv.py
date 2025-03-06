@@ -44,7 +44,7 @@ def merge_metrics(folder_path):
                  if os.path.basename(f) != "merged.csv"]
     if not csv_files:
         print("No CSV files found in folder to merge.")
-        return
+        return None
 
     merged_data = {}  # {timestamp: {filename: value, ...}}
     file_order = []
@@ -148,7 +148,6 @@ def export_metrics():
             verify=False
         )
         data = response.json()
-        print(data)
 
         # We assume data['data']['result'] is a list of series
         results = data.get('data', {}).get('result', [])
@@ -169,5 +168,116 @@ def export_metrics():
         plot_path = os.path.join(new_folder, "plots")
         plot_metrics(merged_file, plot_path)
 
+    return merged_file
+
+def sum_up_metrics(merged_csv):
+    """
+    Reads the merged CSV and produces three figures:
+      1) Average CPU usage (mCore)
+      2) Average Memory usage (MiB)
+      3) Average Latency (ms)
+    Each figure is plotted as a single line vs. timestamp.
+    
+    Assumptions:
+      - CPU columns end with '-cpu' (values in 'cores'). We convert to mCore by *1000.
+      - Memory columns end with '-memory' (values in 'bytes'). We convert to MiB by / (1024*1024).
+      - Latency columns end with '-latency' (values in ms). We leave as is (ms).
+    """
+    if not os.path.exists(merged_csv):
+        print(f"{merged_csv} does not exist. Skipping sum-up.")
+        return
+
+    # Read data
+    df = pd.read_csv(merged_csv)
+
+    # Convert 'timestamp' to datetime, adjust format if needed
+    df['timestamp'] = pd.to_datetime(df['timestamp'], format="%d/%m/%Y %H:%M:%S", errors='coerce')
+    df = df.dropna(subset=['timestamp'])  # Drop rows where timestamp couldn't parse
+    df = df.sort_values('timestamp')
+
+    # Identify CPU, memory, and latency columns
+    resource_cols = [c for c in df.columns if c != 'timestamp']
+    cpu_cols = [col for col in resource_cols if col.endswith('-cpu')]
+    mem_cols = [col for col in resource_cols if col.endswith('-memory')]
+    lat_cols = [col for col in resource_cols if col.endswith('-latency')]
+
+    # Convert these columns to numeric, ignoring non-numeric data
+    for col in cpu_cols + mem_cols + lat_cols:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+    # Compute average CPU usage across all CPU columns, per row
+    if cpu_cols:
+        df['avg_cpu'] = df[cpu_cols].mean(axis=1)
+    else:
+        df['avg_cpu'] = 0.0
+
+    # Convert CPU usage to milli-cores
+    df['avg_cpu_mcore'] = df['avg_cpu'] * 1000
+
+    # Compute average Memory usage across all Memory columns, per row
+    if mem_cols:
+        df['avg_mem'] = df[mem_cols].mean(axis=1)
+    else:
+        df['avg_mem'] = 0.0
+
+    # Convert Memory usage from bytes to MiB
+    df['avg_mem_mib'] = df['avg_mem'] / (1024 * 1024)
+
+    # Compute average Latency across all Latency columns, per row (already in ms)
+    if lat_cols:
+        df['avg_latency'] = df[lat_cols].mean(axis=1)
+    else:
+        df['avg_latency'] = 0.0
+
+    # Create a directory for plots (within the same folder as merged_csv)
+    plot_dir = os.path.join(os.path.dirname(merged_csv), "plots")
+    os.makedirs(plot_dir, exist_ok=True)
+
+    # 1) Plot Average CPU usage in mCore
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['timestamp'], df['avg_cpu_mcore'], marker='o', linestyle='-')
+    plt.title("Average CPU Usage (All Services) in mCore")
+    plt.xlabel("Timestamp")
+    plt.ylabel("CPU Usage (mCore)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    cpu_plot_path = os.path.join(plot_dir, "average_cpu_usage_mcore.png")
+    plt.savefig(cpu_plot_path)
+    plt.close()
+
+    # 2) Plot Average Memory usage in MiB
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['timestamp'], df['avg_mem_mib'], marker='o', linestyle='-')
+    plt.title("Average Memory Usage (All Services) in MiB")
+    plt.xlabel("Timestamp")
+    plt.ylabel("Memory Usage (MiB)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    mem_plot_path = os.path.join(plot_dir, "average_memory_usage_mib.png")
+    plt.savefig(mem_plot_path)
+    plt.close()
+
+    # 3) Plot Average Latency (ms)
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['timestamp'], df['avg_latency'], marker='o', linestyle='-')
+    plt.title("Average Latency (All Services) in ms")
+    plt.xlabel("Timestamp")
+    plt.ylabel("Latency (ms)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    lat_plot_path = os.path.join(plot_dir, "average_latency_ms.png")
+    plt.savefig(lat_plot_path)
+    plt.close()
+
+    print("Plots created:")
+    print(f"  CPU (mCore): {cpu_plot_path}")
+    print(f"  Memory (MiB): {mem_plot_path}")
+    print(f"  Latency (ms): {lat_plot_path}")
+
+
 if __name__ == "__main__":
-    export_metrics()
+    csv_path = export_metrics()
+    sum_up_metrics(csv_path)

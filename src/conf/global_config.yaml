@@ -36,7 +36,7 @@ chaos_injection:
   service: "home-timeline-service"
   container: ""
   chaos_type: "CPU hog"
-  # chaos_type: "DIST stress"
+  # chaos_type: "Socket stress"
 
 heartbeat:
   detection_task: |-
@@ -47,6 +47,10 @@ heartbeat:
       3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause. DO NOT take any action to fix the unhealthy state.
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
+      4. Finally, you should report the top 3 root causes of the unhealthy state you identified, with the corresponding format: 
+        - Root cause 1: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
+        - Root cause 2: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
+        - Root cause 3: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
   healing_task: |-
     This task is a healing check for the state of your microservice component. 
     # Follow the steps below to complete the task:
@@ -59,12 +63,11 @@ heartbeat:
   optimization_task: |-
     This task is a optimization task for your microservice component.
     # Follow the steps below to complete the task:
-      1. Check the state of the microservice component to see if the resource usage is efficient.
-      2. If the resource usage is already at the optimal level, you can report the optimization task as completed.
-      3. If the resource usage is not at the optimal level, you should follow the steps below:
-        - Analyze the resource usage and performance of the microservice component.
-        - After the analysis is done, you should take the necessary actions to optimize the resource usage.
-        - You are allowed to repeat the above steps a few times to optimize the resource usage.
+      1. Check the state of the microservice component to monitor resource usage and latency.
+      2. The latency should be less than 200ms.
+        - If the current latency is higher than 200ms, increase resource allocation to reduce latency.
+        - If the current latency is comfortably below 200ms, decrease resource allocation to save costs.
+      3. You may repeat these steps several times to optimize resource usage further.
 
   group_task_prefix: |-
     TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n

@@ -120,7 +120,7 @@ def inject(config_path="src/conf/global_config.yaml"):
     desired_namespace = chaos_cfg.get("namespace")
     desired_service = chaos_cfg.get("service")
     desired_container = chaos_cfg.get("container")
-    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")
+    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # e.g. "CPU hog", "Memory leak", "Disk hog", "Socket hog"
     desired_duration = chaos_cfg.get("duration", "20m")
 
     namespaces = list_namespaces()
@@ -174,6 +174,9 @@ def inject(config_path="src/conf/global_config.yaml"):
     chaos_type = None
     stress_cmd = None
 
+    # ------------------------------------------
+    # Existing chaos types
+    # ------------------------------------------
     if "cpu" in desired_chaos_type.lower():
         if cpu_limit is None:
             print("No CPU limit defined. Defaulting to 1 CPU worker.")
@@ -182,6 +185,7 @@ def inject(config_path="src/conf/global_config.yaml"):
             num_workers = parse_cpu_limit(cpu_limit)
         stress_cmd = f"stress-ng --cpu {num_workers} --timeout {desired_duration}"
         chaos_type = "CPU hog"
+
     elif "memory" in desired_chaos_type.lower():
         if mem_limit is None:
             print("No memory limit defined. Defaulting to 100M.")
@@ -190,9 +194,20 @@ def inject(config_path="src/conf/global_config.yaml"):
             mem_for_stress = parse_memory_limit(mem_limit)
         stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {desired_duration}"
         chaos_type = "Memory leak"
+
     elif "disk" in desired_chaos_type.lower():
-        stress_cmd = f"stress-ng --hdd 1 --hdd-bytes 50M --timeout {desired_duration} --metrics-brief"
-        chaos_type = "Disk hog"
+        stress_cmd = f"stress-ng --hdd 1 --hdd-bytes 50M --timeout {desired_duration}"
+        chaos_type = "Disk stress"
+
+    # ------------------------------------------
+    # NEW: Socket-based stress
+    # ------------------------------------------
+    elif "socket" in desired_chaos_type.lower():
+        # Example: 4 parallel socket workers
+        # You can adjust the number of workers depending on desired intensity
+        stress_cmd = f"stress-ng --sock 4 --timeout {desired_duration}"
+        chaos_type = "Socket stress"
+
     else:
         print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
         sys.exit(1)
@@ -209,7 +224,7 @@ def inject(config_path="src/conf/global_config.yaml"):
         print(f"\nError executing chaos command: {e}")
         status = "failed"
         sys.exit(1)
-    
+
     injection_time = datetime.utcnow()
     print("Stress-ng has been started. Waiting for stability...")
     time.sleep(600)
@@ -231,7 +246,7 @@ def inject(config_path="src/conf/global_config.yaml"):
 
     print("\nInjection Information:")
     print(json.dumps(injection_info, indent=4, ensure_ascii=False))
-    
+
     return injection_info
 
 if __name__ == "__main__":

@@ -110,7 +110,7 @@ def get_openai_token_provider(
     ```python
     token_provider = get_openai_token_provider()
     client = openai.AzureOpenAI(
-        api_version="2024-06-01",
+        api_version="2025-02-01-preview",
         azure_endpoint="https://cloudgpt-openai.azure-api.net/",
         azure_ad_token_provider=token_provider,
     )
@@ -366,6 +366,8 @@ cloudgpt_available_models = Literal[
     
     # Reasoning models
     "o1-mini-20240912",
+    "o1-20241217",
+    "o3-mini-20250131",
 
     # Additional Preview models
     "deepseek-r1-preview",
@@ -463,7 +465,7 @@ def get_openai_client(
     )
     token_provider()
     client = openai.AzureOpenAI(
-        api_version="2024-06-01",
+        api_version="2025-02-01-preview",
         azure_endpoint="https://cloudgpt-openai.azure-api.net/",
         azure_ad_token_provider=token_provider,
     )
@@ -489,7 +491,7 @@ async def async_get_openai_client(
     )
     await token_provider()
     client = openai.AsyncAzureOpenAI(
-        api_version="2024-06-01",
+        api_version="2025-02-01-preview",
         azure_endpoint="https://cloudgpt-openai.azure-api.net/",
         azure_ad_token_provider=token_provider,
     )
@@ -676,20 +678,15 @@ async def get_realtime_client(
 
 
 def _test_call(**kwargs: Any):
-    test_message = "What is the content?"
+    test_message = "What is the answer to one plus two plus ... plus one hundred?"
 
     client = get_openai_client(**kwargs)
 
     response = client.chat.completions.create(
-        model="o1-mini-20240912",
+        model="o3-mini-20250131",
         messages=[{"role": "user", "content": test_message}],
-        temperature=0.7,
-        max_tokens=100,
-        top_p=0.95,
-        frequency_penalty=0,
-        presence_penalty=0,
     )
-
+    print(response)
     print(response.choices[0].message)
 
 

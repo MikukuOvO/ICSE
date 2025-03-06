@@ -19,7 +19,7 @@ from .agent import (
     ServiceMaintainer
 )
 
-from ..utils.export_csv import export_metrics
+from ..utils.export_csv import export_metrics, sum_up_metrics
 
 from .env.resource import inject
 from .env.utils import list_deployments
@@ -36,8 +36,6 @@ timeout = 600
 def main():
     process = start_traffic()
     # inject_info = inject()
-
-    export_metrics()
 
     # Refresh the API
     subprocess.run(["bash", "scripts/ops/api.sh"])
@@ -110,6 +108,8 @@ def main():
         for service_maintainer_consumer in service_maintainer_consumers:
             service_maintainer_consumer.stop()
 
+    csv_path = export_metrics()
+    sum_up_metrics(csv_path)
     logger.info('Stopping the task...')
     end_traffic(process)
 

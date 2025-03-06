@@ -103,47 +103,81 @@ social-network:
 
   user-service-memory:
     deploymentName: "user-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="user-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="user-service"}[5m])
+      )
 
   media-service-memory:
     deploymentName: "media-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="media-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="media-service"}[5m])
+      )
 
   compose-post-service-memory:
     deploymentName: "compose-post-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="compose-post-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="compose-post-service"}[5m])
+      )
 
   text-service-memory:
     deploymentName: "text-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="text-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="text-service"}[5m])
+      )
 
   unique-id-service-memory:
     deploymentName: "unique-id-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="unique-id-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="unique-id-service"}[5m])
+      )
 
   url-shorten-service-memory:
     deploymentName: "url-shorten-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="url-shorten-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="url-shorten-service"}[5m])
+      )
 
   user-mention-service-memory:
     deploymentName: "user-mention-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="user-mention-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="user-mention-service"}[5m])
+      )
 
   social-graph-service-memory:
     deploymentName: "social-graph-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="social-graph-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="social-graph-service"}[5m])
+      )
 
   home-timeline-service-memory:
     deploymentName: "home-timeline-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="home-timeline-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="home-timeline-service"}[5m])
+      )
 
   post-storage-service-memory:
     deploymentName: "post-storage-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="post-storage-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="post-storage-service"}[5m])
+      )
 
   user-timeline-service-memory:
     deploymentName: "user-timeline-service"
-    promql: 'avg by (pod) (rate(container_memory_usage_bytes{deployment="user-timeline-service"}[5m]))'
+    promql: >
+      avg by (pod) (
+        avg_over_time(container_memory_usage_bytes{deployment="user-timeline-service"}[5m])
+      )
+
 
   user-service-workload:
     deploymentName: "user-service"
