@@ -144,7 +144,7 @@ class MessageCollector(Base):
             )
             while self.shared_data["message_count"] >= MAX_PARRALLEL:
                 import time
-                time.sleep(1)
+                time.sleep(5)
 
     def response(self, component: str, message: str):
         """

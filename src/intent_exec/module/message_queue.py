@@ -60,14 +60,6 @@ class RabbitMQ(Base):
                 properties=properties
             )
 
-    def publish_sequential(self, message: str, routing_keys: list[str], headers: dict = {}):
-        '''
-        Publish messages ONE AT A TIME, waiting for broker confirmation before sending the next message.
-        - param messages: list[str], the messages to publish
-        - param routing_key: str, single routing key or pattern
-        - param headers: dict, additional headers
-        '''
-
     def subscribe(self, queue: str, callback: Callable, auto_ack: bool = False):
         '''
         Subscribe to a queue and start consuming with a callback function, this function will block the main process
