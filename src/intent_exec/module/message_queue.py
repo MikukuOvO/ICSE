@@ -1,5 +1,4 @@
 import pika
-
 from .base import Base
 from typing import Literal, Callable
 
@@ -44,7 +43,7 @@ class RabbitMQ(Base):
 
     def publish(self, message: str, routing_keys: list[str], headers: dict = {}):
         '''
-        Add a message to the exchange with routing keys
+        Publish to multiple routing keys in a single shot (non-serialized).
         - param message: str, message
         - param routing_keys: list[str], list of routing keys
         - param headers: dict, any additional headers
@@ -60,6 +59,14 @@ class RabbitMQ(Base):
                 body=message,
                 properties=properties
             )
+
+    def publish_sequential(self, message: str, routing_keys: list[str], headers: dict = {}):
+        '''
+        Publish messages ONE AT A TIME, waiting for broker confirmation before sending the next message.
+        - param messages: list[str], the messages to publish
+        - param routing_key: str, single routing key or pattern
+        - param headers: dict, additional headers
+        '''
 
     def subscribe(self, queue: str, callback: Callable, auto_ack: bool = False):
         '''

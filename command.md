@@ -10,8 +10,8 @@ kubectl apply -f deployment/prometheus/
 
 30m for chaos inject
 
-kubectl create namespace social-network
 minikube mount deployment/DeathStarBench/:/DeathStarBench & \
+kubectl create namespace social-network
 kubectl apply -f deployment/social-network-xirui/ && \
 kubectl apply -f deployment/prometheus/ && \
 kubectl apply -f deployment/otel-collector/

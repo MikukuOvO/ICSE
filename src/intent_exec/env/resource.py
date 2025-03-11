@@ -121,7 +121,7 @@ def inject(config_path="src/conf/global_config.yaml"):
     desired_service = chaos_cfg.get("service")
     desired_container = chaos_cfg.get("container")
     desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # e.g. "CPU hog", "Memory leak", "Disk hog", "Socket hog"
-    desired_duration = chaos_cfg.get("duration", "20m")
+    desired_duration = chaos_cfg.get("duration", "30m")
 
     namespaces = list_namespaces()
     if not namespaces:

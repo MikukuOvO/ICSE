@@ -23,7 +23,7 @@ def assign_tasks(components: list, messages: list) -> str:
 
     assert len(components) == len(messages), 'The number of components and messages should be the same.'
     try:
-        queues = global_config['rabbitmq']['message_collector']['queues']
+        queues = global_config['rabbitmq']['message_collector']['manager_queues']
         rabbitmq = RabbitMQ(**global_config['rabbitmq']['message_collector']['exchange'])
         for queue in queues:
             rabbitmq.add_queue(**queue)
@@ -31,9 +31,10 @@ def assign_tasks(components: list, messages: list) -> str:
         message = json.dumps([components, messages])
         rabbitmq.publish(
             message=message,
-            routing_keys=['collector'],
+            routing_keys=['collector_manager'],
             headers={'sender': 'manager'}
         )
+
     except Exception as e:
         print(f'Error in assigning task: {e}')
         return 'Tasks assignment failed.'

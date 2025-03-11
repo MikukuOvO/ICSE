@@ -1,6 +1,9 @@
 RE1-SS/
+RE2-SS/
 deployment/DeathStarBench/
 baseline/
 .cache/
+# All files include subdirectories with .pyc suffix
 *.pyc
 src/results/
+src/previous_results/

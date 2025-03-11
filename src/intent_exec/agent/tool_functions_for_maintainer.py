@@ -51,7 +51,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
 
     global_config = load_config()
 
-    queues = global_config['rabbitmq']['message_collector']['queues']
+    queues = global_config['rabbitmq']['message_collector']['maintainer_queues']
     rabbitmq = RabbitMQ(**global_config['rabbitmq']['message_collector']['exchange'])
     for queue in queues:
             rabbitmq.add_queue(**queue)
@@ -65,7 +65,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
 
     rabbitmq.publish(
         message=message,
-        routing_keys=['collector'],
+        routing_keys=['collector_maintainer'],
         headers={'sender': component}
     )
         
