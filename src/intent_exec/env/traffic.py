@@ -6,15 +6,16 @@ def start_traffic():
     with open("src/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/test_basic.py")
+    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/test_user.py")
     print(f"Using traffic file: {traffic_file}")
     command = [
         "locust",
         "-f", traffic_file,
         "--headless",
-        "-u", "20",
-        "-r", "20",
+        "-u", "30",
+        "-r", "30",
         "--host", "http://192.168.58.2:32677",
+        "--run-time", "30m",
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
@@ -29,7 +30,7 @@ def start_traffic():
     
     # Wait for 10 minutes (600 seconds) for the system to stabilize.
     # time.sleep(300)
-    time.sleep(900)
+    time.sleep(600)
     print("The system is assumed to be stable.")
     
     return process

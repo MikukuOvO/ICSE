@@ -10,6 +10,7 @@ data:
       static_configs:
         - targets: ['otel-collector.default.svc.cluster.local:9464']
     - job_name: 'kubelet-cadvisor'
+      scrape_timeout: 20s 
       scheme: https
       metrics_path: /metrics/cadvisor
       tls_config:

@@ -167,7 +167,7 @@ def save_yaml(yaml_fpath: str, data: dict):
 
 def get_cluster_ip():
     try:
-        minikube_ip = subprocess.run(["minikube", "ip", "-p", "v-xiruiliu"], capture_output=True, text=True, check=True).stdout.strip()
+        minikube_ip = subprocess.run(["minikube", "ip"], capture_output=True, text=True, check=True).stdout.strip()
     except subprocess.CalledProcessError:
         raise ValueError('Get promethus url failed, please check if you have the access to kubernetes.')
     return minikube_ip
