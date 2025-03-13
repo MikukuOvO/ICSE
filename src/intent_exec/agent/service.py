@@ -10,10 +10,11 @@ from ..module import (
 )
 from autogen import (
     ConversableAgent, 
-    UserProxyAgent, 
+    # UserProxyAgent, 
     GroupChat, 
     GroupChatManager,
 )
+from .truncating_agent import TruncatingUserProxyAgent
 from .utils import (
     load_gpt_config,
     load_service_maintainer_config,
@@ -77,7 +78,7 @@ class ServiceMaintainer(SocietyOfMindAgent):
         self.assistant = ServiceMaintainerAgent()
 
         # Code executor agent
-        self._code_executor = UserProxyAgent(
+        self._code_executor = TruncatingUserProxyAgent(
             f"{service_name}-code-executor",
             human_input_mode="NEVER",
             code_execution_config={

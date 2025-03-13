@@ -54,8 +54,8 @@ chaos_injection:
   namespace: "social-network"
   service: "home-timeline-service"
   container: ""
-  chaos_type: "CPU hog"
-  duration: 30m
+  chaos_type: "MEMORY leak"
+  duration: 50m
   # chaos_type: "Socket stress"
 
 heartbeat:

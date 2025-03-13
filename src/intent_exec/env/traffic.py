@@ -14,7 +14,7 @@ def start_traffic():
         "--headless",
         "-u", "20",
         "-r", "20",
-        "--host", "http://192.168.76.2:30080",
+        "--host", "http://192.168.49.2:30080",
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
@@ -29,7 +29,7 @@ def start_traffic():
     
     # Wait for 10 minutes (600 seconds) for the system to stabilize.
     # time.sleep(300)
-    time.sleep(900)
+    time.sleep(600)
     print("The system is assumed to be stable.")
     
     return process

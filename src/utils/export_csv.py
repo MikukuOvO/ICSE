@@ -106,13 +106,13 @@ def plot_metrics(csv_file, output_dir):
 
 def export_metrics():
     # Fixed Prometheus URL
-    prometheus_url = "http://192.168.76.2:31090"
+    prometheus_url = "http://192.168.49.2:31090"
     if check_url(prometheus_url) is None:
         print('Error: Invalid URL format')
         sys.exit(1)
 
     end_time = datetime.utcnow()
-    start_time = end_time - timedelta(minutes=20)
+    start_time = end_time - timedelta(minutes=15)
     start_time_str = start_time.strftime('%Y-%m-%dT%H:%M:%SZ')
     end_time_str = end_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 

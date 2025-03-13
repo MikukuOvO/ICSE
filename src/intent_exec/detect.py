@@ -31,7 +31,7 @@ global_config = load_config()
 
 base_path = get_ancestor_path(2)
 
-timeout = 1200
+timeout = 2400
 
 def main():
     process = start_traffic()
