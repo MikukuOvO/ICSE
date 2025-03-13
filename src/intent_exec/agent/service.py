@@ -84,7 +84,7 @@ class ServiceMaintainer(SocietyOfMindAgent):
             code_execution_config={
                 "work_dir": base_path,
                 "use_docker": False,
-                "timeout": 240,
+                "timeout": 60,
                 "last_n_messages": 1,
             },
             default_auto_reply="",

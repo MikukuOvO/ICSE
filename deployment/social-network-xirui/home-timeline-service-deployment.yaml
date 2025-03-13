@@ -22,6 +22,9 @@ spec:
       - name: "home-timeline-service"
         image: airis03/social-network:latest
         imagePullPolicy: Always
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
         ports:
         - containerPort: 9090
         - containerPort: 9464

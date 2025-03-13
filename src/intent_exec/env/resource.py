@@ -120,8 +120,8 @@ def inject(config_path="src/conf/global_config.yaml"):
     desired_namespace = chaos_cfg.get("namespace")
     desired_service = chaos_cfg.get("service")
     desired_container = chaos_cfg.get("container")
-    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # e.g. "CPU hog", "Memory leak", "Disk hog", "Socket hog"
-    desired_duration = chaos_cfg.get("duration", "50m")
+    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # e.g. "CPU hog", "Memory leak", "Latency"
+    desired_duration = chaos_cfg.get("duration", "30m")
 
     namespaces = list_namespaces()
     if not namespaces:
@@ -195,18 +195,9 @@ def inject(config_path="src/conf/global_config.yaml"):
         stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {desired_duration}"
         chaos_type = "Memory leak"
 
-    elif "disk" in desired_chaos_type.lower():
-        stress_cmd = f"stress-ng --hdd 1 --hdd-bytes 50M --timeout {desired_duration}"
-        chaos_type = "Disk stress"
-
-    # ------------------------------------------
-    # NEW: Socket-based stress
-    # ------------------------------------------
-    elif "socket" in desired_chaos_type.lower():
-        # Example: 4 parallel socket workers
-        # You can adjust the number of workers depending on desired intensity
-        stress_cmd = f"stress-ng --sock 4 --timeout {desired_duration}"
-        chaos_type = "Socket stress"
+    elif "latency" in desired_chaos_type.lower():
+        stress_cmd = f"tc qdisc add dev eth0 root netem delay 100ms"
+        chaos_type = "Network latency (100ms)"
 
     else:
         print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
