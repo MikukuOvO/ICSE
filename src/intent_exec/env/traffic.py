@@ -6,7 +6,7 @@ def start_traffic():
     with open("src/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/test_user.py")
+    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/mix.py")
     print(f"Using traffic file: {traffic_file}")
     command = [
         "locust",
@@ -30,7 +30,7 @@ def start_traffic():
     
     # Wait for 10 minutes (600 seconds) for the system to stabilize.
     # time.sleep(300)
-    time.sleep(600)
+    time.sleep(900)
     print("The system is assumed to be stable.")
     
     return process
