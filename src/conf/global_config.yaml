@@ -8,15 +8,34 @@ rabbitmq:
       name: manager
       routing_keys:
       - manager
+  # message_collector:
+  #   exchange:
+  #     exchange_name: collector
+  #     exchange_type: direct
+  #   queues:
+  #   - auto_delete: true
+  #     name: collector
+  #     routing_keys:
+  #     - collector
   message_collector:
     exchange:
       exchange_name: collector
       exchange_type: direct
-    queues:
-    - auto_delete: true
-      name: collector
-      routing_keys:
-      - collector
+    
+    # Manager queues: for receiving tasks from manager
+    manager_queues:
+      - auto_delete: true
+        name: collector_manager
+        routing_keys:
+          - collector_manager
+    
+    # Maintainer queues: for receiving responses from components
+    maintainer_queues:
+      - auto_delete: true
+        name: collector_maintainer
+        routing_keys:
+          - collector_maintainer
+          
   service_maintainer:
     exchange:
       exchange_name: high_level
@@ -28,14 +47,15 @@ rabbitmq:
       - '{{component}}'
   url: pyamqp://guest@localhost//
 
-# traffic_file_path: "traffic_rasing/social-network/diurnal_traffic.py"
 traffic_file_path: "traffic_rasing/train-ticket/mix.py"
 
 chaos_injection:
   namespace: "train-ticket"
   service: "ts-user-service"
   container: "ts-user-service"
-  chaos_type: "memory leak"
+  chaos_type: "CPU hog"
+  # chaos_type: "MEMORY leak"
+  duration: 50m
   # chaos_type: "Socket stress"
 
 heartbeat:
@@ -48,9 +68,10 @@ heartbeat:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause. DO NOT take any action to fix the unhealthy state.
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
       4. Finally, you should report the top 3 root causes of the unhealthy state you identified, with the corresponding format: 
-        - Root cause 1: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
-        - Root cause 2: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
-        - Root cause 3: <SERVICE NAME> + <CPU/MEMORY/LATENCY/WORKLOAD>
+        - Root cause 1: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD)
+        - Root cause 2: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD)
+        - Root cause 3: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD)
+      FYI: For the corresponding metric, you must choose one of the following metrics: CPU, MEMORY, LATENCY, WORKLOAD, without any other supplyementary information.
   healing_task: |-
     This task is a healing check for the state of your microservice component. 
     # Follow the steps below to complete the task:
@@ -62,13 +83,15 @@ heartbeat:
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
   optimization_task: |-
     This task is a optimization task for your microservice component.
-    # Follow the steps below to complete the task:
+    # Follow the instructions below to complete the task:
       1. Check the state of the microservice component to monitor resource usage and latency.
       2. The latency should be less than 200ms.
         - If the current latency is higher than 200ms, increase resource allocation to reduce latency.
-        - If the current latency is comfortably below 200ms, decrease resource allocation to save costs.
-      3. You may repeat these steps several times to optimize resource usage further.
-
+        - If the current latency is below 200ms, decrease resource allocation to save costs.
+      3. To determine the pattern of metrics you gathered, you can refer to the following patterns:
+        - If the latency is nearly reaching the threshold, you should increase resource allocation.
+        - If the latency has some fluctuations, you should consider the margin whether will reach the threshold. If not, just ignore it.
+        - If the latency has shown increasing trend, you should estimate the time when it will reach the threshold. If more than 5 minutes, you should consider decrease resource allocation due to the furture optimization chance.
   group_task_prefix: |-
     TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n
 

@@ -1,9 +1,11 @@
 RE1-SS/
+RE2-SS/
 deployment/DeathStarBench/
 baseline/
 .cache/
 *.pyc
 src/results/
+src/previous_results
 **/__pycache__/
 *.log
 src/api/

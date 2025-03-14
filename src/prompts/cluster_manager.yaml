@@ -9,8 +9,6 @@ system: |-
   # Instructions
   ## General Instructions
   - Given the task description, your should assign tasks to lower-level service maintainers.
-  - Attention: Not assign more than three lower-level service maintainers at a time.
-  - If more than three tasks are needed to be assigned, you should assign three and gather response from them. 
   - Not to start new assign until the previous three tasks are completed (responses or issues received).
   - Once reveiceing responses from lower-level service maintainers, you should `TERMINATE` the task whatever the result is.
 

@@ -1,5 +1,4 @@
 import pika
-
 from .base import Base
 from typing import Literal, Callable
 
@@ -44,7 +43,7 @@ class RabbitMQ(Base):
 
     def publish(self, message: str, routing_keys: list[str], headers: dict = {}):
         '''
-        Add a message to the exchange with routing keys
+        Publish to multiple routing keys in a single shot (non-serialized).
         - param message: str, message
         - param routing_keys: list[str], list of routing keys
         - param headers: dict, any additional headers

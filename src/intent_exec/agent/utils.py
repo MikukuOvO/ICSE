@@ -15,6 +15,8 @@ def load_gpt_config(cache_seed: int | None = 42):
 
     llm_config = secret[backend]
     llm_config['cache_seed'] = cache_seed
+    llm_config['max_retries'] = 5
+    llm_config['timeout'] = 60
     return llm_config
 
 def load_reasoning_config(cache_seed: int | None = 42):
