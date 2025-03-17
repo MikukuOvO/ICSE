@@ -4,7 +4,7 @@ import json
 import math
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 import yaml
 
 def extract_service_name(pod_name):
@@ -216,7 +216,7 @@ def inject(config_path="src/conf/global_config.yaml"):
         status = "failed"
         sys.exit(1)
 
-    injection_time = datetime.utcnow()
+    injection_time = datetime.now(timezone.utc)
     print("Stress-ng has been started. Waiting for stability...")
     time.sleep(600)
     print("The system is assumed to be stable.")

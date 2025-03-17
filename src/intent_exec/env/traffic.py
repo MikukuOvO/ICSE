@@ -12,8 +12,8 @@ def start_traffic():
         "locust",
         "-f", traffic_file,
         "--headless",
-        "-u", "20",
-        "-r", "20",
+        "-u", "100",
+        "-r", "100",
         "--host", "http://192.168.58.2:32677",
         "--run-time", "1h",
     ]

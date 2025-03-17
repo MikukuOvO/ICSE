@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime
 import json
 import random
 import subprocess
@@ -37,7 +38,8 @@ def main():
     process = start_traffic()
     inject_info = inject()
 
-    export_metrics()
+    injection_time = datetime.fromisoformat(inject_info['injection_time']).strftime("%d/%m/%Y %H:%M:%S")
+    export_metrics(injection_time)
 
     # Refresh the API
     subprocess.run(["bash", "scripts/ops/api.sh"])

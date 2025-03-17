@@ -81,10 +81,11 @@ def merge_metrics(folder_path):
     print(f"Merging complete. Merged file created at {merged_csv}")
     return merged_csv
 
-def plot_metrics(csv_file, output_dir):
+def plot_metrics(csv_file, output_dir, injection_time_str):
     df = pd.read_csv(csv_file)
     
     df['timestamp'] = pd.to_datetime(df['timestamp'], format="%d/%m/%Y %H:%M:%S")
+    injection_time = pd.to_datetime(injection_time_str, format="%d/%m/%Y %H:%M:%S")
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -94,6 +95,7 @@ def plot_metrics(csv_file, output_dir):
     for col in metric_columns:
         plt.figure(figsize=(10, 6))
         plt.plot(df['timestamp'], df[col], marker='o', linestyle='-')
+        plt.axvline(injection_time, color='black', linestyle='--', label='Injection Time')
         plt.title(col)
         plt.xlabel("Timestamp")
         plt.ylabel(col)
@@ -104,7 +106,7 @@ def plot_metrics(csv_file, output_dir):
         plt.savefig(output_file)
         plt.close()
 
-def export_metrics():
+def export_metrics(injection_time):
     # Fixed Prometheus URL
     prometheus_url = "http://192.168.58.2:31090"
     if check_url(prometheus_url) is None:
@@ -166,7 +168,7 @@ def export_metrics():
     merged_file = merge_metrics(new_folder)
     if merged_file:
         plot_path = os.path.join(new_folder, "plots")
-        plot_metrics(merged_file, plot_path)
+        plot_metrics(merged_file, plot_path, injection_time)
 
     return merged_file
 
