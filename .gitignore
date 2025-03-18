@@ -7,3 +7,4 @@ baseline/
 *.pyc
 src/results/
 src/previous_results/
+baro/
