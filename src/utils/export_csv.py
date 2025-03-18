@@ -9,6 +9,7 @@ import yaml
 import pandas as pd
 import matplotlib.pyplot as plt
 import glob
+from .prometheus_url import get_prometheus_url
 
 # Load metrics from the YAML file instead of a text file
 def get_metrics_map():
@@ -106,13 +107,13 @@ def plot_metrics(csv_file, output_dir):
 
 def export_metrics():
     # Fixed Prometheus URL
-    prometheus_url = "http://192.168.49.2:31090"
+    prometheus_url = get_prometheus_url()
     if check_url(prometheus_url) is None:
         print('Error: Invalid URL format')
         sys.exit(1)
 
     end_time = datetime.utcnow()
-    start_time = end_time - timedelta(minutes=55)
+    start_time = end_time - timedelta(minutes=80)
     start_time_str = start_time.strftime('%Y-%m-%dT%H:%M:%SZ')
     end_time_str = end_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 

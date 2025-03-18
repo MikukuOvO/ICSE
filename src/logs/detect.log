@@ -659,3 +659,13 @@
 2025-03-18 03:41:21,028 - detect.py - WARNING - Agent chat histories are available at: /home/k8s-exp/ICSE/src/results/social-network/20250318-034117/logs
 2025-03-18 04:21:21,136 - detect.py - INFO - Task execution complete.
 2025-03-18 04:21:21,347 - detect.py - INFO - Stopping the task...
+2025-03-18 05:30:16,558 - detect.py - WARNING - Injection details are available at: /home/k8s-exp/ICSE/src/results/social-network/20250318-053016/injection.json
+2025-03-18 05:30:20,130 - detect.py - WARNING - Agent chat histories are available at: /home/k8s-exp/ICSE/src/results/social-network/20250318-053016/logs
+2025-03-18 05:34:26,006 - detect.py - WARNING - Connection closed by user.
+2025-03-18 05:34:26,008 - detect.py - INFO - Task execution complete.
+2025-03-18 05:34:26,052 - detect.py - INFO - Stopping the task...
+2025-03-18 05:34:44,256 - detect.py - WARNING - Injection details are available at: /home/k8s-exp/ICSE/src/results/social-network/20250318-053444/injection.json
+2025-03-18 05:34:47,939 - detect.py - WARNING - Agent chat histories are available at: /home/k8s-exp/ICSE/src/results/social-network/20250318-053444/logs
+2025-03-18 05:40:01,496 - detect.py - WARNING - Connection closed by user.
+2025-03-18 05:40:01,496 - detect.py - INFO - Task execution complete.
+2025-03-18 05:40:01,591 - detect.py - INFO - Stopping the task...
