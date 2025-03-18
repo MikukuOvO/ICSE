@@ -96,6 +96,7 @@ def plot_metrics(csv_file, output_dir, injection_time_str):
         plt.figure(figsize=(10, 6))
         plt.plot(df['timestamp'], df[col], marker='o', linestyle='-')
         plt.axvline(injection_time, color='black', linestyle='--', label='Injection Time')
+        # plt.text(5, -1.2, "Injection Time", color='red', fontsize=12, ha='center')
         plt.title(col)
         plt.xlabel("Timestamp")
         plt.ylabel(col)

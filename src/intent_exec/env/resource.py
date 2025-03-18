@@ -183,6 +183,7 @@ def inject(config_path="src/conf/global_config.yaml"):
             num_workers = 1
         else:
             num_workers = parse_cpu_limit(cpu_limit)
+        num_workers += 1
         stress_cmd = f"stress-ng --cpu {num_workers} --timeout {desired_duration}"
         chaos_type = "CPU hog"
 
@@ -192,7 +193,14 @@ def inject(config_path="src/conf/global_config.yaml"):
             mem_for_stress = "100M"
         else:
             mem_for_stress = parse_memory_limit(mem_limit)
-        stress_cmd = f"stress-ng --vm 1 --vm-bytes {mem_for_stress} --timeout {desired_duration}"
+        mem_total = int(mem_for_stress[:-1])
+        if mem_total < 1000:
+            vm_num = 1
+            mem_for_stress = mem_total
+        else:
+            vm_num = mem_total // 1000
+            mem_for_stress = 1000
+        stress_cmd = f"stress-ng --vm {vm_num} --vm-bytes {mem_for_stress} --timeout {desired_duration}"
         chaos_type = "Memory leak"
 
     elif "latency" in desired_chaos_type.lower():
