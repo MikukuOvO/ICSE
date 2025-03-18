@@ -37,7 +37,7 @@ def main():
     process = start_traffic()
     inject_info = inject()
 
-    export_metrics()
+    # export_metrics()
 
     # Refresh the API
     subprocess.run(["bash", "scripts/ops/api.sh"])
@@ -116,6 +116,7 @@ def main():
             service_maintainer_consumer.stop()
 
     logger.info('Stopping the task...')
+    export_metrics()
     end_traffic(process)
 
 if __name__ == '__main__':

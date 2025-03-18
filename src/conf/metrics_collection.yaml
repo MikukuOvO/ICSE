@@ -178,7 +178,6 @@ social-network:
         avg_over_time(container_memory_usage_bytes{deployment="user-timeline-service"}[5m])
       )
 
-
   user-service-workload:
     deploymentName: "user-service"
     promql: 'avg by (pod) (rate(read_user_timeline_requests_total[5m]))'
@@ -231,3 +230,10 @@ social-network:
     deploymentName: "user-timeline-service"
     promql: 'avg by (pod) (rate(write_user_timeline_requests_total[5m]))'
   
+  home-timeline-service-read-errorrate:
+    deploymentName: "home-timeline-service"
+    promql: 'rate(read_home_timeline_errors_total[5m])'
+
+  home-timeline-service-write-errorrate:
+    deploymentName: "home-timeline-service"
+    promql: 'rate(write_home_timeline_errors_total[5m])'

@@ -199,6 +199,13 @@ def inject(config_path="src/conf/global_config.yaml"):
         stress_cmd = f"tc qdisc add dev eth0 root netem delay 100ms"
         chaos_type = "Network latency (100ms)"
 
+    elif "packet" in desired_chaos_type.lower():
+        # Set the packet loss percentage
+        loss_percentage = 30  # Set 30% packet loss
+        stress_cmd = f"tc qdisc add dev eth0 root netem loss {loss_percentage}%"
+        chaos_type = f"Network packet loss ({loss_percentage}%)"
+
+
     else:
         print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
         sys.exit(1)

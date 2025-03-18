@@ -20,6 +20,9 @@ spec:
       - name: compose-post-service
         image: docker.io/airis03/social-network:latest
         imagePullPolicy: Always
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
         ports:
         - containerPort: 9090
         - containerPort: 9464
