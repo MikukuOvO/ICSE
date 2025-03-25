@@ -1,517 +1,529 @@
 train-ticket:
-  ts-admin-basic-info-service-cpu:
-    deploymentName: ts-admin-basic-info-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-basic-info-service.*"}[5m]))'
-  ts-admin-basic-info-service-latency:
-    deploymentName: ts-admin-basic-info-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-basic-info-service"}[5m])) by (le))'
-  ts-admin-basic-info-service-memory:
-    deploymentName: ts-admin-basic-info-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-basic-info-service.*"}[5m]))'
-  ts-admin-basic-info-service-workload:
-    deploymentName: ts-admin-basic-info-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-basic-info-service"}[5m]))'
-  ts-admin-order-service-cpu:
-    deploymentName: ts-admin-order-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-order-service.*"}[5m]))'
-  ts-admin-order-service-latency:
-    deploymentName: ts-admin-order-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-order-service"}[5m])) by (le))'
-  ts-admin-order-service-memory:
-    deploymentName: ts-admin-order-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-order-service.*"}[5m]))'
-  ts-admin-order-service-workload:
-    deploymentName: ts-admin-order-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-order-service"}[5m]))'
-  ts-admin-route-service-cpu:
-    deploymentName: ts-admin-route-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-route-service.*"}[5m]))'
-  ts-admin-route-service-latency:
-    deploymentName: ts-admin-route-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-route-service"}[5m])) by (le))'
-  ts-admin-route-service-memory:
-    deploymentName: ts-admin-route-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-route-service.*"}[5m]))'
-  ts-admin-route-service-workload:
-    deploymentName: ts-admin-route-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-route-service"}[5m]))'
-  ts-admin-travel-service-cpu:
-    deploymentName: ts-admin-travel-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-travel-service.*"}[5m]))'
-  ts-admin-travel-service-latency:
-    deploymentName: ts-admin-travel-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-travel-service"}[5m])) by (le))'
-  ts-admin-travel-service-memory:
-    deploymentName: ts-admin-travel-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-travel-service.*"}[5m]))'
-  ts-admin-travel-service-workload:
-    deploymentName: ts-admin-travel-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-travel-service"}[5m]))'
-  ts-admin-user-service-cpu:
-    deploymentName: ts-admin-user-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-user-service.*"}[5m]))'
-  ts-admin-user-service-latency:
-    deploymentName: ts-admin-user-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-user-service"}[5m])) by (le))'
-  ts-admin-user-service-memory:
-    deploymentName: ts-admin-user-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-user-service.*"}[5m]))'
-  ts-admin-user-service-workload:
-    deploymentName: ts-admin-user-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-user-service"}[5m]))'
-  ts-assurance-service-cpu:
-    deploymentName: ts-assurance-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-assurance-service.*"}[5m]))'
-  ts-assurance-service-latency:
-    deploymentName: ts-assurance-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-assurance-service"}[5m])) by (le))'
-  ts-assurance-service-memory:
-    deploymentName: ts-assurance-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-assurance-service.*"}[5m]))'
-  ts-assurance-service-workload:
-    deploymentName: ts-assurance-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-assurance-service"}[5m]))'
+#   ts-admin-basic-info-service-cpu:
+#     deploymentName: ts-admin-basic-info-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-basic-info-service.*"}[1m]))'
+#   ts-admin-basic-info-service-latency:
+#     deploymentName: ts-admin-basic-info-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-basic-info-service"}[1m])) by (le))'
+#   ts-admin-basic-info-service-memory:
+#     deploymentName: ts-admin-basic-info-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-basic-info-service.*"}[1m]))'
+#   ts-admin-basic-info-service-workload:
+#     deploymentName: ts-admin-basic-info-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-basic-info-service"}[1m]))'
+#   ts-admin-order-service-cpu:
+#     deploymentName: ts-admin-order-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-order-service.*"}[1m]))'
+#   ts-admin-order-service-latency:
+#     deploymentName: ts-admin-order-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-order-service"}[1m])) by (le))'
+#   ts-admin-order-service-memory:
+#     deploymentName: ts-admin-order-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-order-service.*"}[1m]))'
+#   ts-admin-order-service-workload:
+#     deploymentName: ts-admin-order-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-order-service"}[1m]))'
+#   ts-admin-route-service-cpu:
+#     deploymentName: ts-admin-route-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-route-service.*"}[1m]))'
+#   ts-admin-route-service-latency:
+#     deploymentName: ts-admin-route-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-route-service"}[1m])) by (le))'
+#   ts-admin-route-service-memory:
+#     deploymentName: ts-admin-route-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-route-service.*"}[1m]))'
+#   ts-admin-route-service-workload:
+#     deploymentName: ts-admin-route-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-route-service"}[1m]))'
+#   ts-admin-travel-service-cpu:
+#     deploymentName: ts-admin-travel-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-travel-service.*"}[1m]))'
+#   ts-admin-travel-service-latency:
+#     deploymentName: ts-admin-travel-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-travel-service"}[1m])) by (le))'
+#   ts-admin-travel-service-memory:
+#     deploymentName: ts-admin-travel-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-travel-service.*"}[1m]))'
+#   ts-admin-travel-service-workload:
+#     deploymentName: ts-admin-travel-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-travel-service"}[1m]))'
+#   ts-admin-user-service-cpu:
+#     deploymentName: ts-admin-user-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-admin-user-service.*"}[1m]))'
+#   ts-admin-user-service-latency:
+#     deploymentName: ts-admin-user-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-admin-user-service"}[1m])) by (le))'
+#   ts-admin-user-service-memory:
+#     deploymentName: ts-admin-user-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-admin-user-service.*"}[1m]))'
+#   ts-admin-user-service-workload:
+#     deploymentName: ts-admin-user-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-admin-user-service"}[1m]))'
+#   ts-assurance-service-cpu:
+#     deploymentName: ts-assurance-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-assurance-service.*"}[1m]))'
+#   ts-assurance-service-latency:
+#     deploymentName: ts-assurance-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-assurance-service"}[1m])) by (le))'
+#   ts-assurance-service-memory:
+#     deploymentName: ts-assurance-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-assurance-service.*"}[1m]))'
+#   ts-assurance-service-workload:
+#     deploymentName: ts-assurance-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-assurance-service"}[1m]))'
   ts-auth-service-cpu:
     deploymentName: ts-auth-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-auth-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-auth-service.*"}[1m]))'
   ts-auth-service-latency:
     deploymentName: ts-auth-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-auth-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-auth-service"}[1m])) by (le))'
   ts-auth-service-memory:
     deploymentName: ts-auth-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-auth-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-auth-service.*"}[1m]))'
   ts-auth-service-workload:
     deploymentName: ts-auth-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-auth-service"}[5m]))'
-  ts-avatar-service-cpu:
-    deploymentName: ts-avatar-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-avatar-service.*"}[5m]))'
-  ts-avatar-service-latency:
-    deploymentName: ts-avatar-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-avatar-service"}[5m])) by (le))'
-  ts-avatar-service-memory:
-    deploymentName: ts-avatar-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-avatar-service.*"}[5m]))'
-  ts-avatar-service-workload:
-    deploymentName: ts-avatar-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-avatar-service"}[5m]))'
-  ts-basic-service-cpu:
-    deploymentName: ts-basic-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-basic-service.*"}[5m]))'
-  ts-basic-service-latency:
-    deploymentName: ts-basic-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-basic-service"}[5m])) by (le))'
-  ts-basic-service-memory:
-    deploymentName: ts-basic-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-basic-service.*"}[5m]))'
-  ts-basic-service-workload:
-    deploymentName: ts-basic-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-basic-service"}[5m]))'
-  ts-cancel-service-cpu:
-    deploymentName: ts-cancel-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-cancel-service.*"}[5m]))'
-  ts-cancel-service-latency:
-    deploymentName: ts-cancel-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-cancel-service"}[5m])) by (le))'
-  ts-cancel-service-memory:
-    deploymentName: ts-cancel-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-cancel-service.*"}[5m]))'
-  ts-cancel-service-workload:
-    deploymentName: ts-cancel-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-cancel-service"}[5m]))'
-  ts-config-service-cpu:
-    deploymentName: ts-config-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-config-service.*"}[5m]))'
-  ts-config-service-latency:
-    deploymentName: ts-config-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-config-service"}[5m])) by (le))'
-  ts-config-service-memory:
-    deploymentName: ts-config-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-config-service.*"}[5m]))'
-  ts-config-service-workload:
-    deploymentName: ts-config-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-config-service"}[5m]))'
-  ts-consign-price-service-cpu:
-    deploymentName: ts-consign-price-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-consign-price-service.*"}[5m]))'
-  ts-consign-price-service-latency:
-    deploymentName: ts-consign-price-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-consign-price-service"}[5m])) by (le))'
-  ts-consign-price-service-memory:
-    deploymentName: ts-consign-price-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-consign-price-service.*"}[5m]))'
-  ts-consign-price-service-workload:
-    deploymentName: ts-consign-price-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-consign-price-service"}[5m]))'
-  ts-consign-service-cpu:
-    deploymentName: ts-consign-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-consign-service.*"}[5m]))'
-  ts-consign-service-latency:
-    deploymentName: ts-consign-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-consign-service"}[5m])) by (le))'
-  ts-consign-service-memory:
-    deploymentName: ts-consign-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-consign-service.*"}[5m]))'
-  ts-consign-service-workload:
-    deploymentName: ts-consign-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-consign-service"}[5m]))'
-  ts-contacts-service-cpu:
-    deploymentName: ts-contacts-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-contacts-service.*"}[5m]))'
-  ts-contacts-service-latency:
-    deploymentName: ts-contacts-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-contacts-service"}[5m])) by (le))'
-  ts-contacts-service-memory:
-    deploymentName: ts-contacts-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-contacts-service.*"}[5m]))'
-  ts-contacts-service-workload:
-    deploymentName: ts-contacts-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-contacts-service"}[5m]))'
-  ts-delivery-service-cpu:
-    deploymentName: ts-delivery-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-delivery-service.*"}[5m]))'
-  ts-delivery-service-latency:
-    deploymentName: ts-delivery-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-delivery-service"}[5m])) by (le))'
-  ts-delivery-service-memory:
-    deploymentName: ts-delivery-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-delivery-service.*"}[5m]))'
-  ts-delivery-service-workload:
-    deploymentName: ts-delivery-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-delivery-service"}[5m]))'
-  ts-execute-service-cpu:
-    deploymentName: ts-execute-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-execute-service.*"}[5m]))'
-  ts-execute-service-latency:
-    deploymentName: ts-execute-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-execute-service"}[5m])) by (le))'
-  ts-execute-service-memory:
-    deploymentName: ts-execute-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-execute-service.*"}[5m]))'
-  ts-execute-service-workload:
-    deploymentName: ts-execute-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-execute-service"}[5m]))'
-  ts-food-service-cpu:
-    deploymentName: ts-food-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-food-service.*"}[5m]))'
-  ts-food-service-latency:
-    deploymentName: ts-food-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-food-service"}[5m])) by (le))'
-  ts-food-service-memory:
-    deploymentName: ts-food-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-food-service.*"}[5m]))'
-  ts-food-service-workload:
-    deploymentName: ts-food-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-food-service"}[5m]))'
-  ts-gateway-service-cpu:
-    deploymentName: ts-gateway-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-gateway-service.*"}[5m]))'
-  ts-gateway-service-latency:
-    deploymentName: ts-gateway-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-gateway-service"}[5m])) by (le))'
-  ts-gateway-service-memory:
-    deploymentName: ts-gateway-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-gateway-service.*"}[5m]))'
-  ts-gateway-service-workload:
-    deploymentName: ts-gateway-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-gateway-service"}[5m]))'
-  ts-inside-payment-service-cpu:
-    deploymentName: ts-inside-payment-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-inside-payment-service.*"}[5m]))'
-  ts-inside-payment-service-latency:
-    deploymentName: ts-inside-payment-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-inside-payment-service"}[5m])) by (le))'
-  ts-inside-payment-service-memory:
-    deploymentName: ts-inside-payment-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-inside-payment-service.*"}[5m]))'
-  ts-inside-payment-service-workload:
-    deploymentName: ts-inside-payment-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-inside-payment-service"}[5m]))'
-  ts-news-service-cpu:
-    deploymentName: ts-news-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-news-service.*"}[5m]))'
-  ts-news-service-latency:
-    deploymentName: ts-news-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-news-service"}[5m])) by (le))'
-  ts-news-service-memory:
-    deploymentName: ts-news-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-news-service.*"}[5m]))'
-  ts-news-service-workload:
-    deploymentName: ts-news-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-news-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-auth-service"}[1m]))'
+#   ts-avatar-service-cpu:
+#     deploymentName: ts-avatar-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-avatar-service.*"}[1m]))'
+#   ts-avatar-service-latency:
+#     deploymentName: ts-avatar-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-avatar-service"}[1m])) by (le))'
+#   ts-avatar-service-memory:
+#     deploymentName: ts-avatar-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-avatar-service.*"}[1m]))'
+#   ts-avatar-service-workload:
+#     deploymentName: ts-avatar-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-avatar-service"}[1m]))'
+#   ts-basic-service-cpu:
+#     deploymentName: ts-basic-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-basic-service.*"}[1m]))'
+#   ts-basic-service-latency:
+#     deploymentName: ts-basic-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-basic-service"}[1m])) by (le))'
+#   ts-basic-service-memory:
+#     deploymentName: ts-basic-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-basic-service.*"}[1m]))'
+#   ts-basic-service-workload:
+#     deploymentName: ts-basic-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-basic-service"}[1m]))'
+#   ts-cancel-service-cpu:
+#     deploymentName: ts-cancel-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-cancel-service.*"}[1m]))'
+#   ts-cancel-service-latency:
+#     deploymentName: ts-cancel-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-cancel-service"}[1m])) by (le))'
+#   ts-cancel-service-memory:
+#     deploymentName: ts-cancel-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-cancel-service.*"}[1m]))'
+#   ts-cancel-service-workload:
+#     deploymentName: ts-cancel-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-cancel-service"}[1m]))'
+#   ts-config-service-cpu:
+#     deploymentName: ts-config-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-config-service.*"}[1m]))'
+#   ts-config-service-latency:
+#     deploymentName: ts-config-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-config-service"}[1m])) by (le))'
+#   ts-config-service-memory:
+#     deploymentName: ts-config-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-config-service.*"}[1m]))'
+#   ts-config-service-workload:
+#     deploymentName: ts-config-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-config-service"}[1m]))'
+#   ts-consign-price-service-cpu:
+#     deploymentName: ts-consign-price-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-consign-price-service.*"}[1m]))'
+#   ts-consign-price-service-latency:
+#     deploymentName: ts-consign-price-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-consign-price-service"}[1m])) by (le))'
+#   ts-consign-price-service-memory:
+#     deploymentName: ts-consign-price-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-consign-price-service.*"}[1m]))'
+#   ts-consign-price-service-workload:
+#     deploymentName: ts-consign-price-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-consign-price-service"}[1m]))'
+#   ts-consign-service-cpu:
+#     deploymentName: ts-consign-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-consign-service.*"}[1m]))'
+#   ts-consign-service-latency:
+#     deploymentName: ts-consign-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-consign-service"}[1m])) by (le))'
+#   ts-consign-service-memory:
+#     deploymentName: ts-consign-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-consign-service.*"}[1m]))'
+#   ts-consign-service-workload:
+#     deploymentName: ts-consign-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-consign-service"}[1m]))'
+#   ts-contacts-service-cpu:
+#     deploymentName: ts-contacts-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-contacts-service.*"}[1m]))'
+#   ts-contacts-service-latency:
+#     deploymentName: ts-contacts-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-contacts-service"}[1m])) by (le))'
+#   ts-contacts-service-memory:
+#     deploymentName: ts-contacts-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-contacts-service.*"}[1m]))'
+#   ts-contacts-service-workload:
+#     deploymentName: ts-contacts-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-contacts-service"}[1m]))'
+#   ts-delivery-service-cpu:
+#     deploymentName: ts-delivery-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-delivery-service.*"}[1m]))'
+#   ts-delivery-service-latency:
+#     deploymentName: ts-delivery-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-delivery-service"}[1m])) by (le))'
+#   ts-delivery-service-memory:
+#     deploymentName: ts-delivery-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-delivery-service.*"}[1m]))'
+#   ts-delivery-service-workload:
+#     deploymentName: ts-delivery-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-delivery-service"}[1m]))'
+#   ts-execute-service-cpu:
+#     deploymentName: ts-execute-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-execute-service.*"}[1m]))'
+#   ts-execute-service-latency:
+#     deploymentName: ts-execute-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-execute-service"}[1m])) by (le))'
+#   ts-execute-service-memory:
+#     deploymentName: ts-execute-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-execute-service.*"}[1m]))'
+#   ts-execute-service-workload:
+#     deploymentName: ts-execute-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-execute-service"}[1m]))'
+#   ts-food-service-cpu:
+#     deploymentName: ts-food-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-food-service.*"}[1m]))'
+#   ts-food-service-latency:
+#     deploymentName: ts-food-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-food-service"}[1m])) by (le))'
+#   ts-food-service-memory:
+#     deploymentName: ts-food-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-food-service.*"}[1m]))'
+#   ts-food-service-workload:
+#     deploymentName: ts-food-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-food-service"}[1m]))'
+#   ts-gateway-service-cpu:
+#     deploymentName: ts-gateway-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-gateway-service.*"}[1m]))'
+#   ts-gateway-service-latency:
+#     deploymentName: ts-gateway-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-gateway-service"}[1m])) by (le))'
+#   ts-gateway-service-memory:
+#     deploymentName: ts-gateway-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-gateway-service.*"}[1m]))'
+#   ts-gateway-service-workload:
+#     deploymentName: ts-gateway-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-gateway-service"}[1m]))'
+#   ts-inside-payment-service-cpu:
+#     deploymentName: ts-inside-payment-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-inside-payment-service.*"}[1m]))'
+#   ts-inside-payment-service-latency:
+#     deploymentName: ts-inside-payment-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-inside-payment-service"}[1m])) by (le))'
+#   ts-inside-payment-service-memory:
+#     deploymentName: ts-inside-payment-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-inside-payment-service.*"}[1m]))'
+#   ts-inside-payment-service-workload:
+#     deploymentName: ts-inside-payment-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-inside-payment-service"}[1m]))'
+#   ts-news-service-cpu:
+#     deploymentName: ts-news-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-news-service.*"}[1m]))'
+#   ts-news-service-latency:
+#     deploymentName: ts-news-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-news-service"}[1m])) by (le))'
+#   ts-news-service-memory:
+#     deploymentName: ts-news-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-news-service.*"}[1m]))'
+#   ts-news-service-workload:
+#     deploymentName: ts-news-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-news-service"}[1m]))'
   ts-notification-service-cpu:
     deploymentName: ts-notification-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-notification-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-notification-service.*"}[1m]))'
   ts-notification-service-latency:
     deploymentName: ts-notification-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-notification-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-notification-service"}[1m])) by (le))'
   ts-notification-service-memory:
     deploymentName: ts-notification-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-notification-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-notification-service.*"}[1m]))'
   ts-notification-service-workload:
     deploymentName: ts-notification-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-notification-service"}[5m]))'
-  ts-order-other-service-cpu:
-    deploymentName: ts-order-other-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-order-other-service.*"}[5m]))'
-  ts-order-other-service-latency:
-    deploymentName: ts-order-other-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-order-other-service"}[5m])) by (le))'
-  ts-order-other-service-memory:
-    deploymentName: ts-order-other-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-order-other-service.*"}[5m]))'
-  ts-order-other-service-workload:
-    deploymentName: ts-order-other-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-order-other-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-notification-service"}[1m]))'
+#   ts-order-other-service-cpu:
+#     deploymentName: ts-order-other-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-order-other-service.*"}[1m]))'
+#   ts-order-other-service-latency:
+#     deploymentName: ts-order-other-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-order-other-service"}[1m])) by (le))'
+#   ts-order-other-service-memory:
+#     deploymentName: ts-order-other-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-order-other-service.*"}[1m]))'
+#   ts-order-other-service-workload:
+#     deploymentName: ts-order-other-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-order-other-service"}[1m]))'
   ts-order-service-cpu:
     deploymentName: ts-order-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-order-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-order-service.*"}[1m]))'
   ts-order-service-latency:
     deploymentName: ts-order-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-order-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-order-service"}[1m])) by (le))'
   ts-order-service-memory:
     deploymentName: ts-order-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-order-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-order-service.*"}[1m]))'
   ts-order-service-workload:
     deploymentName: ts-order-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-order-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-order-service"}[1m]))'
   ts-payment-service-cpu:
     deploymentName: ts-payment-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-payment-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-payment-service.*"}[1m]))'
   ts-payment-service-latency:
     deploymentName: ts-payment-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-payment-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-payment-service"}[1m])) by (le))'
   ts-payment-service-memory:
     deploymentName: ts-payment-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-payment-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-payment-service.*"}[1m]))'
   ts-payment-service-workload:
     deploymentName: ts-payment-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-payment-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-payment-service"}[1m]))'
   ts-preserve-other-service-cpu:
     deploymentName: ts-preserve-other-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-preserve-other-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-preserve-other-service.*"}[1m]))'
   ts-preserve-other-service-latency:
     deploymentName: ts-preserve-other-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-preserve-other-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-preserve-other-service"}[1m])) by (le))'
   ts-preserve-other-service-memory:
     deploymentName: ts-preserve-other-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-preserve-other-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-preserve-other-service.*"}[1m]))'
   ts-preserve-other-service-workload:
     deploymentName: ts-preserve-other-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-preserve-other-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-preserve-other-service"}[1m]))'
   ts-preserve-service-cpu:
     deploymentName: ts-preserve-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-preserve-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-preserve-service.*"}[1m]))'
   ts-preserve-service-latency:
     deploymentName: ts-preserve-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-preserve-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-preserve-service"}[1m])) by (le))'
   ts-preserve-service-memory:
     deploymentName: ts-preserve-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-preserve-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-preserve-service.*"}[1m]))'
   ts-preserve-service-workload:
     deploymentName: ts-preserve-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-preserve-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-preserve-service"}[1m]))'
   ts-price-service-cpu:
     deploymentName: ts-price-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-price-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-price-service.*"}[1m]))'
   ts-price-service-latency:
     deploymentName: ts-price-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-price-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-price-service"}[1m])) by (le))'
   ts-price-service-memory:
     deploymentName: ts-price-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-price-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-price-service.*"}[1m]))'
   ts-price-service-workload:
     deploymentName: ts-price-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-price-service"}[5m]))'
-  ts-rebook-service-cpu:
-    deploymentName: ts-rebook-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-rebook-service.*"}[5m]))'
-  ts-rebook-service-latency:
-    deploymentName: ts-rebook-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-rebook-service"}[5m])) by (le))'
-  ts-rebook-service-memory:
-    deploymentName: ts-rebook-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-rebook-service.*"}[5m]))'
-  ts-rebook-service-workload:
-    deploymentName: ts-rebook-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-rebook-service"}[5m]))'
-  ts-route-plan-service-cpu:
-    deploymentName: ts-route-plan-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-route-plan-service.*"}[5m]))'
-  ts-route-plan-service-latency:
-    deploymentName: ts-route-plan-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-route-plan-service"}[5m])) by (le))'
-  ts-route-plan-service-memory:
-    deploymentName: ts-route-plan-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-route-plan-service.*"}[5m]))'
-  ts-route-plan-service-workload:
-    deploymentName: ts-route-plan-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-route-plan-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-price-service"}[1m]))'
+#   ts-rebook-service-cpu:
+#     deploymentName: ts-rebook-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-rebook-service.*"}[1m]))'
+#   ts-rebook-service-latency:
+#     deploymentName: ts-rebook-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-rebook-service"}[1m])) by (le))'
+#   ts-rebook-service-memory:
+#     deploymentName: ts-rebook-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-rebook-service.*"}[1m]))'
+#   ts-rebook-service-workload:
+#     deploymentName: ts-rebook-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-rebook-service"}[1m]))'
+#   ts-route-plan-service-cpu:
+#     deploymentName: ts-route-plan-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-route-plan-service.*"}[1m]))'
+#   ts-route-plan-service-latency:
+#     deploymentName: ts-route-plan-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-route-plan-service"}[1m])) by (le))'
+#   ts-route-plan-service-memory:
+#     deploymentName: ts-route-plan-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-route-plan-service.*"}[1m]))'
+#   ts-route-plan-service-workload:
+#     deploymentName: ts-route-plan-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-route-plan-service"}[1m]))'
   ts-route-service-cpu:
     deploymentName: ts-route-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-route-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-route-service.*"}[1m]))'
   ts-route-service-latency:
     deploymentName: ts-route-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-route-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-route-service"}[1m])) by (le))'
   ts-route-service-memory:
     deploymentName: ts-route-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-route-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-route-service.*"}[1m]))'
   ts-route-service-workload:
     deploymentName: ts-route-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-route-service"}[5m]))'
-  ts-seat-service-cpu:
-    deploymentName: ts-seat-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-seat-service.*"}[5m]))'
-  ts-seat-service-latency:
-    deploymentName: ts-seat-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-seat-service"}[5m])) by (le))'
-  ts-seat-service-memory:
-    deploymentName: ts-seat-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-seat-service.*"}[5m]))'
-  ts-seat-service-workload:
-    deploymentName: ts-seat-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-seat-service"}[5m]))'
-  ts-security-service-cpu:
-    deploymentName: ts-security-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-security-service.*"}[5m]))'
-  ts-security-service-latency:
-    deploymentName: ts-security-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-security-service"}[5m])) by (le))'
-  ts-security-service-memory:
-    deploymentName: ts-security-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-security-service.*"}[5m]))'
-  ts-security-service-workload:
-    deploymentName: ts-security-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-security-service"}[5m]))'
-  ts-station-food-service-cpu:
-    deploymentName: ts-station-food-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-station-food-service.*"}[5m]))'
-  ts-station-food-service-latency:
-    deploymentName: ts-station-food-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-station-food-service"}[5m])) by (le))'
-  ts-station-food-service-memory:
-    deploymentName: ts-station-food-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-station-food-service.*"}[5m]))'
-  ts-station-food-service-workload:
-    deploymentName: ts-station-food-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-station-food-service"}[5m]))'
-  ts-station-service-cpu:
-    deploymentName: ts-station-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-station-service.*"}[5m]))'
-  ts-station-service-latency:
-    deploymentName: ts-station-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-station-service"}[5m])) by (le))'
-  ts-station-service-memory:
-    deploymentName: ts-station-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-station-service.*"}[5m]))'
-  ts-station-service-workload:
-    deploymentName: ts-station-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-station-service"}[5m]))'
-  ts-ticket-office-service-cpu:
-    deploymentName: ts-ticket-office-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-ticket-office-service.*"}[5m]))'
-  ts-ticket-office-service-latency:
-    deploymentName: ts-ticket-office-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-ticket-office-service"}[5m])) by (le))'
-  ts-ticket-office-service-memory:
-    deploymentName: ts-ticket-office-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-ticket-office-service.*"}[5m]))'
-  ts-ticket-office-service-workload:
-    deploymentName: ts-ticket-office-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-ticket-office-service"}[5m]))'
-  ts-train-food-service-cpu:
-    deploymentName: ts-train-food-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-train-food-service.*"}[5m]))'
-  ts-train-food-service-latency:
-    deploymentName: ts-train-food-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-train-food-service"}[5m])) by (le))'
-  ts-train-food-service-memory:
-    deploymentName: ts-train-food-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-train-food-service.*"}[5m]))'
-  ts-train-food-service-workload:
-    deploymentName: ts-train-food-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-train-food-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-route-service"}[1m]))'
+#   ts-seat-service-cpu:
+#     deploymentName: ts-seat-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-seat-service.*"}[1m]))'
+#   ts-seat-service-latency:
+#     deploymentName: ts-seat-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-seat-service"}[1m])) by (le))'
+#   ts-seat-service-memory:
+#     deploymentName: ts-seat-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-seat-service.*"}[1m]))'
+#   ts-seat-service-workload:
+#     deploymentName: ts-seat-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-seat-service"}[1m]))'
+#   ts-security-service-cpu:
+#     deploymentName: ts-security-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-security-service.*"}[1m]))'
+#   ts-security-service-latency:
+#     deploymentName: ts-security-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-security-service"}[1m])) by (le))'
+#   ts-security-service-memory:
+#     deploymentName: ts-security-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-security-service.*"}[1m]))'
+#   ts-security-service-workload:
+#     deploymentName: ts-security-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-security-service"}[1m]))'
+#   ts-station-food-service-cpu:
+#     deploymentName: ts-station-food-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-station-food-service.*"}[1m]))'
+#   ts-station-food-service-latency:
+#     deploymentName: ts-station-food-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-station-food-service"}[1m])) by (le))'
+#   ts-station-food-service-memory:
+#     deploymentName: ts-station-food-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-station-food-service.*"}[1m]))'
+#   ts-station-food-service-workload:
+#     deploymentName: ts-station-food-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-station-food-service"}[1m]))'
+#   ts-station-service-cpu:
+#     deploymentName: ts-station-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-station-service.*"}[1m]))'
+#   ts-station-service-latency:
+#     deploymentName: ts-station-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-station-service"}[1m])) by (le))'
+#   ts-station-service-memory:
+#     deploymentName: ts-station-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-station-service.*"}[1m]))'
+#   ts-station-service-workload:
+#     deploymentName: ts-station-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-station-service"}[1m]))'
+#   ts-ticket-office-service-cpu:
+#     deploymentName: ts-ticket-office-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-ticket-office-service.*"}[1m]))'
+#   ts-ticket-office-service-latency:
+#     deploymentName: ts-ticket-office-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-ticket-office-service"}[1m])) by (le))'
+#   ts-ticket-office-service-memory:
+#     deploymentName: ts-ticket-office-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-ticket-office-service.*"}[1m]))'
+#   ts-ticket-office-service-workload:
+#     deploymentName: ts-ticket-office-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-ticket-office-service"}[1m]))'
+#   ts-train-food-service-cpu:
+#     deploymentName: ts-train-food-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-train-food-service.*"}[1m]))'
+#   ts-train-food-service-latency:
+#     deploymentName: ts-train-food-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-train-food-service"}[1m])) by (le))'
+#   ts-train-food-service-memory:
+#     deploymentName: ts-train-food-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-train-food-service.*"}[1m]))'
+#   ts-train-food-service-workload:
+#     deploymentName: ts-train-food-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-train-food-service"}[1m]))'
   ts-train-service-cpu:
     deploymentName: ts-train-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-train-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-train-service.*"}[1m]))'
   ts-train-service-latency:
     deploymentName: ts-train-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-train-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-train-service"}[1m])) by (le))'
   ts-train-service-memory:
     deploymentName: ts-train-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-train-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-train-service.*"}[1m]))'
   ts-train-service-workload:
     deploymentName: ts-train-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-train-service"}[5m]))'
-  ts-travel-plan-service-cpu:
-    deploymentName: ts-travel-plan-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel-plan-service.*"}[5m]))'
-  ts-travel-plan-service-latency:
-    deploymentName: ts-travel-plan-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel-plan-service"}[5m])) by (le))'
-  ts-travel-plan-service-memory:
-    deploymentName: ts-travel-plan-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel-plan-service.*"}[5m]))'
-  ts-travel-plan-service-workload:
-    deploymentName: ts-travel-plan-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel-plan-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-train-service"}[1m]))'
+#   ts-travel-plan-service-cpu:
+#     deploymentName: ts-travel-plan-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel-plan-service.*"}[1m]))'
+#   ts-travel-plan-service-latency:
+#     deploymentName: ts-travel-plan-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel-plan-service"}[1m])) by (le))'
+#   ts-travel-plan-service-memory:
+#     deploymentName: ts-travel-plan-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel-plan-service.*"}[1m]))'
+#   ts-travel-plan-service-workload:
+#     deploymentName: ts-travel-plan-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel-plan-service"}[1m]))'
   ts-travel-service-cpu:
     deploymentName: ts-travel-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel-service.*"}[1m]))'
   ts-travel-service-latency:
     deploymentName: ts-travel-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel-service"}[1m])) by (le))'
   ts-travel-service-memory:
     deploymentName: ts-travel-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel-service.*"}[1m]))'
   ts-travel-service-workload:
     deploymentName: ts-travel-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel-service"}[5m]))'
-  ts-travel2-service-cpu:
-    deploymentName: ts-travel2-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel2-service.*"}[5m]))'
-  ts-travel2-service-latency:
-    deploymentName: ts-travel2-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel2-service"}[5m])) by (le))'
-  ts-travel2-service-memory:
-    deploymentName: ts-travel2-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel2-service.*"}[5m]))'
-  ts-travel2-service-workload:
-    deploymentName: ts-travel2-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel2-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel-service"}[1m]))'
+#   ts-travel2-service-cpu:
+#     deploymentName: ts-travel2-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-travel2-service.*"}[1m]))'
+#   ts-travel2-service-latency:
+#     deploymentName: ts-travel2-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-travel2-service"}[1m])) by (le))'
+#   ts-travel2-service-memory:
+#     deploymentName: ts-travel2-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-travel2-service.*"}[1m]))'
+#   ts-travel2-service-workload:
+#     deploymentName: ts-travel2-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-travel2-service"}[1m]))'
+  ts-ui-dashboard-cpu:
+    deploymentName: ts-ui-dashboard
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-ui-dashboard.*"}[1m]))'
+  ts-ui-dashboard-latency:
+    deploymentName: ts-ui-dashboard
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-ui-dashboard"}[1m])) by (le))'
+  ts-ui-dashboard-memory:
+    deploymentName: ts-ui-dashboard
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-ui-dashboard.*"}[1m]))'
+  ts-ui-dashboard-workload:
+    deploymentName: ts-ui-dashboard
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-ui-dashboard"}[1m]))'
   ts-user-service-cpu:
     deploymentName: ts-user-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-user-service.*"}[5m]))'
+    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-user-service.*"}[1m]))'
   ts-user-service-latency:
     deploymentName: ts-user-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-user-service"}[5m])) by (le))'
+    promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-user-service"}[1m])) by (le))'
   ts-user-service-memory:
     deploymentName: ts-user-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-user-service.*"}[5m]))'
+    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-user-service.*"}[1m]))'
   ts-user-service-workload:
     deploymentName: ts-user-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-user-service"}[5m]))'
-  ts-verification-code-service-cpu:
-    deploymentName: ts-verification-code-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-verification-code-service.*"}[5m]))'
-  ts-verification-code-service-latency:
-    deploymentName: ts-verification-code-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-verification-code-service"}[5m])) by (le))'
-  ts-verification-code-service-memory:
-    deploymentName: ts-verification-code-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-verification-code-service.*"}[5m]))'
-  ts-verification-code-service-workload:
-    deploymentName: ts-verification-code-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-verification-code-service"}[5m]))'
-  ts-voucher-service-cpu:
-    deploymentName: ts-voucher-service
-    promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-voucher-service.*"}[5m]))'
-  ts-voucher-service-latency:
-    deploymentName: ts-voucher-service
-    promql: 'histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-voucher-service"}[5m])) by (le))'
-  ts-voucher-service-memory:
-    deploymentName: ts-voucher-service
-    promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-voucher-service.*"}[5m]))'
-  ts-voucher-service-workload:
-    deploymentName: ts-voucher-service
-    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-voucher-service"}[5m]))'
+    promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-user-service"}[1m]))'
+#   ts-verification-code-service-cpu:
+#     deploymentName: ts-verification-code-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-verification-code-service.*"}[1m]))'
+#   ts-verification-code-service-latency:
+#     deploymentName: ts-verification-code-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-verification-code-service"}[1m])) by (le))'
+#   ts-verification-code-service-memory:
+#     deploymentName: ts-verification-code-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-verification-code-service.*"}[1m]))'
+#   ts-verification-code-service-workload:
+#     deploymentName: ts-verification-code-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-verification-code-service"}[1m]))'
+#   ts-voucher-service-cpu:
+#     deploymentName: ts-voucher-service
+#     promql: 'avg by (pod) (rate(container_cpu_usage_seconds_total{pod=~"ts-voucher-service.*"}[1m]))'
+#   ts-voucher-service-latency:
+#     deploymentName: ts-voucher-service
+#     promql: 'histogram_quantile(0.90, sum(rate(istio_request_duration_milliseconds_bucket{destination_workload="ts-voucher-service"}[1m])) by (le))'
+#   ts-voucher-service-memory:
+#     deploymentName: ts-voucher-service
+#     promql: 'avg by (pod) (avg_over_time(container_memory_usage_bytes{pod=~"ts-voucher-service.*"}[1m]))'
+#   ts-voucher-service-workload:
+#     deploymentName: ts-voucher-service
+#     promql: 'avg by (pod) (rate(istio_requests_total{destination_workload="ts-voucher-service"}[1m]))'

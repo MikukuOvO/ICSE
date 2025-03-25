@@ -39,7 +39,7 @@ def main():
     inject_info = inject()
 
     injection_time = datetime.fromisoformat(inject_info['injection_time']).strftime("%d/%m/%Y %H:%M:%S")
-    export_metrics(injection_time)
+    # export_metrics(injection_time)
 
     # Refresh the API
     subprocess.run(["bash", "scripts/ops/api.sh"])
@@ -119,6 +119,7 @@ def main():
 
     logger.info('Stopping the task...')
     end_traffic(process)
+    export_metrics(injection_time)
 
 if __name__ == '__main__':
     main()

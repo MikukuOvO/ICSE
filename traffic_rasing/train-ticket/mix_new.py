@@ -159,7 +159,7 @@ class BasicServiceUser(HttpUser):
         if response.status_code != 200:
             response.failure("Unexpected response: " + response.text)
         
-    @task(20)
+    @task(10)
     def order_service(self):
         path = "/api/v1/orderservice/order"
         headers = {
@@ -189,7 +189,7 @@ class BasicServiceUser(HttpUser):
         if response.status_code != 200:
             response.failure("Unexpected response: " + response.text)
 
-    @task(5)
+    @task(10)
     def auth_service(self):
         path = "/api/v1/users"
         headers = {
@@ -213,40 +213,3 @@ class BasicServiceUser(HttpUser):
         if response.status_code != 200:
             response.failure("Unexpected response: " + response.text)
         self.token = response.json()['data']['token']
-
-    @task(10)
-    def notification_service(self):
-        path = "/api/v1/notifyservice/test_send_mail"
-        headers = {
-            "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json"
-        }
-        response = self.client.get(path, headers=headers)
-        if response.status_code == 403:
-            self.admin_login()
-            headers = {
-                "Authorization": f"Bearer {self.token}",
-                "Content-Type": "application/json"
-            }
-            response = self.client.get(path, headers=headers)
-        if response.status_code != 200:
-            response.failure("Unexpected response: " + response.text)
-
-    @task(10)
-    def payment_service(self):
-        path = "/api/v1/paymentservice/payment"
-        headers = {
-            "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json"
-        }
-        response = self.client.get(path, headers=headers)
-        if response.status_code == 403:
-            self.admin_login()
-            headers = {
-                "Authorization": f"Bearer {self.token}",
-                "Content-Type": "application/json"
-            }
-            response = self.client.get(path, headers=headers)
-        if response.status_code != 200:
-            response.failure("Unexpected response: " + response.text)
-    

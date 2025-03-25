@@ -1,6 +1,7 @@
 import subprocess
 import time
 import yaml
+from ...utils.prometheus_url import get_minikube_ip
 
 def start_traffic():
     with open("src/conf/global_config.yaml", "r") as f:
@@ -8,14 +9,14 @@ def start_traffic():
 
     traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/mix.py")
     print(f"Using traffic file: {traffic_file}")
+    minikube_ip = get_minikube_ip()
     command = [
         "locust",
         "-f", traffic_file,
         "--headless",
         "-u", "10",
         "-r", "10",
-        "--host", "http://192.168.58.2:32677",
-        "--run-time", "1h",
+        "--host", f"http://{minikube_ip}:32677",
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
@@ -28,9 +29,8 @@ def start_traffic():
     )
     print("Locust has been started. Waiting for stability...")
     
-    # Wait for 10 minutes (600 seconds) for the system to stabilize.
-    # time.sleep(300)
-    time.sleep(600)
+    # Wait for time about 35 minutes to let the system stabilize.
+    time.sleep(2100)
     print("The system is assumed to be stable.")
     
     return process
@@ -44,20 +44,3 @@ def end_traffic(process):
         print("Locust process terminated.")
     else:
         print("Locust process has already terminated.")
-
-def main():
-    process = start_traffic()
-    
-    # Wait for the remainder of the run-time.
-    # With the --run-time flag set to 2h, Locust will auto-stop after 2 hours.
-    # Here, we wait 2 hours (7200 seconds) from the start.
-    print("Traffic is running. Waiting for 2 hours...")
-    time.sleep(7200)
-    
-    # Explicitly end the traffic, if still running.
-    end_traffic(process)
-    
-    print("Test completed.")
-
-if __name__ == "__main__":
-    main()

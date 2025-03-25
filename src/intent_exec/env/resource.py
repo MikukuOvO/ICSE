@@ -194,18 +194,23 @@ def inject(config_path="src/conf/global_config.yaml"):
         else:
             mem_for_stress = parse_memory_limit(mem_limit)
         mem_total = int(mem_for_stress[:-1])
-        if mem_total < 1000:
-            vm_num = 1
-            mem_for_stress = mem_total
-        else:
-            vm_num = mem_total // 1000
-            mem_for_stress = 1000
-        stress_cmd = f"stress-ng --vm {vm_num} --vm-bytes {mem_for_stress} --timeout {desired_duration}"
+        lim = 1000
+        mem_num = max(mem_total // lim, 1)
+        mem_total = min(mem_total, lim)
+        mem_for_stress = f"{mem_total}" + mem_for_stress[-1]
+        stress_cmd = f"stress-ng --vm {mem_num} --vm-bytes {mem_for_stress} --timeout {desired_duration}"
         chaos_type = "Memory leak"
 
     elif "latency" in desired_chaos_type.lower():
         stress_cmd = f"tc qdisc add dev eth0 root netem delay 100ms"
         chaos_type = "Network latency (100ms)"
+
+    elif "packet" in desired_chaos_type.lower():
+        # Set the packet loss percentage
+        loss_percentage = 30  # Set 30% packet loss
+        stress_cmd = f"tc qdisc add dev eth0 root netem loss {loss_percentage}%"
+        chaos_type = f"Network packet loss ({loss_percentage}%)"
+
 
     else:
         print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
