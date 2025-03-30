@@ -121,16 +121,16 @@ class ServiceMaintainer(SocietyOfMindAgent):
         )
 
     @staticmethod
-    def _init_from_config(service_name: str, cache_seed: int | None = 42, is_termination_msg: Optional[Callable[[Dict], bool]] = TERMINATE):
+    def _init_from_config(task_name: str, service_name: str, cache_seed: int | None = 42, is_termination_msg: Optional[Callable[[Dict], bool]] = TERMINATE):
         '''
         Init ServiceMaintainer from service_maintainers.yaml
         - param service_name: str, the name of the service.
         - param cache_seed: int | None, the cache seed for the model. Default is 42.
         - param is_termination_msg: Optional[Callable[[Dict], bool]], the termination message. Default is TERMINATE.
         '''
-        service_maintainer_config = load_service_maintainer_config()
+        service_maintainer_config = load_service_maintainer_config(filename=f'service_maintainers_{task_name}.yaml')
         prompter = Prompter()
-        prompter.load_prompt_template(os.path.join(base_path, 'prompts', f'service_manager.yaml'))
+        prompter.load_prompt_template(os.path.join(base_path, 'prompts', f'service_manager_{task_name}.yaml'))
         prompter.fill_system_message(service_maintainer_config)
         prompter.generate_service_slos(deployment_name=service_name, slo_path=service_maintainer_config['slo_path'])
         prompter.generate_function_descriptions(service_maintainer_config['tool_functions_path'])

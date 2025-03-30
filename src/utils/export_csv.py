@@ -113,7 +113,7 @@ def export_metrics():
         sys.exit(1)
 
     end_time = datetime.utcnow()
-    start_time = end_time - timedelta(minutes=80)
+    start_time = end_time - timedelta(minutes=70)
     start_time_str = start_time.strftime('%Y-%m-%dT%H:%M:%SZ')
     end_time_str = end_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 

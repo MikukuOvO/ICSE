@@ -3,7 +3,27 @@ import time
 import yaml
 from ...utils.prometheus_url import get_minikube_ip
 
+def kill_locust_processes():
+    # First check if any locust processes exist
+    check_command = "ps -ef | grep locust | grep -v grep"
+    check_result = subprocess.run(check_command, shell=True, capture_output=True, text=True)
+    
+    if not check_result.stdout.strip():
+        print("No locust processes found.")
+        return
+    
+    # If processes exist, proceed with killing them
+    kill_command = "ps -ef | grep locust | grep -v grep | awk '{print $2}' | xargs kill -9"
+    result = subprocess.run(kill_command, shell=True)
+    
+    if result.returncode == 0:
+        print("All locust processes have been terminated")
+    else:
+        print(f"Command failed with return code: {result.returncode}")
+
 def start_traffic():
+    # Kill all locust processes before starting a new one.
+    kill_locust_processes()
     with open("src/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
@@ -16,7 +36,7 @@ def start_traffic():
         "--headless",
         "-u", "100",
         "-r", "5",
-        "--host", f"http://{minikube_ip}:31090"
+        "--host", f"http://{minikube_ip}:30080"
     ]
     
     # Redirect stdout and stderr to DEVNULL so no output is printed.
@@ -30,7 +50,7 @@ def start_traffic():
     print("Locust has been started. Waiting for stability...")
     
     # Wait for time about 35 minutes to let the system stabilize.
-    time.sleep(2100)
+    time.sleep(35 * 60)  # 35 minutes
     print("The system is assumed to be stable.")
     
     return process

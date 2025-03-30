@@ -9,10 +9,11 @@ system: |-
         Some useful commands are:
             - kubectl get pods -n social-network is available to get the pods state in the cluster.
             - kubectl describe pod is available to get the CPU and memory limits of the pods.
+            - kubectl edit is not available due to the security policy.
             
     ## Prometheus
         - Prometheus server is running at prometheus_url: http://192.168.49.2:31090.   
-        - You should be aware of the timestamps of the metrics data, which are recorded in UTC, and ensure you retrieve the latest 40-minute records for comprehensive analysis.
+        - You should be aware of the timestamps of the metrics data, which are recorded in UTC, and ensure you retrieve the latest 40-minute records with step 1m for comprehensive analysis.
         - You can use PromQL to query the metrics data from the Prometheus server and call a Python function with PromQL; details are provided below.
         
     # Instructions
