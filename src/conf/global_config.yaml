@@ -52,12 +52,11 @@ traffic_file_path: "traffic_rasing/social-network/mixed_traffic.py"
 
 chaos_injection:
   namespace: "social-network"
-  service: "home-timeline-service"
+  service: "compose-post-service"
   container: ""
-  chaos_type: "memory"
+  chaos_type: "cpu"
   # chaos_type: "MEMORY leak"
   duration: 50m
-  # chaos_type: "Socket stress"
 
 heartbeat:
   detection_task: |-
@@ -69,10 +68,10 @@ heartbeat:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause. DO NOT take any action to fix the unhealthy state.
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
       4. Finally, you should report the top 3 root causes of the unhealthy state you identified, with the corresponding format: 
-        - Root cause 1: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD/ERRORRATE)
-        - Root cause 2: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD/ERRORRATE)
-        - Root cause 3: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY/WORKLOAD/ERRORRATE)
-      FYI: For the corresponding metric, you must choose one and only one of the following metrics: CPU, MEMORY, LATENCY, WORKLOAD, ERRORRATE, without any other supplyementary information.
+        - Root cause 1: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY)
+        - Root cause 2: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY)
+        - Root cause 3: SERVICE NAME + CORRESPONDING METRIC (CPU/MEMORY/LATENCY)
+      FYI: For the corresponding metric, you must choose one and only one of the following metrics: CPU, MEMORY, LATENCY, without any other supplyementary information.
 
   healing_task: |-
     This task is a healing check for the state of your microservice component. 

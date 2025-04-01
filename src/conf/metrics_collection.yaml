@@ -232,54 +232,54 @@ social-network:
   
 
 
-  user-service-errorrate:
-    deploymentName: "user-service"
-    promql: 'rate(read_user_timeline_errors_total[5m])'
+  # user-service-errorrate:
+  #   deploymentName: "user-service"
+  #   promql: 'rate(read_user_timeline_errors_total[5m])'
 
-  media-service-errorrate:
-    deploymentName: "media-service"
-    promql: 'rate(compose_media_errors_total[5m])'
+  # media-service-errorrate:
+  #   deploymentName: "media-service"
+  #   promql: 'rate(compose_media_errors_total[5m])'
 
-  compose-post-service-errorrate:
-    deploymentName: "compose-post-service"
-    promql: 'rate(compose_post_errors_total[5m])'
+  # compose-post-service-errorrate:
+  #   deploymentName: "compose-post-service"
+  #   promql: 'rate(compose_post_errors_total[5m])'
   
-  text-service-errorrate:
-    deploymentName: "text-service"
-    promql: 'rate(compose_text_errors_total[5m])'
+  # text-service-errorrate:
+  #   deploymentName: "text-service"
+  #   promql: 'rate(compose_text_errors_total[5m])'
 
-  unique-id-service-errorrate:
-    deploymentName: "unique-id-service"
-    promql: 'rate(compose_unique_id_errors_total[5m])'
+  # unique-id-service-errorrate:
+  #   deploymentName: "unique-id-service"
+  #   promql: 'rate(compose_unique_id_errors_total[5m])'
 
-  url-shorten-service-errorrate:
-    deploymentName: "url-shorten-service"
-    promql: 'rate(compose_urls_errors_total[5m])'
+  # url-shorten-service-errorrate:
+  #   deploymentName: "url-shorten-service"
+  #   promql: 'rate(compose_urls_errors_total[5m])'
   
-  user-mention-service-errorrate:
-    deploymentName: "user-mention-service"
-    promql: 'rate(compose_user_mentions_errors_total[5m])'
+  # user-mention-service-errorrate:
+  #   deploymentName: "user-mention-service"
+  #   promql: 'rate(compose_user_mentions_errors_total[5m])'
   
-  social-graph-service-errorrate:
-    deploymentName: "social-graph-service"
-    promql: 'rate(get_followers_errors_total[5m])'
+  # social-graph-service-errorrate:
+  #   deploymentName: "social-graph-service"
+  #   promql: 'rate(get_followers_errors_total[5m])'
   
-  post-storage-service-errorrate:
-    deploymentName: "post-storage-service"
-    promql: 'rate(read_posts_errors_total[5m])'
+  # post-storage-service-errorrate:
+  #   deploymentName: "post-storage-service"
+  #   promql: 'rate(read_posts_errors_total[5m])'
 
-  user-timeline-service-read-errorrate:
-    deploymentName: "user-timeline-service"
-    promql: 'rate(read_user_timeline_errors_total[5m])'
+  # user-timeline-service-read-errorrate:
+  #   deploymentName: "user-timeline-service"
+  #   promql: 'rate(read_user_timeline_errors_total[5m])'
   
-  user-timeline-service-write-errorrate:
-    deploymentName: "user-timeline-service"
-    promql: 'rate(write_user_timeline_errors_total[5m])'
+  # user-timeline-service-write-errorrate:
+  #   deploymentName: "user-timeline-service"
+  #   promql: 'rate(write_user_timeline_errors_total[5m])'
 
-  home-timeline-service-read-errorrate:
-    deploymentName: "home-timeline-service"
-    promql: 'rate(read_home_timeline_errors_total[5m])'
+  # home-timeline-service-read-errorrate:
+  #   deploymentName: "home-timeline-service"
+  #   promql: 'rate(read_home_timeline_errors_total[5m])'
   
-  home-timeline-service-write-errorrate:
-    deploymentName: "home-timeline-service"
-    promql: 'rate(write_home_timeline_errors_total[5m])'
+  # home-timeline-service-write-errorrate:
+  #   deploymentName: "home-timeline-service"
+  #   promql: 'rate(write_home_timeline_errors_total[5m])'
