@@ -195,10 +195,13 @@ def inject(config_path="src/conf/global_config.yaml"):
             mem_for_stress = parse_memory_limit(mem_limit)
         mem_total = int(mem_for_stress[:-1])
         lim = 1000
-        mem_num = max(mem_total // lim, 1)
-        mem_total = min(mem_total, lim)
+        if mem_total >= lim:
+            mem_num = max(mem_total//lim-1, 1)
+            mem_total = lim
+        else:
+            mem_num = 1
         mem_for_stress = f"{mem_total}" + mem_for_stress[-1]
-        stress_cmd = f"stress-ng --vm {mem_num} --vm-bytes {mem_for_stress} --timeout {desired_duration}"
+        stress_cmd = f"stress-ng --vm {mem_num} --vm-bytes {mem_for_stress} --timeout {desired_duration} --vm-keep"
         chaos_type = "Memory leak"
 
     elif "latency" in desired_chaos_type.lower():
@@ -252,6 +255,98 @@ def inject(config_path="src/conf/global_config.yaml"):
     print(json.dumps(injection_info, indent=4, ensure_ascii=False))
 
     return injection_info
+
+def remove_inject(config_path="src/conf/global_config.yaml"):
+    try:
+        with open(config_path, "r") as f:
+            config = yaml.safe_load(f)
+    except Exception as e:
+        print(f"Error loading YAML config: {e}")
+        sys.exit(1)
+
+    chaos_cfg = config.get("chaos_injection", {})
+    desired_namespace = chaos_cfg.get("namespace")
+    desired_service = chaos_cfg.get("service")
+    desired_container = chaos_cfg.get("container")
+    desired_chaos_type = chaos_cfg.get("chaos_type", "CPU hog")  # e.g. "CPU hog", "Memory leak", "Latency"
+    desired_duration = chaos_cfg.get("duration", "30m")
+
+    namespaces = list_namespaces()
+    if not namespaces:
+        print("No namespaces found. Exiting.")
+        sys.exit(1)
+
+    if not desired_namespace:
+        print("No namespace provided in config. Exiting.")
+        sys.exit(1)
+
+    if desired_namespace not in namespaces:
+        print(f"Namespace '{desired_namespace}' not found. Exiting.")
+        sys.exit(1)
+
+    namespace = desired_namespace
+    service_to_pod = list_pods(namespace)
+    if not service_to_pod:
+        print(f"No pods found in namespace '{namespace}'. Exiting.")
+        sys.exit(1)
+
+    if not desired_service:
+        print("No service (derived from pod name) provided in config. Exiting.")
+        sys.exit(1)
+
+    if desired_service not in service_to_pod:
+        print(f"Service '{desired_service}' not found in namespace '{namespace}'. Exiting.")
+        sys.exit(1)
+
+    pod_name = service_to_pod[desired_service]
+    pod_data = get_pod_json(namespace, pod_name)
+    if not pod_data:
+        sys.exit(1)
+
+    container_names = [c["name"] for c in pod_data["spec"]["containers"]]
+    if desired_container:
+        if desired_container not in container_names:
+            print(f"Container '{desired_container}' not found in pod '{pod_name}'. Exiting.")
+            sys.exit(1)
+        container_name = desired_container
+    else:
+        if len(container_names) == 1:
+            container_name = container_names[0]
+        else:
+            print("Multiple containers exist but none specified in config. Exiting.")
+            sys.exit(1)
+
+    limits = get_container_resource_limits(pod_data, container_name)
+    cpu_limit = limits.get("cpu")
+    mem_limit = limits.get("memory")
+    chaos_type = None
+    stress_cmd = None
+
+    # ------------------------------------------
+    # Existing chaos types
+    # ------------------------------------------
+    if "cpu" in desired_chaos_type.lower() or "memory" in desired_chaos_type.lower():
+        return
+
+    if "latency" in desired_chaos_type.lower() or "packet" in desired_chaos_type.lower():
+        stress_cmd = f"tc qdisc del dev eth0 root"
+
+    else:
+        print(f"Invalid or unknown chaos type '{desired_chaos_type}' specified in config. Exiting.")
+        sys.exit(1)
+
+    exec_cmd = ["kubectl", "exec", "-n", namespace, pod_name, "-c", container_name, "--"] + stress_cmd.split()
+    print("\nExecuting the following command in the pod:")
+    print(" ".join(exec_cmd))
+
+    try:
+        process = subprocess.Popen(exec_cmd)
+        print("\nEnding injection...")
+        status = "launched"
+    except Exception as e:
+        print(f"\nError executing chaos command: {e}")
+        status = "failed"
+        sys.exit(1)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:

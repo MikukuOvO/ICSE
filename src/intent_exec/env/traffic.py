@@ -14,8 +14,9 @@ def start_traffic():
         "locust",
         "-f", traffic_file,
         "--headless",
-        "-u", "10",
-        "-r", "10",
+        "--only-summary",
+        "-u", "100",
+        "-r", "5",
         "--host", f"http://{minikube_ip}:32677",
     ]
     

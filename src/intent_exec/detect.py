@@ -22,7 +22,7 @@ from .agent import (
 
 from ..utils.export_csv import export_metrics
 
-from .env.resource import inject
+from .env.resource import inject, remove_inject
 from .env.utils import list_deployments
 from .env.traffic import start_traffic, end_traffic
 
@@ -32,7 +32,7 @@ global_config = load_config()
 
 base_path = get_ancestor_path(2)
 
-timeout = 2400
+timeout = 1800
 
 def main():
     process = start_traffic()
@@ -120,6 +120,7 @@ def main():
     logger.info('Stopping the task...')
     end_traffic(process)
     export_metrics(injection_time)
+    remove_inject()
 
 if __name__ == '__main__':
     main()

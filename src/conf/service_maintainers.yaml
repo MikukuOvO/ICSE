@@ -4,8 +4,8 @@ promQL_path: src/conf/metrics_collection.yaml
 slo_path: src/conf/slo_setting.yaml
 deployments:
   # - ts-admin-basic-info-service
-  # - ts-admin-order-service
-  # - ts-admin-route-service
+  - ts-admin-order-service
+  - ts-admin-route-service
   # - ts-admin-travel-service
   # - ts-admin-user-service
   # - ts-assurance-service
@@ -27,8 +27,8 @@ deployments:
   # - ts-order-other-service
   - ts-order-service
   - ts-payment-service
-  - ts-preserve-other-service
-  - ts-preserve-service
+  # - ts-preserve-other-service
+  # - ts-preserve-service
   - ts-price-service
   # - ts-rebook-service
   # - ts-route-plan-service

@@ -250,3 +250,81 @@ class BasicServiceUser(HttpUser):
         if response.status_code != 200:
             response.failure("Unexpected response: " + response.text)
     
+    @task(10)
+    def price_service(self):
+        path = "/api/v1/priceservice/prices"
+        headers = {
+            "Authorization": f"Bearer {self.token}",
+            "Content-Type": "application/json"
+        }
+        response = self.client.get(path, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = { 
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.get(path, headers=headers) 
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+        prices = response.json()['data']
+        price = random.choice(prices)
+        response = self.client.put(path, json=price, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.put(path, json=price, headers=headers)
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+
+    @task(10)
+    def adminorder_service(self):
+        path = "/api/v1/adminorderservice/adminorder"
+        headers = {
+            "Authorization": f"Bearer {self.token}",
+            "Content-Type": "application/json"
+        }
+        response = self.client.get(path, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.get(path, headers=headers) 
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+        adminorders = response.json()['data']
+        adminorder = random.choice(adminorders)
+        response = self.client.put(path, json=adminorder, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.put(path, json=adminorder, headers=headers)
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+
+    @task(10)
+    def adminroute_service(self):
+        path = "/api/v1/adminrouteservice/adminroute"
+        headers = {
+            "Authorization": f"Bearer {self.token}",
+            "Content-Type": "application/json"
+        }
+        response = self.client.get(path, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.get(path, headers=headers) 
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+    
