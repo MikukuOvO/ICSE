@@ -3,13 +3,14 @@
 # 定义一个函数来执行部署和执行的过程
 run_deployment() {
   echo "===== 开始第 $1 次执行 ====="
-  
+  sleep 60
   echo "正在删除现有部署..."
   kubectl delete -f deployment/social-network-xirui/ && \
   kubectl delete -f deployment/prometheus/ && \
   kubectl delete -f deployment/otel-collector/ && \
   kubectl delete namespace social-network
   
+  sleep 60
   echo "正在创建新的部署..."
   minikube mount deployment/DeathStarBench/:/DeathStarBench & \
   MOUNT_PID=$!

@@ -21,4 +21,5 @@ kubectl delete -f deployment/social-network-xirui/ && \
 kubectl delete -f deployment/prometheus/ && \
 kubectl delete -f deployment/otel-collector/ && \
 kubectl delete namespace social-network 
+pkill -f "minikube mount deployment/DeathStarBench"
 

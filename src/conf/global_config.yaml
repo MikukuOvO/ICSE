@@ -52,9 +52,9 @@ traffic_file_path: "traffic_rasing/social-network/mixed_traffic.py"
 
 chaos_injection:
   namespace: "social-network"
-  service: "compose-post-service"
+  service: "user-timeline-service"
   container: ""
-  chaos_type: "cpu"
+  chaos_type: "packet"
   # chaos_type: "MEMORY leak"
   duration: 50m
 
