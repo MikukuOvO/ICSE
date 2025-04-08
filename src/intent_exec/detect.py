@@ -62,7 +62,7 @@ def main():
 
     logger.warning(f'Injection details are available at: {injection_file_path}')
     
-    components = list_deployments(namespace, "src/conf/service_maintainers.yaml")
+    components = list_deployments(namespace, "src/conf/service_maintainers_detect.yaml")
     cluster_manager = ClusterManager._init_from_config(
         cache_seed=42,
         components=components
@@ -74,6 +74,7 @@ def main():
 
     agents = [
         ServiceMaintainer._init_from_config(
+            task_name="detect",
             service_name=component,
             cache_seed=random.randint(0, 100),
         )
