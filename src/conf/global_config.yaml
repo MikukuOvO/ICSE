@@ -82,18 +82,42 @@ heartbeat:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause.
         - After the root cause is identified, you should take the necessary actions to fix the unhealthy state.
         - You are allowed to repeat the above steps a few times to fix the unhealthy state.
+  # optimization_task: |-
+  #   This task is a optimization task for your microservice component.
+  #   # Follow the instructions below to complete the task:
+  #     1. Check the state of the microservice component to monitor resource usage and latency.
+  #     2. The latency should be less than 200ms.
+  #       - If the current latency is higher than 200ms, increase resource allocation to reduce latency.
+  #       - If the current latency is below 200ms, decrease resource allocation to save costs.
+  #     3. To determine the pattern of metrics you gathered, you can refer to the following patterns:
+  #       - If the latency is nearly reaching the threshold, you should increase resource allocation.
+  #       - If the latency has some fluctuations, you should consider the margin whether will reach the threshold. If not, just ignore it.
+  #       - If the latency has shown increasing trend, you should estimate the time when it will reach the threshold. If more than 5 minutes, you should consider decrease resource allocation due to the furture optimization chance.
+  #     4. Do not analysis the root cause of the unhealthy state, just focus on the optimization of resource allocation.
   optimization_task: |-
-    This task is a optimization task for your microservice component.
-    # Follow the instructions below to complete the task:
-      1. Check the state of the microservice component to monitor resource usage and latency.
-      2. The latency should be less than 200ms.
-        - If the current latency is higher than 200ms, increase resource allocation to reduce latency.
-        - If the current latency is below 200ms, decrease resource allocation to save costs.
-      3. To determine the pattern of metrics you gathered, you can refer to the following patterns:
-        - If the latency is nearly reaching the threshold, you should increase resource allocation.
-        - If the latency has some fluctuations, you should consider the margin whether will reach the threshold. If not, just ignore it.
-        - If the latency has shown increasing trend, you should estimate the time when it will reach the threshold. If more than 5 minutes, you should consider decrease resource allocation due to the furture optimization chance.
-      4. Do not analysis the root cause of the unhealthy state, just focus on the optimization of resource allocation.
+    - This task is to optimize the resouce allocation of the microservice component that you are maintaining.
+    - You will be given a Service Level Objective (SLO) and a set of metrics to monitor the health of the microservice component. Refer to the "Service Level Objective" section for the detailed SLO.
+    - Refer to the "Guidelines for Optimization" section for the steps to follow in order to optimize the CPU resource allocation.
+    - Refer to the "Other Requirements" section for any other requirements that you need to follow while performing the task.
+
+    # Service Level Objective
+    - The SLO for the microservice component is to maintain a latency of less than 200ms.
+    - The SLO is defined as the 95th percentile latency over a rolling 5-min window.
+
+    # Guidelines for Optimization
+    - Step 1: Monitor the metrics mentioned in the SLO and determine if the SLO is being met.
+    - Step 2: If the SLO is barely met, no action is needed.
+    - Step 3: If the SLO is met with a good margin, take action to decrease resource allocation with following rules to save costs:
+      - Rule 1: When decreasing resource allocation, not smaller than 1/2 of the current allocation.
+      - Rule 2: When decreasing resource allocation, not smaller than 50m for CPU.
+    - Step 4: If the SLO is not met, take action to increase resource allocation with following rules to ensure the SLO is met:
+      - Rule 1: When increasing resource allocation, not larger than 2x of the current allocation.
+      - Rule 2: When increasing resource allocation, not larger than 400m for CPU.
+
+    # Other Requirements
+    - Focus on the optimization of resource allocation, SLO violation are caused by the resource allocation.
+    - Not do modification on the deployment instead of CPU resource allocation, such as image, env, replicas, etc.
+  
   group_task_prefix: |-
     TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n
 

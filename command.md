@@ -23,3 +23,6 @@ kubectl delete -f deployment/otel-collector/ && \
 kubectl delete namespace social-network 
 pkill -f "minikube mount deployment/DeathStarBench"
 
+minikube addons enable metrics-server
+cd autoscaler/vertical-pod-autoscaler
+./hack/vpa-up.sh

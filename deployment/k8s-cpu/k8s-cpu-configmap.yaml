@@ -1,0 +1,163 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-cpu-controller-script
+  namespace: kube-system
+data:
+  controller.sh: |
+    #!/bin/bash
+
+    # Configuration
+    NAMESPACE="social-network"  # Your microservices namespace
+    THRESHOLD=50                # CPU utilization threshold (50 = 50%)
+    INTERVAL=15                 # Sampling interval in seconds (m=15)
+    WINDOW=300                  # Window size in seconds (s=300)
+    # For K8s-CPU-Fast, use INTERVAL=1 and WINDOW=20
+    LOG_FILE="/var/log/cpu-controller.log"  # Log file for debugging
+
+    # Specify only the three services to manage
+    SERVICES="compose-post-service home-timeline-service user-timeline-service"
+
+    # Function for logging
+    log_message() {
+      local message="$(date '+%Y-%m-%d %H:%M:%S') - $1"
+      echo "$message" | tee -a "$LOG_FILE"
+    }
+
+    # Function for floating point division without bc
+    # Usage: div 100 50 (returns 2)
+    div() {
+      echo $(awk "BEGIN {printf \"%.3f\", $1 / $2}")
+    }
+
+    # Function for comparison without bc
+    # Usage: greater_than 2.5 2.3 (returns 1 if true, 0 if false)
+    greater_than() {
+      awk -v a="$1" -v b="$2" 'BEGIN {print (a > b)}'
+    }
+
+    log_message "Starting CPU controller with THRESHOLD=$THRESHOLD%, INTERVAL=$INTERVAL, WINDOW=$WINDOW"
+    log_message "Monitoring services: $SERVICES"
+
+    # Initialize history storage
+    declare -A service_history
+    for SERVICE in $SERVICES; do
+      service_history[$SERVICE]=""
+      log_message "Initialized history for $SERVICE"
+    done
+
+    # Validate kubectl access
+    if ! kubectl get namespace $NAMESPACE &>/dev/null; then
+      log_message "ERROR: Cannot access namespace $NAMESPACE. Check kubectl configuration."
+      exit 1
+    fi
+
+    while true; do
+      log_message "Beginning monitoring cycle"
+      
+      for SERVICE in $SERVICES; do
+        # Get pods for this service
+        PODS=$(kubectl get pods -n $NAMESPACE -l app=$SERVICE -o jsonpath='{.items[*].metadata.name}' 2>/dev/null)
+        
+        if [ -z "$PODS" ]; then
+          log_message "WARNING: No pods found for service $SERVICE"
+          continue
+        fi
+        
+        log_message "Found pods for $SERVICE: $PODS"
+        
+        for POD in $PODS; do
+          # Get current CPU usage in millicores
+          CPU_TOP_OUTPUT=$(kubectl top pod $POD -n $NAMESPACE 2>&1)
+          if [ $? -ne 0 ]; then
+            log_message "ERROR getting metrics for $POD: $CPU_TOP_OUTPUT"
+            continue
+          fi
+          
+          CPU_USAGE=$(echo "$CPU_TOP_OUTPUT" | grep $POD | awk '{print $2}' | sed 's/m//')
+          if [ -z "$CPU_USAGE" ]; then
+            log_message "WARNING: Could not parse CPU usage for $POD"
+            log_message "Raw metrics output: $CPU_TOP_OUTPUT"
+            continue
+          fi
+          
+          # Calculate optimal allocation based on threshold (in millicores)
+          # CPU_USAGE is already in millicores, THRESHOLD is percentage
+          OPTIMAL_ALLOCATION=$(div $CPU_USAGE $THRESHOLD)
+          OPTIMAL_ALLOCATION_MILLICORES=$(awk "BEGIN {printf \"%.0f\", $OPTIMAL_ALLOCATION * 1000}")
+          
+          # Update history for this service
+          HISTORY=${service_history[$SERVICE]}
+          HISTORY="$HISTORY $OPTIMAL_ALLOCATION_MILLICORES"
+          
+          # Keep only values within the window
+          ENTRIES_TO_KEEP=$(($WINDOW / $INTERVAL))
+          HISTORY=$(echo $HISTORY | awk -v count=$ENTRIES_TO_KEEP '{for (i=NF-count+1; i<=NF; i++) if (i > 0) printf "%s%s", $i, (i<NF ? " " : "")}')
+          service_history[$SERVICE]=$HISTORY
+          
+          # Find maximum allocation in history
+          MAX_ALLOCATION=0
+          for ALLOC in $HISTORY; do
+            if [ $(greater_than $ALLOC $MAX_ALLOCATION) -eq 1 ]; then
+              MAX_ALLOCATION=$ALLOC
+            fi
+          done
+          
+          # Round up to nearest 10m (minimum Kubernetes allocation unit)
+          MAX_ALLOCATION_ROUNDED=$(( (($MAX_ALLOCATION + 9)) / 10 * 10 ))
+          
+          log_message "Service: $SERVICE, Pod: $POD, Current usage: ${CPU_USAGE}m, New limit: ${MAX_ALLOCATION_ROUNDED}m"
+          
+          # Get container name - it might not match the service name exactly
+          CONTAINER_NAME=$(kubectl get pod $POD -n $NAMESPACE -o jsonpath='{.spec.containers[0].name}' 2>/dev/null)
+          if [ -z "$CONTAINER_NAME" ]; then
+            log_message "ERROR: Could not determine container name for pod $POD"
+            continue
+          fi
+          
+          log_message "Using container name: $CONTAINER_NAME for pod $POD"
+          
+          # Check current limit before patching
+          CURRENT_LIMIT=$(kubectl get pod $POD -n $NAMESPACE -o jsonpath="{.spec.containers[?(@.name=='$CONTAINER_NAME')].resources.limits.cpu}" 2>/dev/null)
+          log_message "Current CPU limit for $POD: $CURRENT_LIMIT"
+          
+          # Update CPU limit for the pod
+          PATCH_RESULT=$(kubectl patch pod $POD -n $NAMESPACE -p "{\"spec\":{\"containers\":[{\"name\":\"$CONTAINER_NAME\",\"resources\":{\"limits\":{\"cpu\":\"${MAX_ALLOCATION_ROUNDED}m\"}}}]}}" 2>&1)
+          
+          if [ $? -eq 0 ]; then
+            log_message "SUCCESS: Updated CPU limit for $POD to ${MAX_ALLOCATION_ROUNDED}m"
+          else
+            log_message "ERROR: Failed to update CPU limit for $POD: $PATCH_RESULT"
+            
+            # Try get deployment name and patch that instead
+            DEPLOYMENT=$(kubectl get pod $POD -n $NAMESPACE -o jsonpath='{.metadata.ownerReferences[0].name}' 2>/dev/null)
+            if [[ -n "$DEPLOYMENT" ]]; then
+              OWNER_KIND=$(kubectl get pod $POD -n $NAMESPACE -o jsonpath='{.metadata.ownerReferences[0].kind}' 2>/dev/null)
+              
+              if [[ "$OWNER_KIND" == "ReplicaSet" ]]; then
+                # Get deployment from ReplicaSet
+                RS_NAME=$DEPLOYMENT
+                DEPLOYMENT=$(kubectl get rs $RS_NAME -n $NAMESPACE -o jsonpath='{.metadata.ownerReferences[0].name}' 2>/dev/null)
+                OWNER_KIND=$(kubectl get rs $RS_NAME -n $NAMESPACE -o jsonpath='{.metadata.ownerReferences[0].kind}' 2>/dev/null)
+              fi
+              
+              if [[ "$OWNER_KIND" == "Deployment" ]]; then
+                log_message "Attempting to patch deployment $DEPLOYMENT instead"
+                DEPLOY_PATCH_RESULT=$(kubectl patch deployment $DEPLOYMENT -n $NAMESPACE -p "{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"$CONTAINER_NAME\",\"resources\":{\"limits\":{\"cpu\":\"${MAX_ALLOCATION_ROUNDED}m\"}}}]}}}}" 2>&1)
+                
+                if [ $? -eq 0 ]; then
+                  log_message "SUCCESS: Updated CPU limit for deployment $DEPLOYMENT to ${MAX_ALLOCATION_ROUNDED}m"
+                else
+                  log_message "ERROR: Failed to update deployment $DEPLOYMENT: $DEPLOY_PATCH_RESULT"
+                fi
+              else
+                log_message "Cannot patch: owner is a $OWNER_KIND, not a Deployment"
+              fi
+            fi
+          fi
+        done
+      done
+      
+      log_message "Monitoring cycle complete. Sleeping for $INTERVAL seconds"
+      sleep $INTERVAL
+    done

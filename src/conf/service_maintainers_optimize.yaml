@@ -3,14 +3,6 @@ tool_functions_path: src/intent_exec/agent/tool_functions_for_maintainer.py
 promQL_path: src/conf/metrics_collection.yaml
 slo_path: src/conf/slo_setting.yaml
 deployments:
-  - media-service
-  - user-service
-  - text-service
-  - unique-id-service
-  - url-shorten-service
-  - user-mention-service
-  - social-graph-service
-  - post-storage-service
   - home-timeline-service
   - user-timeline-service
   - compose-post-service

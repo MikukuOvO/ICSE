@@ -1,59 +1,59 @@
 social-network:
   user-service-latency:
     deploymentName: "user-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_creator_with_user_id_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_creator_with_user_id_latency_ms_bucket[5m])) by (le))"
 
   media-service-latency:
     deploymentName: "media-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_media_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_media_latency_ms_bucket[5m])) by (le))"
 
   compose-post-service-latency:
     deploymentName: "compose-post-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_post_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_post_latency_ms_bucket[5m])) by (le))"
 
   text-service-latency:
     deploymentName: "text-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_text_latency_ms_bucket[])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_text_latency_ms_bucket[5m])) by (le))"
 
   unique-id-service-latency:
     deploymentName: "unique-id-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_unique_id_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_unique_id_latency_ms_bucket[5m])) by (le))"
 
   url-shorten-service-latency:
     deploymentName: "url-shorten-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_urls_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_urls_latency_ms_bucket[5m])) by (le))"
 
   user-mention-service-latency:
     deploymentName: "user-mention-service"
-    promql: "histogram_quantile(0.99,sum(rate(compose_user_mentions_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(compose_user_mentions_latency_ms_bucket[5m])) by (le))"
 
   social-graph-service-latency:
     deploymentName: "social-graph-service"
-    promql: "histogram_quantile(0.99,sum(rate(get_followers_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(get_followers_latency_ms_bucket[5m])) by (le))"
 
   home-timeline-service-read-latency:
     deploymentName: "home-timeline-service"
-    promql: "histogram_quantile(0.99,sum(rate(read_home_timeline_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(read_home_timeline_latency_ms_bucket[5m])) by (le))"
 
   home-timeline-service-write-latency:
     deploymentName: "home-timeline-service"
-    promql: "histogram_quantile(0.99,sum(rate(write_home_timeline_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(write_home_timeline_latency_ms_bucket[5m])) by (le))"
 
   post-storage-service-read-latency:
     deploymentName: "post-storage-service"
-    promql: "histogram_quantile(0.99,sum(rate(read_posts_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(read_posts_latency_ms_bucket[5m])) by (le))"
 
   post-storage-service-write-latency:
     deploymentName: "post-storage-service"
-    promql: "histogram_quantile(0.99,sum(rate(store_post_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(store_post_latency_ms_bucket[5m])) by (le))"
 
   user-timeline-service-read-latency:
     deploymentName: "user-timeline-service"
-    promql: "histogram_quantile(0.99,sum(rate(read_user_timeline_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(read_user_timeline_latency_ms_bucket[5m])) by (le))"
 
   user-timeline-service-write-latency:
     deploymentName: "user-timeline-service"
-    promql: "histogram_quantile(0.99,sum(rate(write_user_timeline_latency_ms_bucket[5m])) by (le))"
+    promql: "histogram_quantile(0.95,sum(rate(write_user_timeline_latency_ms_bucket[5m])) by (le))"
 
 
   user-service-cpu:

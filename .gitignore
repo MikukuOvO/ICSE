@@ -6,5 +6,6 @@ baseline/
 # All files include subdirectories with .pyc suffix
 *.pyc
 src/results/
-src/previous_results/
 baro/
+EXP_results/
+previous_results/

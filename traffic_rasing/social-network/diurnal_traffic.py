@@ -90,15 +90,25 @@ class UserBehavior(HttpUser):
                 response.failure(f"Got status code {response.status_code}")
 
 
-class DiurnalShape(LoadTestShape):
+class ModifiedLoadShape(LoadTestShape):
     """
-    A "diurnal"-like shape: 
-      - Gradually ramps from 0 up to max_users over half the test duration.
-      - Then ramps back down from max_users to 0 over the remaining half.
+    A modified load test shape that follows this pattern:
+    - Stable low traffic (0% to 20% of total time)
+    - Quick ramp up to peak (20% to 40% of total time)
+    - Sustained peak traffic (40% to 60% of total time)
+    - Quick ramp down to low (60% to 80% of total time)
+    - Stable low traffic (80% to 100% of total time)
     """
-    total_time = 3600      # e.g. 60 minutes in seconds; adjust as needed
-    max_users = 500        # peak concurrency; adjust to suit your test scale
-
+    total_time = 7200      # 120 minutes in seconds; adjust as needed
+    max_users = 200        # peak concurrency; adjust to suit your test scale
+    min_users = 20         # baseline/low traffic level
+    
+    # Control parameters for the curve shape
+    stable_low_until = 0.20      # Maintain baseline until this point
+    ramp_up_until = 0.40         # When to reach peak users
+    plateau_until = 0.60         # Maintain peak until this point
+    ramp_down_until = 0.80       # When to complete ramp down
+    
     def tick(self):
         run_time = self.get_run_time()
         if run_time > self.total_time:
@@ -106,15 +116,36 @@ class DiurnalShape(LoadTestShape):
 
         # Ratio of how far along we are in the entire test (0 to 1)
         ratio = run_time / self.total_time
+        
+        # Calculate available user range (after reserving baseline traffic)
+        available_range = self.max_users - self.min_users
 
-        if ratio <= 0.5:
-            # ramping up from 0 to max_users in first half
-            user_count = self.max_users * (ratio / 0.5)
+        if ratio <= self.stable_low_until:
+            # Stable low traffic at beginning
+            user_count = self.min_users
+        
+        elif ratio <= self.ramp_up_until:
+            # Linear ramp up from min to max
+            ramp_duration = self.ramp_up_until - self.stable_low_until
+            ramp_progress = (ratio - self.stable_low_until) / ramp_duration
+            user_count = self.min_users + (available_range * ramp_progress)
+        
+        elif ratio <= self.plateau_until:
+            # Sustained peak traffic
+            user_count = self.max_users
+            
+        elif ratio <= self.ramp_down_until:
+            # Linear ramp down from max to min
+            ramp_duration = self.ramp_down_until - self.plateau_until
+            ramp_progress = (ratio - self.plateau_until) / ramp_duration
+            remaining_ratio = 1 - ramp_progress
+            user_count = self.min_users + (available_range * remaining_ratio)
+            
         else:
-            # ramping down from max_users to 0 in second half
-            user_count = self.max_users * ((1 - ratio) / 0.5)
+            # Stable low traffic at end
+            user_count = self.min_users
 
-        # spawn_rate can match user_count or be any rate you want
-        spawn_rate = user_count if user_count >= 1 else 1
+        # Determine spawn rate based on user count
+        spawn_rate = max(5, int(user_count / 10))
 
-        return int(user_count), int(spawn_rate)
+        return int(user_count), spawn_rate
