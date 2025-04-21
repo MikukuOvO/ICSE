@@ -11,11 +11,11 @@ import subprocess
 from typing import Dict, List, Optional, Tuple
 
 # Configuration
-NAMESPACE = "social-network"  # Target namespace
+NAMESPACE = "train-ticket"  # Target namespace
 THRESHOLD = 0.05               # CPU utilization threshold (0.5 = 50%)
 INTERVAL = 60                 # Sampling interval in seconds
 WINDOW = 300                  # Window size in seconds
-SERVICES = ["compose-post-service", "home-timeline-service", "user-timeline-service"]
+SERVICES = ["ts-route-service", "ts-order-service", "ts-travel-service"]
 REQUEST_RATIO = 1.0           # Requests will be set to this ratio of limits (1.0 = equal)
 SCALE_UP_FACTOR = 1.5         # When over threshold, multiply by this factor
 SCALE_DOWN_FACTOR = 0.8       # When under threshold, multiply by this factor
