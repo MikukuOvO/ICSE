@@ -3,6 +3,7 @@ import json
 import subprocess
 import datetime
 import time
+import os
 
 def convert_memory_to_mib(memory_value):
     """
@@ -44,11 +45,11 @@ def convert_cpu_to_millicores(cpu_value):
 
 def setup_vpa():
     """
-    Set up VPA for the home-timeline-service
+    Set up VPA for the ts-route-service
     Returns the deployment name and namespace
     """
-    deployment_name = "home-timeline-service"
-    namespace = "social-network"
+    deployment_name = "ts-route-service"
+    namespace = "train-ticket"
     
     # Create a VPA YAML configuration
     vpa_yaml = f"""apiVersion: autoscaling.k8s.io/v1
@@ -68,19 +69,24 @@ spec:
     containerPolicies:
     - containerName: '*'
       minAllowed:
-        cpu: 20m
-        memory: 64Mi
+        cpu: 100m
+        memory: 300Mi
       maxAllowed:
         cpu: 1000m
-        memory: 1Gi
+        memory: 4000Mi
 """
     
     # Write the VPA configuration to a file
-    with open("vpa.yaml", "w") as f:
-        f.write(vpa_yaml)
+    file_path = os.path.join(os.getcwd(), "vpa.yaml")
+    try:
+        with open(file_path, "w") as f:
+            f.write(vpa_yaml)
+    except Exception as e:
+        print(f"Error writing VPA configuration to file: {e}")
+        raise
     
     # Apply the VPA configuration
-    apply_cmd = f"kubectl apply -f vpa.yaml"
+    apply_cmd = f"kubectl apply -f vpa.yaml -n train-ticket"
     result = subprocess.run(
         apply_cmd,
         shell=True,
@@ -125,12 +131,12 @@ def get_services_from_yaml():
         
         if not services:
             print("No services found in the YAML file. Using default service.")
-            services = ["home-timeline-service"]
+            services = ["ts-route-service"]
             
         return services
     except Exception as e:
         print(f"Error reading YAML file: {e}")
-        return ["home-timeline-service"]  # Default to home-timeline-service if there's an error
+        return ["ts-route-service"]  # Default to home-timeline-service if there's an error
 
 def get_pod_resources(pod_name, namespace):
     """

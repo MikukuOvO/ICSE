@@ -51,7 +51,7 @@ def start_traffic():
     print("Locust has been started. Waiting for stability...")
     
     # Wait for time about 35 minutes to let the system stabilize.
-    time.sleep(35*60)  # 35 minutes
+    time.sleep(30)  # 35 minutes
     print("The system is assumed to be stable.")
     
     return process
