@@ -1,11 +1,38 @@
 #!/bin/bash
 
+# --- Configuration ---
+# Set the desired traffic type here.
+# Options should correspond to your Locust file naming convention,
+# e.g., "diurnal" for "diurnal_traffic.py", "bursty" for "bursty_traffic.py".
+TRAFFIC_TYPE="constant" # CHANGE THIS VALUE (e.g., "bursty", "constant")
+# --- End Configuration ---
+
+# --- Derived Variables (Do not change unless structure changes) ---
+TRAFFIC_FILE_BASENAME="${TRAFFIC_TYPE}_traffic.py"
+TRAFFIC_FILE_PATH="traffic_rasing/social-network/${TRAFFIC_FILE_BASENAME}"
+# Pattern for finding locust processes related to the specific traffic file
+LOCUST_PGREP_PATTERN="locust.*${TRAFFIC_FILE_BASENAME}"
+# Locust CSV output prefix
+LOCUST_CSV_PREFIX="locust_results"
+# ---
+
+echo "--- Starting Experiment Setup ---"
+echo "Using traffic type: ${TRAFFIC_TYPE}"
+echo "Using traffic file: ${TRAFFIC_FILE_PATH}"
+
+# Check if the specified traffic file exists
+if [ ! -f "$TRAFFIC_FILE_PATH" ]; then
+    echo "Error: Traffic file not found at ${TRAFFIC_FILE_PATH}"
+    exit 1
+fi
+
 # Check for existing K8s monitoring processes and kill them
+echo "Checking for existing K8s monitoring processes..."
 if pgrep -f "python.*--namespace social-network" > /dev/null; then
     echo "Found existing K8s monitoring processes. Terminating them..."
     pkill -f "python.*--namespace social-network"
     sleep 2
-    
+
     # Force kill if any processes are still running
     if pgrep -f "python.*--namespace social-network" > /dev/null; then
         echo "Some K8s monitoring processes still running. Force terminating..."
@@ -16,89 +43,126 @@ else
     echo "No existing K8s monitoring processes found."
 fi
 
-# Check for existing Locust processes and kill them
-if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
-    echo "Found existing Locust processes. Terminating them..."
-    pkill -f "locust.*diurnal_traffic.py"
+# Check for existing Locust processes for the specified traffic type and kill them
+echo "Checking for existing Locust processes (${TRAFFIC_TYPE})..."
+if pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
+    echo "Found existing Locust processes (${TRAFFIC_TYPE}). Terminating them..."
+    pkill -f "$LOCUST_PGREP_PATTERN"
     sleep 2
-    
+
     # Force kill if any processes are still running
-    if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
-        echo "Some Locust processes still running. Force terminating..."
-        pkill -9 -f "locust.*diurnal_traffic.py"
+    if pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
+        echo "Some Locust processes (${TRAFFIC_TYPE}) still running. Force terminating..."
+        pkill -9 -f "$LOCUST_PGREP_PATTERN"
     fi
-    echo "All existing Locust processes terminated."
+    echo "All existing Locust processes (${TRAFFIC_TYPE}) terminated."
 else
-    echo "No existing Locust processes found."
+    echo "No existing Locust processes (${TRAFFIC_TYPE}) found."
 fi
 
 # Remove existing log files
-rm -f optimization_timing.csv 
+echo "Removing previous log files..."
+rm -f optimization_timing.csv
 rm -f k8s_resources.csv
-rm -f locust_results*
+rm -f ${LOCUST_CSV_PREFIX}* # Remove specific locust results
+rm -f k8s_monitor.log
 
 # Create a log file for storing timing information
 TIMING_LOG="optimization_timing.csv"
+echo "Creating timing log: ${TIMING_LOG}"
 echo "iteration,start_time,end_time,duration_seconds" > $TIMING_LOG
 
-locust -f traffic_rasing/social-network/diurnal_traffic.py --headless \
+# Start Locust with the selected traffic file
+echo "Starting Locust with ${TRAFFIC_FILE_BASENAME}..."
+locust -f "${TRAFFIC_FILE_PATH}" --headless \
     --host http://192.168.49.2:30080 \
-    --csv=locust_results > /dev/null 2>&1 &
+    --csv="${LOCUST_CSV_PREFIX}" > /dev/null 2>&1 &
 LOCUST_PID=$!
-
+echo "Locust started (PID: $LOCUST_PID). Waiting 60 seconds for ramp-up..."
 sleep 60
 
 # Start K8s resource monitoring in the background
+echo "Starting K8s resource monitoring..."
 python -m src.intent_exec.monitor --namespace social-network --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
 MONITOR_PID=$!
+echo "K8s monitor started (PID: $MONITOR_PID)."
 
 # Define a function to execute deployment and optimization process with timing
 run_deployment() {
-  echo "===== Starting execution #$1 ====="
-  
-  # Record start time in both human-readable and epoch formats
-  START_TIME=$(date "+%Y-%m-%d %H:%M:%S")
-  START_EPOCH=$(date +%s)
-  
-  # Run the optimization
-  python -m src.intent_exec.optimize
-  
-  # Record end time and calculate duration
-  END_TIME=$(date "+%Y-%m-%d %H:%M:%S")
-  END_EPOCH=$(date +%s)
-  DURATION=$((END_EPOCH - START_EPOCH))
-  
-  # Log the timing information
-  echo "$1,$START_TIME,$END_TIME,$DURATION" >> $TIMING_LOG
-  
-  echo "===== Execution #$1 completed ====="
-  echo "       Started:  $START_TIME"
-  echo "       Ended:    $END_TIME"
-  echo "       Duration: $DURATION seconds"
+    local iteration=$1
+    echo "===== Starting Optimization Iteration #${iteration} ====="
+
+    # Record start time in both human-readable and epoch formats
+    START_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+    START_EPOCH=$(date +%s)
+
+    # Run the optimization
+    echo "[${START_TIME}] Running optimization process..."
+    python -m src.intent_exec.optimize
+    OPTIMIZE_STATUS=$? # Capture exit status if needed
+
+    # Record end time and calculate duration
+    END_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+    END_EPOCH=$(date +%s)
+    DURATION=$((END_EPOCH - START_EPOCH))
+
+    # Log the timing information
+    echo "${iteration},${START_TIME},${END_TIME},${DURATION}" >> $TIMING_LOG
+
+    echo "===== Optimization Iteration #${iteration} completed ====="
+    echo "       Started:  ${START_TIME}"
+    echo "       Ended:    ${END_TIME}"
+    echo "       Duration: ${DURATION} seconds"
+    if [ $OPTIMIZE_STATUS -ne 0 ]; then
+      echo "       WARNING: Optimization script exited with status ${OPTIMIZE_STATUS}"
+    fi
+    echo "" # Add a blank line for readability
 }
 
 # Run the deployments in sequence
-for i in {1..12}
+NUM_ITERATIONS=12
+echo "--- Starting ${NUM_ITERATIONS} Optimization Iterations ---"
+for i in $(seq 1 ${NUM_ITERATIONS})
 do
-  run_deployment $i
+    run_deployment $i
+    # Optional: Add a sleep interval between optimization runs if needed
+    # sleep 30
 done
+echo "--- Completed ${NUM_ITERATIONS} Optimization Iterations ---"
 
 # Stop Locust
 echo "Stopping Locust (PID: $LOCUST_PID)"
-kill $LOCUST_PID
-
-# Verify Locust termination
-sleep 2
-if ps -p $LOCUST_PID > /dev/null || pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
-    echo "Locust didn't terminate gracefully, forcing..."
-    pkill -9 -f "locust.*diurnal_traffic.py"
+if kill $LOCUST_PID > /dev/null 2>&1; then
+    # Verify Locust termination
+    sleep 2
+    if ps -p $LOCUST_PID > /dev/null || pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
+        echo "Locust didn't terminate gracefully, forcing (pattern: $LOCUST_PGREP_PATTERN)..."
+        pkill -9 -f "$LOCUST_PGREP_PATTERN"
+    else
+        echo "Locust successfully terminated."
+    fi
 else
-    echo "Locust successfully terminated."
+    echo "Locust process (PID: $LOCUST_PID) already stopped or not found. Checking pattern..."
+    if pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
+         echo "Locust process found via pattern. Forcing termination..."
+         pkill -9 -f "$LOCUST_PGREP_PATTERN"
+    else
+         echo "No running Locust process found matching the pattern."
+    fi
 fi
+
 
 # Stop the monitoring process
 echo "Stopping K8s resource monitoring (PID: $MONITOR_PID)"
-kill $MONITOR_PID
+if kill $MONITOR_PID > /dev/null 2>&1; then
+    echo "K8s monitor successfully signaled."
+else
+    echo "K8s monitor process (PID: $MONITOR_PID) already stopped or not found."
+fi
 
+echo "--- Experiment Finished ---"
+echo "Timing information saved to ${TIMING_LOG}"
+echo "K8s resource data saved to k8s_resources.csv"
+echo "Locust results saved with prefix ${LOCUST_CSV_PREFIX}"
+echo "K8s monitor logs saved to k8s_monitor.log"
 echo "All tasks completed!"
-echo "Timing information saved to $TIMING_LOG"

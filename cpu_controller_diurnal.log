@@ -1,0 +1,3295 @@
+Starting CPU controller with threshold=5.0%, interval=60s, window=300s
+Monitoring services: compose-post-service, home-timeline-service, user-timeline-service
+Requests will be set to 100.0% of limits
+Scale up factor: 1.5, Scale down factor: 0.8
+
+--- Monitoring cycle at 2025-04-20 17:59:50 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5ccfb5d79f-g4hvs
+Service: compose-post-service, Pod: compose-post-service-5ccfb5d79f-g4hvs
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 1m of 100m limit (1.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=100m (100m), limits=100m (100m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 100m → 80m
+    Requests: 100m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-9f5ffb56d-l7j9g
+Service: home-timeline-service, Pod: home-timeline-service-9f5ffb56d-l7j9g
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 1m of 100m limit (1.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=100m (100m), limits=100m (100m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 100m → 80m
+    Requests: 100m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5f98d7b887-p7tmg
+Service: user-timeline-service, Pod: user-timeline-service-5f98d7b887-p7tmg
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 2m of 100m limit (2.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=100m (100m), limits=100m (100m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 100m → 80m
+    Requests: 100m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:00:51 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-t7v79
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-t7v79
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-8l7b4
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-8l7b4
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-vxkv7
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-vxkv7
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:01:52 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-gjwj6
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-gjwj6
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-z5xt2
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-z5xt2
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-kwlz8
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-kwlz8
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:02:54 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-b5c7c
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-b5c7c
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-mgh4h
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-mgh4h
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-wkxc7
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-wkxc7
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:03:55 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-v8569
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-v8569
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-2dzd6
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-2dzd6
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-5p2q2
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-5p2q2
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:04:56 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-69lcx
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-69lcx
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-trmd9
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-trmd9
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-2t9mg
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-2t9mg
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:05:57 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-7g55f
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-7g55f
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-nr8zs
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-nr8zs
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-ftxnm
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-ftxnm
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:06:58 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-rn7zm
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-rn7zm
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-kh88k
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-kh88k
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-d4vnc
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-d4vnc
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:07:59 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-4gghk
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-4gghk
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-sh2l9
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-sh2l9
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 60m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 90m
+    Requests: 60m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-57m8f
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-57m8f
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:09:00 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-9vhbr
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-9vhbr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-z4w48
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-z4w48
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 90m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-lg26m
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-lg26m
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:10:01 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-s44gn
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-s44gn
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-4w4xx
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-4w4xx
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 70m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 60m
+    Requests: 70m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-prj4z
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-prj4z
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:11:02 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-gq4g9
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-gq4g9
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 2m of 60m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-l64zm
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-l64zm
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-wzlbw
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-wzlbw
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 60m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 90m
+    Requests: 60m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:12:03 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-fq2gv
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-fq2gv
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-grprz
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-grprz
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-kz7ph
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-kz7ph
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 90m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:13:05 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-qtglh
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-qtglh
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-nqvxb
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-nqvxb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-48vn4
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-48vn4
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 70m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:14:06 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-p999m
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-p999m
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-6tl8b
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-6tl8b
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-4qqxq
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-4qqxq
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:15:07 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-fb6qr
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-fb6qr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-xmrs7
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-xmrs7
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-985ph
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-985ph
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 90m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:16:08 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-2qjjm
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-2qjjm
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-6sj79
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-6sj79
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-rvmcs
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-rvmcs
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 70m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:17:09 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-nd6xw
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-nd6xw
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-5sgfw
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-5sgfw
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-m2t75
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-m2t75
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:18:10 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-wv88b
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-wv88b
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-5m57r
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-5m57r
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-hnhsg
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-hnhsg
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:19:11 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-528dr
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-528dr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-p5vj7
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-p5vj7
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-5rvnv
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-5rvnv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 70m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 60m
+    Requests: 70m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:20:12 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-bgxv6
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-bgxv6
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-5snbx
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-5snbx
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-xssvf
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-xssvf
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:21:13 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-qdqzb
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-qdqzb
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 2m of 50m limit (4.0%)
+  Usage below threshold but at minimum reasonable limit, not scaling down
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Resources already at target values, no update needed
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-5kd9b
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-5kd9b
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-64pmr
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-64pmr
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 50m limit (8.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:22:14 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-qdqzb
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-qdqzb
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 50m limit (8.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-6p9vc
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-6p9vc
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-fg24v
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-fg24v
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:23:15 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-hzq55
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-hzq55
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-8rlk9
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-8rlk9
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-6cwnw
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-6cwnw
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 60m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 90m
+    Requests: 60m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:24:16 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-jssxf
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-jssxf
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-2k7hn
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-2k7hn
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-dld99
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-dld99
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:25:18 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-frzcb
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-frzcb
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 50m limit (8.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-lxfk7
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-lxfk7
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-fqxsg
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-fqxsg
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 70m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:26:20 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-pktmz
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-pktmz
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 80m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-f2nrb
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-f2nrb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 60m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 90m
+    Requests: 60m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-xnm7l
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-xnm7l
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:27:21 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-gqwpn
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-gqwpn
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 60m limit (8.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 90m
+    Requests: 60m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-92rz9
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-92rz9
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-sjfbw
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-sjfbw
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:28:22 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-2fw4c
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-2fw4c
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 90m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-kcvmt
+Command failed: kubectl top pod home-timeline-service-85f7b84dfb-kcvmt -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-85f7b84dfb-kcvmt" not found
+
+Failed to get CPU metrics for pod home-timeline-service-85f7b84dfb-kcvmt
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-cnjsn
+Command failed: kubectl top pod user-timeline-service-85f55699c5-cnjsn -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-85f55699c5-cnjsn" not found
+
+Failed to get CPU metrics for pod user-timeline-service-85f55699c5-cnjsn
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:29:23 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-8tmgl
+Command failed: kubectl top pod compose-post-service-f48d8b5c9-8tmgl -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-f48d8b5c9-8tmgl" not found
+
+Failed to get CPU metrics for pod compose-post-service-f48d8b5c9-8tmgl
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-kcvmt
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-kcvmt
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 70m limit (8.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-cnjsn
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-cnjsn
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:30:24 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-8tmgl
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-8tmgl
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-lsgp5
+Command failed: kubectl top pod home-timeline-service-7885f9f948-lsgp5 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-7885f9f948-lsgp5" not found
+
+Failed to get CPU metrics for pod home-timeline-service-7885f9f948-lsgp5
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-9mrtx
+Command failed: kubectl top pod user-timeline-service-79b9b87567-9mrtx -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-79b9b87567-9mrtx" not found
+
+Failed to get CPU metrics for pod user-timeline-service-79b9b87567-9mrtx
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:31:24 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-n447g
+Command failed: kubectl top pod compose-post-service-96cbddb99-n447g -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-96cbddb99-n447g" not found
+
+Failed to get CPU metrics for pod compose-post-service-96cbddb99-n447g
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-lsgp5
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-lsgp5
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-9mrtx
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-9mrtx
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 110m limit (5.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:32:25 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-n447g
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-n447g
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 110m limit (7.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-kddrh
+Command failed: kubectl top pod home-timeline-service-67cc8fd944-kddrh -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-67cc8fd944-kddrh" not found
+
+Failed to get CPU metrics for pod home-timeline-service-67cc8fd944-kddrh
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-f86lw
+Command failed: kubectl top pod user-timeline-service-6cf96b8ddc-f86lw -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-6cf96b8ddc-f86lw" not found
+
+Failed to get CPU metrics for pod user-timeline-service-6cf96b8ddc-f86lw
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:33:26 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-kq56b
+Command failed: kubectl top pod compose-post-service-685679d455-kq56b -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-685679d455-kq56b" not found
+
+Failed to get CPU metrics for pod compose-post-service-685679d455-kq56b
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-kddrh
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-kddrh
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-f86lw
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-f86lw
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 170m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:34:27 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-kq56b
+Service: compose-post-service, Pod: compose-post-service-685679d455-kq56b
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 170m limit (5.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-xpsh2
+Command failed: kubectl top pod home-timeline-service-64d5b45cb4-xpsh2 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-64d5b45cb4-xpsh2" not found
+
+Failed to get CPU metrics for pod home-timeline-service-64d5b45cb4-xpsh2
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-m8ldk
+Command failed: kubectl top pod user-timeline-service-85f55699c5-m8ldk -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-85f55699c5-m8ldk" not found
+
+Failed to get CPU metrics for pod user-timeline-service-85f55699c5-m8ldk
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:35:27 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-85xm2
+Command failed: kubectl top pod compose-post-service-5f78d587d7-85xm2 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-5f78d587d7-85xm2" not found
+
+Failed to get CPU metrics for pod compose-post-service-5f78d587d7-85xm2
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-xpsh2
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-xpsh2
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-m8ldk
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-m8ldk
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:36:28 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-85xm2
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-85xm2
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 260m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-2hbrh
+Command failed: kubectl top pod home-timeline-service-75b596d79b-2hbrh -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-75b596d79b-2hbrh" not found
+
+Failed to get CPU metrics for pod home-timeline-service-75b596d79b-2hbrh
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-7q9c8
+Command failed: kubectl top pod user-timeline-service-79b9b87567-7q9c8 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-79b9b87567-7q9c8" not found
+
+Failed to get CPU metrics for pod user-timeline-service-79b9b87567-7q9c8
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:37:29 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-v248m
+Command failed: kubectl top pod compose-post-service-6cccc9db5f-v248m -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-6cccc9db5f-v248m" not found
+
+Failed to get CPU metrics for pod compose-post-service-6cccc9db5f-v248m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-2hbrh
+Service: home-timeline-service, Pod: home-timeline-service-75b596d79b-2hbrh
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 210m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-7q9c8
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-7q9c8
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 110m limit (5.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:38:30 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-v248m
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-v248m
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 210m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-qzc5c
+Command failed: kubectl top pod home-timeline-service-67cc8fd944-qzc5c -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-67cc8fd944-qzc5c" not found
+
+Failed to get CPU metrics for pod home-timeline-service-67cc8fd944-qzc5c
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-z6cbv
+Command failed: kubectl top pod user-timeline-service-6cf96b8ddc-z6cbv -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-6cf96b8ddc-z6cbv" not found
+
+Failed to get CPU metrics for pod user-timeline-service-6cf96b8ddc-z6cbv
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:39:30 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-2cxp8
+Command failed: kubectl top pod compose-post-service-685679d455-2cxp8 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-685679d455-2cxp8" not found
+
+Failed to get CPU metrics for pod compose-post-service-685679d455-2cxp8
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-qzc5c
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-qzc5c
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-z6cbv
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-z6cbv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 170m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:40:31 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-2cxp8
+Service: compose-post-service, Pod: compose-post-service-685679d455-2cxp8
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 170m limit (5.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-c65rf
+Command failed: kubectl top pod home-timeline-service-64d5b45cb4-c65rf -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-64d5b45cb4-c65rf" not found
+
+Failed to get CPU metrics for pod home-timeline-service-64d5b45cb4-c65rf
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-ww579
+Command failed: kubectl top pod user-timeline-service-85f55699c5-ww579 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-85f55699c5-ww579" not found
+
+Failed to get CPU metrics for pod user-timeline-service-85f55699c5-ww579
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:41:32 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-jrnm7
+Command failed: kubectl top pod compose-post-service-5f78d587d7-jrnm7 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-5f78d587d7-jrnm7" not found
+
+Failed to get CPU metrics for pod compose-post-service-5f78d587d7-jrnm7
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-c65rf
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-c65rf
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-ww579
+Command failed: kubectl top pod user-timeline-service-85f55699c5-ww579 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-85f55699c5-ww579" not found
+
+Failed to get CPU metrics for pod user-timeline-service-85f55699c5-ww579
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:42:33 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-jrnm7
+Command failed: kubectl top pod compose-post-service-5f78d587d7-jrnm7 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-5f78d587d7-jrnm7" not found
+
+Failed to get CPU metrics for pod compose-post-service-5f78d587d7-jrnm7
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-f9nh8
+Command failed: kubectl top pod home-timeline-service-7885f9f948-f9nh8 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-7885f9f948-f9nh8" not found
+
+Failed to get CPU metrics for pod home-timeline-service-7885f9f948-f9nh8
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-ww579
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-ww579
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:43:33 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-jrnm7
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-jrnm7
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 12m of 260m limit (4.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-f9nh8
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-f9nh8
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 10m of 110m limit (9.1%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-dsd66
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-dsd66
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:44:34 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-x7s7f
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-x7s7f
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 210m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-6j8cq
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-6j8cq
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-j7kbh
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-j7kbh
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:45:35 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-tc6hp
+Service: compose-post-service, Pod: compose-post-service-685679d455-tc6hp
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 11m of 170m limit (6.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-52rkl
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-52rkl
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-sfg24
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-sfg24
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:46:37 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-v6kss
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-v6kss
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 10m of 260m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-ntdbg
+Service: home-timeline-service, Pod: home-timeline-service-75b596d79b-ntdbg
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-9h8bs
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-9h8bs
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:47:38 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-qsbcw
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-qsbcw
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-lghsn
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-lghsn
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-kbgt8
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-kbgt8
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:48:39 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-lk6ff
+Service: compose-post-service, Pod: compose-post-service-685679d455-lk6ff
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 10m of 170m limit (5.9%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-wzs4c
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-wzs4c
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-zlsl5
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-zlsl5
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:49:40 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-jm2dz
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-jm2dz
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 260m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-8rmls
+Service: home-timeline-service, Pod: home-timeline-service-75b596d79b-8rmls
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 210m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-86d9d8bdc5-hm8pr
+Service: user-timeline-service, Pod: user-timeline-service-86d9d8bdc5-hm8pr
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 210m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:50:41 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-gpkgx
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-gpkgx
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 210m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-jcpls
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-jcpls
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-88m6s
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-88m6s
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:51:42 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-sdcg5
+Service: compose-post-service, Pod: compose-post-service-685679d455-sdcg5
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 170m limit (5.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-ckvlh
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-ckvlh
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-dds9j
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-dds9j
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:52:44 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-dkfdr
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-dkfdr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 260m limit (3.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-8szzx
+Service: home-timeline-service, Pod: home-timeline-service-75b596d79b-8szzx
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-6nl6j
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-6nl6j
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:53:45 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-6vfm4
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-6vfm4
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-t76gl
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-t76gl
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-pjdjp
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-pjdjp
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:54:46 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-lm4zj
+Service: compose-post-service, Pod: compose-post-service-685679d455-lm4zj
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 10m of 170m limit (5.9%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-qnbhx
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-qnbhx
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-44mfm
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-44mfm
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:55:47 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-jlnr9
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-jlnr9
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 260m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-75b596d79b-d89v2
+Service: home-timeline-service, Pod: home-timeline-service-75b596d79b-d89v2
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 210m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-mvx47
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-mvx47
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:56:48 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-zphx8
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-zphx8
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-4wgzz
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-4wgzz
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-zdqf6
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-zdqf6
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:57:49 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-tq9l8
+Service: compose-post-service, Pod: compose-post-service-685679d455-tq9l8
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-dz255
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-dz255
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-kc2wv
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-kc2wv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:58:51 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-dtzkk
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-dtzkk
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 140m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-mm4n2
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-mm4n2
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-2vs22
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-2vs22
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 8m of 110m limit (7.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 18:59:52 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-6w8bv
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-6w8bv
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-tjwt5
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-tjwt5
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 170m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-v5ggb
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-v5ggb
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 9m of 170m limit (5.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:00:53 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-r6mm2
+Service: compose-post-service, Pod: compose-post-service-685679d455-r6mm2
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-vs8ws
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-vs8ws
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7c8784f455-dgb7c
+Service: user-timeline-service, Pod: user-timeline-service-7c8784f455-dgb7c
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 9m of 260m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:01:54 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-jt5qt
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-jt5qt
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 140m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-s7dwt
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-s7dwt
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 110m limit (5.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-86d9d8bdc5-jp5bv
+Service: user-timeline-service, Pod: user-timeline-service-86d9d8bdc5-jp5bv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 8m of 210m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:02:55 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-hp5zx
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-hp5zx
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 7m of 210m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-mcdrj
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-mcdrj
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 170m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-k5ts7
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-k5ts7
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:03:56 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-kf4mn
+Service: compose-post-service, Pod: compose-post-service-685679d455-kf4mn
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 9m of 170m limit (5.3%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 260m
+    Requests: 170m → 260m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-6jd2g
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-6jd2g
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-znm55
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-znm55
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:04:58 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-5f78d587d7-rhjnr
+Service: compose-post-service, Pod: compose-post-service-5f78d587d7-rhjnr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 260m limit (3.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=260m (260m), limits=260m (260m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 260m → 210m
+    Requests: 260m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-xskhj
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-xskhj
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 110m limit (5.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-kffvp
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-kffvp
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:05:59 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-drgmd
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-drgmd
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 210m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-67cc8fd944-ljfjn
+Service: home-timeline-service, Pod: home-timeline-service-67cc8fd944-ljfjn
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 170m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-hxhnh
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-hxhnh
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:07:00 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-fxgq5
+Service: compose-post-service, Pod: compose-post-service-685679d455-fxgq5
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 8m of 170m limit (4.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-br5cb
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-br5cb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-jnrcb
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-jnrcb
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:08:02 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-hgsd5
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-hgsd5
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-cs2nx
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-cs2nx
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-bdblh
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-bdblh
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 110m limit (6.4%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:09:04 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-fr24h
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-fr24h
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-8q75n
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-8q75n
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-xw59x
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-xw59x
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 170m limit (4.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:10:05 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-nfrkc
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-nfrkc
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-h2w9g
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-h2w9g
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 140m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-bvxgn
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-bvxgn
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:11:06 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-qm5vq
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-qm5vq
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 19m of 140m limit (13.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 210m
+    Requests: 140m → 210m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-rd8vq
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-rd8vq
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-fhbkj
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-fhbkj
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:12:08 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6cccc9db5f-n652l
+Service: compose-post-service, Pod: compose-post-service-6cccc9db5f-n652l
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 210m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=210m (210m), limits=210m (210m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 210m → 170m
+    Requests: 210m → 170m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-twz54
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-twz54
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 90m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-jfkfw
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-jfkfw
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 90m limit (7.8%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:13:09 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-685679d455-qlhsx
+Service: compose-post-service, Pod: compose-post-service-685679d455-qlhsx
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 170m limit (3.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-6klnk
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-6klnk
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-hbdn5
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-hbdn5
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 7m of 140m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:14:10 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-xjhrj
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-xjhrj
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 140m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-bl6sn
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-bl6sn
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-4wwgg
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-4wwgg
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:15:12 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-qshxf
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-qshxf
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-8gv2m
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-8gv2m
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-zggnl
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-zggnl
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:16:13 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-wtvzf
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-wtvzf
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-zck6f
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-zck6f
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-5cfr9
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-5cfr9
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:17:14 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-w4rdr
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-w4rdr
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-h885t
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-h885t
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-rft7t
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-rft7t
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:18:15 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-jq6p2
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-jq6p2
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-d2kl4
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-d2kl4
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-dz224
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-dz224
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:19:17 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-rws9j
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-rws9j
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-cvcmh
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-cvcmh
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 70m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-4sdhn
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-4sdhn
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 140m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:20:18 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-ls989
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-ls989
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-p6fhw
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-p6fhw
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-dzgbv
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-dzgbv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:21:19 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-x8rjh
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-x8rjh
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-9mrf4
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-9mrf4
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-whkc7
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-whkc7
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:22:20 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-lzbsd
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-lzbsd
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-6dkzl
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-6dkzl
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 70m limit (7.1%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-9r8k8
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-9r8k8
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 70m limit (7.1%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:23:21 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-cbcl9
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-cbcl9
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 4m of 140m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-scsl4
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-scsl4
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-7zpk6
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-7zpk6
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 6m of 110m limit (5.5%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 170m
+    Requests: 110m → 170m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:24:22 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-4t6bt
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-4t6bt
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-9n5qk
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-9n5qk
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-7hgsn
+Command failed: kubectl top pod user-timeline-service-6cf96b8ddc-7hgsn -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-6cf96b8ddc-7hgsn" not found
+
+Failed to get CPU metrics for pod user-timeline-service-6cf96b8ddc-7hgsn
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:25:23 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-jfwwh
+Command failed: kubectl top pod compose-post-service-68d869b7d7-jfwwh -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-68d869b7d7-jfwwh" not found
+
+Failed to get CPU metrics for pod compose-post-service-68d869b7d7-jfwwh
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-splg9
+Command failed: kubectl top pod home-timeline-service-64d5b45cb4-splg9 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-64d5b45cb4-splg9" not found
+
+Failed to get CPU metrics for pod home-timeline-service-64d5b45cb4-splg9
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-6cf96b8ddc-7hgsn
+Service: user-timeline-service, Pod: user-timeline-service-6cf96b8ddc-7hgsn
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 170m limit (2.9%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=170m (170m), limits=170m (170m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 170m → 140m
+    Requests: 170m → 140m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:26:24 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-jfwwh
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-jfwwh
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 6m of 90m limit (6.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-64d5b45cb4-splg9
+Service: home-timeline-service, Pod: home-timeline-service-64d5b45cb4-splg9
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-fwzvp
+Command failed: kubectl top pod user-timeline-service-85f55699c5-fwzvp -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-85f55699c5-fwzvp" not found
+
+Failed to get CPU metrics for pod user-timeline-service-85f55699c5-fwzvp
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:27:25 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-d659z
+Command failed: kubectl top pod compose-post-service-f48d8b5c9-d659z -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-f48d8b5c9-d659z" not found
+
+Failed to get CPU metrics for pod compose-post-service-f48d8b5c9-d659z
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-74gj4
+Command failed: kubectl top pod home-timeline-service-7885f9f948-74gj4 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-7885f9f948-74gj4" not found
+
+Failed to get CPU metrics for pod home-timeline-service-7885f9f948-74gj4
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-85f55699c5-fwzvp
+Service: user-timeline-service, Pod: user-timeline-service-85f55699c5-fwzvp
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:28:25 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-d659z
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-d659z
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 140m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-74gj4
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-74gj4
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-f99ss
+Command failed: kubectl top pod user-timeline-service-79b9b87567-f99ss -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-79b9b87567-f99ss" not found
+
+Failed to get CPU metrics for pod user-timeline-service-79b9b87567-f99ss
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:29:26 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-8xb9s
+Command failed: kubectl top pod compose-post-service-96cbddb99-8xb9s -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-96cbddb99-8xb9s" not found
+
+Failed to get CPU metrics for pod compose-post-service-96cbddb99-8xb9s
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-wxb6t
+Command failed: kubectl top pod home-timeline-service-5b96c7cb5b-wxb6t -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-5b96c7cb5b-wxb6t" not found
+
+Failed to get CPU metrics for pod home-timeline-service-5b96c7cb5b-wxb6t
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-79b9b87567-f99ss
+Service: user-timeline-service, Pod: user-timeline-service-79b9b87567-f99ss
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 110m limit (3.6%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:30:27 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-8xb9s
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-8xb9s
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 110m limit (4.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-wxb6t
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-wxb6t
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-vml45
+Command failed: kubectl top pod user-timeline-service-695996cb5f-vml45 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-695996cb5f-vml45" not found
+
+Failed to get CPU metrics for pod user-timeline-service-695996cb5f-vml45
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:31:28 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-s79zv
+Command failed: kubectl top pod compose-post-service-68d869b7d7-s79zv -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-68d869b7d7-s79zv" not found
+
+Failed to get CPU metrics for pod compose-post-service-68d869b7d7-s79zv
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-chrfg
+Command failed: kubectl top pod home-timeline-service-85f7b84dfb-chrfg -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-85f7b84dfb-chrfg" not found
+
+Failed to get CPU metrics for pod home-timeline-service-85f7b84dfb-chrfg
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-695996cb5f-vml45
+Service: user-timeline-service, Pod: user-timeline-service-695996cb5f-vml45
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 4m of 90m limit (4.4%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:32:28 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-s79zv
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-s79zv
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 5m of 90m limit (5.6%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 140m
+    Requests: 90m → 140m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-chrfg
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-chrfg
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 4m of 70m limit (5.7%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 110m
+    Requests: 70m → 110m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-cvmsk
+Command failed: kubectl top pod user-timeline-service-774dcd757f-cvmsk -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-774dcd757f-cvmsk" not found
+
+Failed to get CPU metrics for pod user-timeline-service-774dcd757f-cvmsk
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:33:29 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-7fxhf
+Command failed: kubectl top pod compose-post-service-f48d8b5c9-7fxhf -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-f48d8b5c9-7fxhf" not found
+
+Failed to get CPU metrics for pod compose-post-service-f48d8b5c9-7fxhf
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-j69rr
+Command failed: kubectl top pod home-timeline-service-7885f9f948-j69rr -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-7885f9f948-j69rr" not found
+
+Failed to get CPU metrics for pod home-timeline-service-7885f9f948-j69rr
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-774dcd757f-cvmsk
+Service: user-timeline-service, Pod: user-timeline-service-774dcd757f-cvmsk
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 70m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 70m → 60m
+    Requests: 70m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:34:30 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-f48d8b5c9-7fxhf
+Service: compose-post-service, Pod: compose-post-service-f48d8b5c9-7fxhf
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 140m limit (2.1%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=140m (140m), limits=140m (140m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 140m → 110m
+    Requests: 140m → 110m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-7885f9f948-j69rr
+Service: home-timeline-service, Pod: home-timeline-service-7885f9f948-j69rr
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 110m limit (2.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-jkhxr
+Command failed: kubectl top pod user-timeline-service-7f68f444d7-jkhxr -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-7f68f444d7-jkhxr" not found
+
+Failed to get CPU metrics for pod user-timeline-service-7f68f444d7-jkhxr
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:35:31 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-vzj5j
+Command failed: kubectl top pod compose-post-service-96cbddb99-vzj5j -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-96cbddb99-vzj5j" not found
+
+Failed to get CPU metrics for pod compose-post-service-96cbddb99-vzj5j
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-89shb
+Command failed: kubectl top pod home-timeline-service-5b96c7cb5b-89shb -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-5b96c7cb5b-89shb" not found
+
+Failed to get CPU metrics for pod home-timeline-service-5b96c7cb5b-89shb
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-jkhxr
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-jkhxr
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:36:32 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-96cbddb99-vzj5j
+Service: compose-post-service, Pod: compose-post-service-96cbddb99-vzj5j
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 110m limit (2.7%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=110m (110m), limits=110m (110m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 110m → 90m
+    Requests: 110m → 90m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5b96c7cb5b-89shb
+Service: home-timeline-service, Pod: home-timeline-service-5b96c7cb5b-89shb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 90m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-v8fp9
+Command failed: kubectl top pod user-timeline-service-5584d49d6c-v8fp9 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/user-timeline-service-5584d49d6c-v8fp9" not found
+
+Failed to get CPU metrics for pod user-timeline-service-5584d49d6c-v8fp9
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:37:33 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-c5854
+Command failed: kubectl top pod compose-post-service-68d869b7d7-c5854 -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/compose-post-service-68d869b7d7-c5854" not found
+
+Failed to get CPU metrics for pod compose-post-service-68d869b7d7-c5854
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-wvg4r
+Command failed: kubectl top pod home-timeline-service-85f7b84dfb-wvg4r -n social-network
+Error: Error from server (NotFound): podmetrics.metrics.k8s.io "social-network/home-timeline-service-85f7b84dfb-wvg4r" not found
+
+Failed to get CPU metrics for pod home-timeline-service-85f7b84dfb-wvg4r
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-v8fp9
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-v8fp9
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:38:33 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-68d869b7d7-c5854
+Service: compose-post-service, Pod: compose-post-service-68d869b7d7-c5854
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 90m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=90m (90m), limits=90m (90m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 90m → 70m
+    Requests: 90m → 70m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-85f7b84dfb-wvg4r
+Service: home-timeline-service, Pod: home-timeline-service-85f7b84dfb-wvg4r
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 70m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 70m → 60m
+    Requests: 70m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-k557h
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-k557h
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:39:34 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-866ff559d7-tx7zs
+Service: compose-post-service, Pod: compose-post-service-866ff559d7-tx7zs
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 70m limit (4.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=70m (70m), limits=70m (70m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 70m → 60m
+    Requests: 70m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-skpxh
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-skpxh
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-gg76q
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-gg76q
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:40:35 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-7tjp7
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-7tjp7
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-xw8ts
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-xw8ts
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-z2jbf
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-z2jbf
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:41:37 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-s7fds
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-s7fds
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-xc4rc
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-xc4rc
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 2m of 80m limit (2.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-cqk7v
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-cqk7v
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:42:38 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-4bsx2
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-4bsx2
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-sjv6g
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-sjv6g
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-8pp45
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-8pp45
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:43:39 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-5tcvv
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-5tcvv
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-z4x5j
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-z4x5j
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-rxkj6
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-rxkj6
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:44:40 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-9mbqc
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-9mbqc
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-krccb
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-krccb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-28f7h
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-28f7h
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:45:41 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-2p44s
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-2p44s
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 2m of 80m limit (2.5%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-jcn6w
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-jcn6w
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 2m of 60m limit (3.3%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-j28n4
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-j28n4
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:46:43 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-r98k2
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-r98k2
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-gz28j
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-gz28j
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-9dzmv
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-9dzmv
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:47:44 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-jslbg
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-jslbg
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-w26fb
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-w26fb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-4t5j8
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-4t5j8
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:48:45 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-lrchg
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-lrchg
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-4twhr
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-4twhr
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-mqkmn
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-mqkmn
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:49:46 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-5bwmk
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-5bwmk
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-wn6xb
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-wn6xb
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-xs8xb
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-xs8xb
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:50:47 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-dmxqs
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-dmxqs
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-62s24
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-62s24
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-6ww55
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-6ww55
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:51:48 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-ld9k5
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-ld9k5
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-6fdxs
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-6fdxs
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-rcfk6
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-rcfk6
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:52:50 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-9xf2g
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-9xf2g
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-lj255
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-lj255
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-gmh67
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-gmh67
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:53:51 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-khncf
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-khncf
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-6bwr7
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-6bwr7
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-bsfd9
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-bsfd9
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:54:52 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7c4d4dc6cf-f2cf9
+Service: compose-post-service, Pod: compose-post-service-7c4d4dc6cf-f2cf9
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-645dc789b-rsr6g
+Service: home-timeline-service, Pod: home-timeline-service-645dc789b-rsr6g
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-7f68f444d7-jg47r
+Service: user-timeline-service, Pod: user-timeline-service-7f68f444d7-jg47r
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:55:53 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-7599d4d9f5-gzz28
+Service: compose-post-service, Pod: compose-post-service-7599d4d9f5-gzz28
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 60m limit (5.0%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=60m (60m), limits=60m (60m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 60m → 50m
+    Requests: 60m → 50m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-5769fb77cb-gcrj7
+Service: home-timeline-service, Pod: home-timeline-service-5769fb77cb-gcrj7
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-5584d49d6c-6lbj6
+Service: user-timeline-service, Pod: user-timeline-service-5584d49d6c-6lbj6
+  Found deployment: user-timeline-service, container: user-timeline-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for user-timeline-service/user-timeline-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Sleeping for 60 seconds...
+
+--- Monitoring cycle at 2025-04-20 19:56:54 ---
+Found 1 pod(s) for service compose-post-service: compose-post-service-6678b6f6cf-t8dmw
+Service: compose-post-service, Pod: compose-post-service-6678b6f6cf-t8dmw
+  Found deployment: compose-post-service, container: compose-post-service
+  Current usage: 3m of 50m limit (6.0%)
+  Usage above threshold (5.0%), scaling UP
+  Current resources: requests=50m (50m), limits=50m (50m)
+  Updated CPU resources for compose-post-service/compose-post-service:
+    Limits: 50m → 80m
+    Requests: 50m → 80m
+Found 1 pod(s) for service home-timeline-service: home-timeline-service-849b94bb9b-4dlnw
+Service: home-timeline-service, Pod: home-timeline-service-849b94bb9b-4dlnw
+  Found deployment: home-timeline-service, container: home-timeline-service
+  Current usage: 3m of 80m limit (3.8%)
+  Usage below threshold (5.0%), scaling DOWN
+  Current resources: requests=80m (80m), limits=80m (80m)
+  Updated CPU resources for home-timeline-service/home-timeline-service:
+    Limits: 80m → 60m
+    Requests: 80m → 60m
+Found 1 pod(s) for service user-timeline-service: user-timeline-service-8577754895-4q7qv
+Service: user-timeline-service, Pod: user-timeline-service-8577754895-4q7qv
+  Found deployment: user-timeline-service, container: user-timeline-service

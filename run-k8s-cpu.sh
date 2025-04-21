@@ -1,5 +1,29 @@
 #!/bin/bash
 
+# --- Configuration ---
+# Set the desired traffic type here.
+# Options: "diurnal", "constant", "noisy", "bursty"
+TRAFFIC_TYPE="bursty" # CHANGE THIS VALUE
+
+# --- Derived Variables (Do not change unless structure changes) ---
+TRAFFIC_FILE_BASENAME="${TRAFFIC_TYPE}_traffic.py"
+TRAFFIC_FILE_PATH="traffic_rasing/social-network/${TRAFFIC_FILE_BASENAME}"
+# Pattern for finding locust processes related to the specific traffic file
+LOCUST_PGREP_PATTERN="locust.*${TRAFFIC_FILE_BASENAME}"
+# Locust CSV output prefix
+LOCUST_CSV_PREFIX="locust_results"
+# ---
+
+echo "--- Starting K8s-CPU Experiment Setup ---"
+echo "Using traffic type: ${TRAFFIC_TYPE}"
+echo "Using traffic file: ${TRAFFIC_FILE_PATH}"
+
+# Check if the specified traffic file exists
+if [ ! -f "$TRAFFIC_FILE_PATH" ]; then
+    echo "Error: Traffic file not found at ${TRAFFIC_FILE_PATH}"
+    exit 1
+fi
+
 # Check for existing K8s monitoring processes and kill them
 if pgrep -f "python.*--namespace social-network" > /dev/null; then
     echo "Found existing K8s monitoring processes. Terminating them..."
@@ -17,15 +41,15 @@ else
 fi
 
 # Check for existing Locust processes and kill them
-if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
-    echo "Found existing Locust processes. Terminating them..."
-    pkill -f "locust.*diurnal_traffic.py"
+if pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
+    echo "Found existing Locust processes for ${TRAFFIC_TYPE}. Terminating them..."
+    pkill -f "$LOCUST_PGREP_PATTERN"
     sleep 2
     
     # Force kill if any processes are still running
-    if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
+    if pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
         echo "Some Locust processes still running. Force terminating..."
-        pkill -9 -f "locust.*diurnal_traffic.py"
+        pkill -9 -f "$LOCUST_PGREP_PATTERN"
     fi
     echo "All existing Locust processes terminated."
 else
@@ -51,7 +75,7 @@ fi
 # Remove existing log files
 rm -f optimization_timing.csv 
 rm -f k8s_resources.csv
-rm -f locust_results*
+rm -f ${LOCUST_CSV_PREFIX}*
 rm -f cpu_controller.log
 
 # Define timing log file
@@ -70,11 +94,11 @@ echo "K8s resource monitoring started with PID: $MONITOR_PID"
 # Record monitoring start time
 echo "monitoring_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
-# Start Locust for load testing
-echo "Starting Locust load testing..."
-locust -f traffic_rasing/social-network/diurnal_traffic.py --headless \
+# Start Locust for load testing with the selected traffic type
+echo "Starting Locust load testing with ${TRAFFIC_TYPE} traffic pattern..."
+locust -f ${TRAFFIC_FILE_PATH} --headless \
     --host http://192.168.49.2:30080 \
-    --csv=locust_results > /dev/null 2>&1 &
+    --csv=${LOCUST_CSV_PREFIX} > /dev/null 2>&1 &
 LOCUST_PID=$!
 echo "Locust started with PID: $LOCUST_PID"
 
@@ -83,7 +107,7 @@ echo "load_test_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Start the CPU controller
 echo "Starting K8s CPU controller..."
-python -m src.intent_exec.k8s-cpu > cpu_controller.log 2>&1 &
+python -m src.intent_exec.k8s-cpu > cpu_controller_${TRAFFIC_TYPE}.log 2>&1 &
 CPU_CONTROLLER_PID=$!
 echo "K8s CPU controller started with PID: $CPU_CONTROLLER_PID"
 
@@ -116,15 +140,15 @@ kill $LOCUST_PID
 
 # Verify Locust termination
 sleep 2
-if ps -p $LOCUST_PID > /dev/null || pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
+if ps -p $LOCUST_PID > /dev/null || pgrep -f "$LOCUST_PGREP_PATTERN" > /dev/null; then
     echo "Locust didn't terminate gracefully, forcing..."
-    pkill -9 -f "locust.*diurnal_traffic.py"
+    pkill -9 -f "$LOCUST_PGREP_PATTERN"
 else
     echo "Locust successfully terminated."
 fi
 
 # Stop the monitoring process
-echo "Stopping K8s resource monitoring (PID: $MONITOR_PID)"
+echo "Stopping CPU controller (PID: $CPU_CONTROLLER_PID)"
 kill $MONITOR_PID
 
 # Verify monitoring termination
@@ -143,4 +167,6 @@ echo "total_execution_time_seconds,$TOTAL_TIME" >> $TIMING_LOG
 
 echo "All tasks completed!"
 echo "Timing information saved to $TIMING_LOG"
-echo "CPU controller log saved to cpu_controller.log"
+echo "CPU controller log saved to cpu_controller_${TRAFFIC_TYPE}.log"
+echo "Locust results saved with prefix ${LOCUST_CSV_PREFIX}"
+echo "K8s resource data saved to k8s_resources_${TRAFFIC_TYPE}.csv"

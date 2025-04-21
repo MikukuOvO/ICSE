@@ -1,0 +1,55 @@
+SLO Violation Analysis
+
+======================
+
+
+home-timeline Service:
+----------------------
+Total violation periods: 2
+Total violation duration: 1394.00 seconds
+
+Violation Periods:
+  1. Start: 2025-04-18 04:11:03, End: 2025-04-18 04:22:04, Duration: 661.00s
+  2. Start: 2025-04-18 04:48:59, End: 2025-04-18 05:01:12, Duration: 733.00s
+
+Average Resource Allocation (All Time):
+  CPU Requests: 67.17m
+  Memory Requests: 128.00Mi
+  CPU Usage: 6.12m
+  Memory Usage: 11.17Mi
+
+==================================================
+
+compose-post Service:
+---------------------
+Total violation periods: 3
+Total violation duration: 3741.00 seconds
+
+Violation Periods:
+  1. Start: 2025-04-18 04:03:45, End: 2025-04-18 05:02:25, Duration: 3520.00s
+  2. Start: 2025-04-18 05:03:38, End: 2025-04-18 05:06:05, Duration: 147.00s
+  3. Start: 2025-04-18 05:31:47, End: 2025-04-18 05:33:01, Duration: 74.00s
+
+Average Resource Allocation (All Time):
+  CPU Requests: 184.85m
+  Memory Requests: 128.00Mi
+  CPU Usage: 6.78m
+  Memory Usage: 9.75Mi
+
+==================================================
+
+user-timeline Service:
+----------------------
+Total violation periods: 1
+Total violation duration: 1101.00 seconds
+
+Violation Periods:
+  1. Start: 2025-04-18 04:13:29, End: 2025-04-18 04:31:50, Duration: 1101.00s
+
+Average Resource Allocation (All Time):
+  CPU Requests: 291.16m
+  Memory Requests: 128.00Mi
+  CPU Usage: 4.76m
+  Memory Usage: 10.01Mi
+
+==================================================

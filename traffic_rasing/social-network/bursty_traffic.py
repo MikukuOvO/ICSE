@@ -1,10 +1,10 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 import urllib.parse
+import math
 import string
 import random
 import os
-import math
 from locust import HttpUser, task, between, LoadTestShape
 
 max_user_index = int(os.getenv("MAX_USER_INDEX", 962))
@@ -93,20 +93,20 @@ class UserBehavior(HttpUser):
 
 class BurstyLoadShape(LoadTestShape):
     """
-    A bursty load test shape with sudden traffic spikes followed by periods of calm.
+    A bursty load test shape with controlled traffic spikes followed by periods of calm.
     
     This pattern simulates workloads with sudden, significant increases in traffic
-    that appear randomly and subside quickly, which is common in event-driven systems
+    that appear randomly and subside gradually, which is common in event-driven systems
     or during flash sales/events.
     """
     total_time = 7200       # 120 minutes in seconds
-    base_users = 100        # baseline user count during normal periods
-    max_burst = 450         # maximum users during a burst
+    base_users = 20         # baseline user count during normal periods
+    max_burst = 200         # maximum users during a burst (reduced from 450)
     
     # Burst parameters
-    burst_duration = 180    # how long each burst lasts (3 min)
+    burst_duration = 240    # how long each burst lasts (4 min, increased for gradual transitions)
     calm_duration = 480     # minimum time between bursts (8 min)
-    num_bursts = 8          # target number of bursts during the test (doubled for 120 min)
+    num_bursts = 8          # target number of bursts during the test
     
     def __init__(self):
         super().__init__()
@@ -150,28 +150,43 @@ class BurstyLoadShape(LoadTestShape):
                 in_burst = True
                 progress = (run_time - burst_start) / self.burst_duration
                 
-                # Shape of burst: quick ramp up, plateau, quick ramp down
-                if progress < 0.2:  # Ramp up (first 20% of burst)
-                    ramp_progress = progress / 0.2
-                    user_count = self.base_users + (self.max_burst - self.base_users) * ramp_progress
-                elif progress > 0.8:  # Ramp down (last 20% of burst)
-                    ramp_progress = (progress - 0.8) / 0.2
-                    user_count = self.max_burst - (self.max_burst - self.base_users) * ramp_progress
-                else:  # Plateau (middle 60% of burst)
+                # Shape of burst: more gradual ramp up and down
+                if progress < 0.35:  # Ramp up (first 35% of burst - more gradual)
+                    ramp_progress = progress / 0.35
+                    # Use a smooth curve (quadratic) for more gradual initial ramp
+                    curve_factor = ramp_progress * ramp_progress
+                    user_count = self.base_users + (self.max_burst - self.base_users) * curve_factor
+                elif progress > 0.65:  # Ramp down (last 35% of burst - more gradual)
+                    ramp_progress = (progress - 0.65) / 0.35
+                    # Use a smooth curve for gentler ramp down
+                    curve_factor = 1 - (ramp_progress * ramp_progress)
+                    user_count = self.base_users + (self.max_burst - self.base_users) * curve_factor
+                else:  # Plateau (middle 30% of burst)
                     user_count = self.max_burst
                     
-                # Add small noise for realism
-                user_count = int(user_count * random.uniform(0.95, 1.05))
+                # Add very small noise for realism (reduced from original)
+                user_count = int(user_count * random.uniform(0.97, 1.03))
                 break
         
         if not in_burst:
-            # Between bursts: baseline with small fluctuations
-            user_count = int(self.base_users * random.uniform(0.8, 1.2))
+            # Between bursts: baseline with controlled fluctuations
+            # Use sine wave for natural-feeling fluctuations around base level
+            fluctuation = math.sin(run_time / 300) * 0.1  # 10% fluctuation with 5-minute period
+            user_count = int(self.base_users * (1 + fluctuation))
         
         # Ensure reasonable bounds
-        user_count = max(50, min(500, user_count))
+        user_count = max(50, min(300, user_count))
         
-        # Higher spawn rate during rapid changes (bursts)
-        spawn_rate = max(10, int(user_count / 5)) if in_burst else max(5, int(user_count / 10))
+        # More conservative spawn rate to prevent overwhelming the system
+        # Higher spawn rates during increase periods, lower during decreases
+        if in_burst and progress < 0.35:
+            # Faster spawn during ramp up
+            spawn_rate = max(5, int(user_count / 12))
+        elif in_burst and progress > 0.65:
+            # Slower despawn during ramp down
+            spawn_rate = max(3, int(user_count / 25))
+        else:
+            # Normal spawn rate otherwise
+            spawn_rate = max(4, int(user_count / 15))
 
         return user_count, spawn_rate
