@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-cpu-controller
+  namespace: kube-system
+spec:
+  serviceAccountName: k8s-cpu-controller-sa
+  containers:
+  - name: controller
+    image: bitnami/kubectl:latest
+    command: ["/bin/bash", "/scripts/controller.sh"]
+    volumeMounts:
+    - name: scripts
+      mountPath: /scripts
+  volumes:
+  - name: scripts
+    configMap:
+      name: k8s-cpu-controller-script
+      defaultMode: 0755

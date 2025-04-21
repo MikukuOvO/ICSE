@@ -24,18 +24,24 @@ class PrometheusClient(Base):
 
     def query(self, query: str, params: dict = None):
         '''
-        Query the prometheus instance with the given query
+        Query the Prometheus instance with the given query.
         - param query: str, query to be executed
         - param params: dict, parameters to be passed to the query
-        - return: list, result of the query
+        - return: list, result of the query as [[timestamp_str, float_value]]
         '''
         result = self.prom.custom_query(query=query, params=params)
-        if len(result):
-            result = result[0].get('value', None)
-        if not result:
-            result = []
+        print(f"\033[94m{result}\033[0m")
+
+        if result and isinstance(result, list) and 'value' in result[0]:
+            ts, val = result[0]['value']
+            try:
+                result = [[datetime.fromtimestamp(float(ts)).strftime('%Y-%m-%d %H:%M:%S'), float(val)]]
+            except Exception as e:
+                print(f"Error parsing result: {e}")
+                result = []
         else:
-            result = [[datetime.fromtimestamp(x[0]).strftime(r'%Y-%m-%d %H:%M:%S'), float(x[1])] for x in result]
+            result = []
+
         return result
     
     @overload

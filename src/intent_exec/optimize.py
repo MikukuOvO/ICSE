@@ -21,10 +21,7 @@ from .agent import (
 )
 
 from ..utils.export_csv import export_metrics, sum_up_metrics
-
-from .env.resource import inject
 from .env.utils import list_deployments
-from .env.traffic import start_traffic, end_traffic
 
 logger = Logger(__file__, 'INFO')
 
@@ -32,10 +29,9 @@ global_config = load_config()
 
 base_path = get_ancestor_path(2)
 
-timeout = 2400  # 40 minutes total runtime
-interval = 600  # 10 minutes between task triggers
+timeout = 600
 
-def cleanup_resources(process, message_collector, manager_consumer, service_maintainer_consumers, rabbitmq=None):
+def cleanup_resources(message_collector, manager_consumer, service_maintainer_consumers):
     """Properly clean up all resources before exiting"""
     logger.info('Starting cleanup process...')
     
@@ -48,50 +44,14 @@ def cleanup_resources(process, message_collector, manager_consumer, service_main
         for consumer in service_maintainer_consumers:
             consumer.stop()
     
-    # Close RabbitMQ connection if it exists
-    if rabbitmq and hasattr(rabbitmq, 'connection') and rabbitmq.connection and rabbitmq.connection.is_open:
-        try:
-            if hasattr(rabbitmq, 'channel') and rabbitmq.channel and rabbitmq.channel.is_open:
-                rabbitmq.channel.close()
-            rabbitmq.connection.close()
-            logger.info('RabbitMQ connection closed.')
-        except Exception as e:
-            logger.error(f'Error closing RabbitMQ connection: {str(e)}')
-    
-    # Export and sum up metrics
-    try:
-        csv_path = export_metrics()
-        sum_up_metrics(csv_path)
-        logger.info(f'Metrics exported to {csv_path}')
-    except Exception as e:
-        logger.error(f'Error exporting metrics: {str(e)}')
-    
-    # Stop traffic at the end
-    try:
-        if process:
-            logger.info('Stopping the traffic...')
-            end_traffic(process)
-    except Exception as e:
-        logger.error(f'Error stopping traffic: {str(e)}')
-        # Force kill the process if needed
-        try:
-            os.kill(process.pid, signal.SIGTERM)
-            logger.info(f'Force terminated process with PID {process.pid}')
-        except Exception as e2:
-            logger.error(f'Failed to kill process: {str(e2)}')
-    
     logger.info('Cleanup complete.')
 
 def main():
-    process = None
     message_collector = None
     manager_consumer = None
     service_maintainer_consumers = []
-    rabbitmq = None
     
     try:
-        process = start_traffic()
-
         # Refresh the API
         subprocess.run(["bash", "scripts/ops/api.sh"])
 
@@ -144,46 +104,17 @@ def main():
 
         logger.warning(f'Agent chat histories are available at: {execution_file_path}')
 
+        task = f'{global_config["heartbeat"]["group_task_prefix"]}{global_config["heartbeat"]["optimization_task"]}'
+        
         rabbitmq = RabbitMQ(**global_config['rabbitmq']['manager']['exchange'])
         queues = global_config['rabbitmq']['manager']['queues']
         for queue in queues:
             rabbitmq.add_queue(**queue)
-
-        task = f'{global_config["heartbeat"]["group_task_prefix"]}{global_config["heartbeat"]["optimization_task"]}'
-        
-        # Task execution loop with 10-minute intervals
-        start_time = time.time()
-        end_time = start_time + timeout
-        
-        iteration = 0
-        while time.time() < end_time:
-            iteration += 1
-            logger.info(f"Starting iteration {iteration}")
-            try:
-                # Check RabbitMQ connection and reconnect if needed
-                if not rabbitmq.connection or not rabbitmq.connection.is_open:
-                    logger.warning("RabbitMQ connection lost or not open. Reconnecting...")
-                    rabbitmq = RabbitMQ(**global_config['rabbitmq']['manager']['exchange'])
-                    for queue in queues:
-                        rabbitmq.add_queue(**queue)
-                
-                # Publish the task
-                logger.info(f'Triggering task: {task}')
-                rabbitmq.publish(task, routing_keys=['manager'])
-                logger.info("Task published successfully")
-                
-                # Wait for the next interval or until timeout is reached
-                next_trigger = min(time.time() + interval, end_time)
-                logger.info(f"Waiting until next trigger at {time.strftime('%H:%M:%S', time.localtime(next_trigger))}")
-                while time.time() < next_trigger:
-                    # Periodically check if connection is still alive
-                    if (time.time() - next_trigger) % 60 < 5 and (not rabbitmq.connection or not rabbitmq.connection.is_open):
-                        logger.warning("RabbitMQ connection lost during wait. Will reconnect on next iteration.")
-                    time.sleep(5)  # Sleep in short intervals to allow for clean interrupt
-            except Exception as e:
-                logger.error(f"Error during task execution: {str(e)}")
-                # Wait a bit before retrying
-                time.sleep(30)
+        # Publish the task
+        logger.info(f'Triggering task: {task}')
+        rabbitmq.publish(task, routing_keys=['manager']) 
+        logger.info("Task published successfully")
+        time.sleep(timeout)  # Wait for the specified interval before next task
                 
     except KeyboardInterrupt:
         logger.warning("Connection closed by user.")
@@ -191,7 +122,7 @@ def main():
         logger.error(f"Unexpected error: {str(e)}")
     finally:
         # Use the cleanup function to ensure all resources are properly closed
-        cleanup_resources(process, message_collector, manager_consumer, service_maintainer_consumers, rabbitmq)
+        cleanup_resources(message_collector, manager_consumer, service_maintainer_consumers)
 
 if __name__ == '__main__':
     main()

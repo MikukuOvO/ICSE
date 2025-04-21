@@ -21,6 +21,7 @@ system: |-
   - Think carefully about how the task can be accomplished, and break down the task into steps.
   - You should make a plan to assign tasks to lower-level maintainers or perform tasks yourself to get the necessary information to solve the task.
   - Update the task decomposition in the task description when you receive responses from lower-level maintainers or when you complete steps yourself.
+  - If some important thresholds, limits are mentioned in task description, you must include them in the decomposited steps.
   - Below is an example of how to decompose a task:
     Task: Reduce total latency of <Service-A> and <Service-B> below 50ms.
     Steps:

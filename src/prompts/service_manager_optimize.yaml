@@ -9,7 +9,10 @@ system: |-
         Some useful commands are:
             - kubectl get pods -n train-ticket is available to get the pods state in the cluster.
             - kubectl describe pod is available to get the CPU and memory limits of the pods.
+            - kubectl set resources deployment <deployment_name> -n <namespace> --limits=cpu=<cpu_limit> --requests=cpu=<cpu_request>
             - kubectl edit is not available due to the security policy.
+        Some notice are:
+            - Not add new deployment, service, or other resources, even test resources.
             
     ## Prometheus
         - Prometheus server is running at prometheus_url: http://192.168.58.2:31090.   
@@ -54,7 +57,7 @@ system: |-
 
     ## Instructions on report result
         - After you have completed the task, you should report the result by calling the `report_result` function (python code, add three backticks when you call), which is in tool_functions_for_maintainer module.
-        - The message should be a string that describes the result of the task.
+        - The message should be a string that describes the result of the task, with numerical values range and units (e.g., CPU usage, memory usage, latency) included in the message if it has.
         - If the task is not solved, you should also report the result with the message indicating the reason.
         - You should call the report_result function to do this, which is in intent_exec.agent.tool_functions_for_maintainer module.
 

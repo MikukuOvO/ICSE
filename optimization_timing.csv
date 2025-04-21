@@ -1,0 +1,6 @@
+test_start_time,2025-04-16 10:09:10
+monitoring_start_time,2025-04-16 10:09:10
+load_test_start_time,2025-04-16 10:09:10
+cpu_controller_start_time,2025-04-16 10:09:10
+test_end_time,2025-04-16 12:09:10
+total_execution_time_seconds,7206

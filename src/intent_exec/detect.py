@@ -119,6 +119,7 @@ def main():
             service_maintainer_consumer.stop()
 
     logger.info('Stopping the task...')
+    export_metrics()
     end_traffic(process)
     export_metrics(injection_time)
     remove_inject()
