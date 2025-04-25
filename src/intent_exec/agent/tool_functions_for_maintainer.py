@@ -71,5 +71,100 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
         
     return 'Message sent to manager.'
 
+@with_requirements(python_packages=['subprocess'], global_imports=[])
+def set_service_cpu(namespace: str, service: str, cpu_cores: float) -> str:
+    """
+    This function sets the CPU resource allocation (both request and limit) for a specific service in a Kubernetes namespace to a target value using kubectl.
+    
+    - param namespace: str, the Kubernetes namespace where the service is deployed
+    - param service: str, the name of the service to adjust resources for
+    - param cpu_cores: float, the target CPU cores to set (absolute value)
+    
+    - return: str, the result of the operation
+    
+    Note: 
+    - ALWAYS call print() to report the result so that planner can get the result.
+    - This function updates both CPU request and limit with the same value.
+    - CPU resources in Kubernetes are measured in cores, where 1.0 represents one full CPU core.
+    - The minimum allowed value is 50m (0.05) cores and maximum is 800m (0.8) cores.
+    
+    Example:
+    >>> from src.agent.tool_functions_for_maintainer import set_service_cpu
+    >>> namespace = 'default'
+    >>> service = 'catalogue'
+    >>> cpu_cores = 0.5
+    >>> result = set_service_cpu(namespace=namespace, service=service, cpu_cores=cpu_cores)
+    >>> print(result) # output the result so that planner can get it.
+    CPU resources for service 'catalogue' in namespace 'default' set to 0.5 cores.
+    """
+    import subprocess
+    import json
+    
+    # Minimum and maximum CPU allocation
+    MIN_CPU_CORES = 0.05  # 50m
+    MAX_CPU_CORES = 0.8   # 800m
+    
+    # Validate CPU allocation
+    if cpu_cores < MIN_CPU_CORES:
+        return f"Error: CPU allocation of {cpu_cores} cores is below minimum allowed value of {MIN_CPU_CORES} cores (50m)"
+    
+    if cpu_cores > MAX_CPU_CORES:
+        return f"Error: CPU allocation of {cpu_cores} cores is above maximum allowed value of {MAX_CPU_CORES} cores (800m)"
+    
+    new_cpu_str = str(cpu_cores)
+    
+    # Find the deployment associated with the service
+    try:
+        cmd = f"kubectl get deployments -n {namespace} -o json"
+        result = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
+        deployments = json.loads(result.stdout)
+    except subprocess.CalledProcessError as e:
+        return f"Error executing kubectl command: {e.stderr}"
+    
+    # Find the deployment for the specified service
+    target_deployment = None
+    for deployment in deployments['items']:
+        if service in deployment['metadata']['name']:
+            target_deployment = deployment['metadata']['name']
+            break
+    
+    if not target_deployment:
+        return f"Error: No deployment found for service '{service}' in namespace '{namespace}'"
+    
+    # Get the container name
+    try:
+        cmd = f"kubectl get deployment {target_deployment} -n {namespace} -o jsonpath='{{.spec.template.spec.containers[0].name}}'"
+        result = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
+        container_name = result.stdout.strip().strip("'")
+    except subprocess.CalledProcessError as e:
+        return f"Error getting container name: {e.stderr}"
+    
+    # Apply the changes using kubectl patch
+    try:
+        patch_json = json.dumps({
+            "spec": {
+                "template": {
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": container_name,
+                                "resources": {
+                                    "limits": {"cpu": new_cpu_str},
+                                    "requests": {"cpu": new_cpu_str}
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        })
+        
+        cmd = f"kubectl patch deployment {target_deployment} -n {namespace} --type='strategic' --patch='{patch_json}'"
+        subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as e:
+        return f"Error updating CPU allocation: {e.stderr}"
+    
+    return f"CPU resources for service '{service}' in namespace '{namespace}' set to {cpu_cores} cores."
+
 # use this list to store all the functions, do not change the name
-functions = [report_result, query_prometheus]
+functions = [report_result, query_prometheus, set_service_cpu]

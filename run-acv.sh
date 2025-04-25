@@ -4,7 +4,7 @@
 # Set the desired traffic type here.
 # Options should correspond to your Locust file naming convention,
 # e.g., "diurnal" for "diurnal_traffic.py", "bursty" for "bursty_traffic.py".
-TRAFFIC_TYPE="constant" # CHANGE THIS VALUE (e.g., "bursty", "constant")
+TRAFFIC_TYPE="diurnal" # CHANGE THIS VALUE (e.g., "bursty", "constant")
 # --- End Configuration ---
 
 # --- Derived Variables (Do not change unless structure changes) ---
@@ -120,13 +120,11 @@ run_deployment() {
 }
 
 # Run the deployments in sequence
-NUM_ITERATIONS=12
+NUM_ITERATIONS=36
 echo "--- Starting ${NUM_ITERATIONS} Optimization Iterations ---"
 for i in $(seq 1 ${NUM_ITERATIONS})
 do
     run_deployment $i
-    # Optional: Add a sleep interval between optimization runs if needed
-    # sleep 30
 done
 echo "--- Completed ${NUM_ITERATIONS} Optimization Iterations ---"
 

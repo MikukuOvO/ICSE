@@ -3,7 +3,7 @@
 # --- Configuration ---
 # Set the desired traffic type here.
 # Options: "diurnal", "constant", "noisy", "bursty"
-TRAFFIC_TYPE="bursty" # CHANGE THIS VALUE
+TRAFFIC_TYPE="diurnal" # CHANGE THIS VALUE
 
 # --- Derived Variables (Do not change unless structure changes) ---
 TRAFFIC_FILE_BASENAME="${TRAFFIC_TYPE}_traffic.py"
@@ -116,7 +116,8 @@ echo "cpu_controller_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Wait for the tests to complete (120 minutes = 7200 seconds)
 echo "Running test for 120 minutes..."
-sleep 7200
+# sleep 7200
+sleep 21600
 
 # Record test end time
 echo "test_end_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
