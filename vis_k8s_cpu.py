@@ -38,7 +38,7 @@ locust_workload_data = pd.DataFrame({
 })
 
 # Set the specific services to visualize
-target_services = ['home-timeline-service', 'compose-post-service', 'user-timeline-service']
+target_services = ['ts-route-service', 'ts-order-service', 'ts-travel-service']
 
 # Updated function to convert resource strings to numeric values (fixed to handle 'k' suffix)
 def convert_resource_to_numeric(value):

@@ -2,13 +2,13 @@ import requests
 import random
 
 def admin_login():
-    API_URL = "http://192.168.58.2:32677/api/v1/users/login"
+    API_URL = "http://192.168.49.2:32677/api/v1/users/login"
     user = {"username": "admin", "password": "222222"}
     response = requests.post(API_URL, json=user)
     return response.json()['data']['token']
 
 def register_users():
-    API_URL = "http://192.168.58.2:32677/api/v1/userservice/users/register"
+    API_URL = "http://192.168.49.2:32677/api/v1/userservice/users/register"
     MAX_USER = 256
     users = []
     for i in range(MAX_USER):
@@ -23,7 +23,7 @@ def register_users():
             print(f"注册失败: {user['userName']} - {response.text}")
 
 def add_stations(token):
-    API_URL = "http://192.168.58.2:32677/api/v1/stationservice/stations"
+    API_URL = "http://192.168.49.2:32677/api/v1/stationservice/stations"
     MAX_STATION = 100
     headers = {
         "Authorization": f"Bearer {token}",
@@ -43,7 +43,7 @@ def add_stations(token):
             print(f"Fail: {station['id']} - {response.text}")
 
 def get_routes(token):
-    API_URL = "http://192.168.58.2:32677/api/v1/routeservice/routes"
+    API_URL = "http://192.168.49.2:32677/api/v1/routeservice/routes"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -52,7 +52,7 @@ def get_routes(token):
     print(response.json())
 
 def test_routes(token):
-    path = "http://192.168.58.2:32677/api/v1/routeservice/routes"
+    path = "http://192.168.49.2:32677/api/v1/routeservice/routes"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -68,7 +68,7 @@ def test_routes(token):
     print(response.json())
 
 def test(token):
-    API_URL = "http://192.168.58.2:32677/api/v1/adminorderservice/adminorder"
+    API_URL = "http://192.168.49.2:32677/api/v1/adminorderservice/adminorder"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
@@ -80,6 +80,7 @@ def test(token):
 if __name__ == "__main__":
     # register_users()
     token = admin_login()
+    print(token)
     # add_stations(token)
     # get_routes(token)
     test(token)

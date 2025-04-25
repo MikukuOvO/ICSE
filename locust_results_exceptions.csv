@@ -1,1 +1,45 @@
 Count,Message,Traceback,Nodes
+1111,"If you want to change the state of the request using .success() or .failure(), you must pass catch_response=True. See http://docs.locust.io/en/stable/writing-a-locustfile.html#validating-responses","  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 340, in run
+    self.execute_next_task()
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 373, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 490, in execute_task
+    task(self.user)
+  File ""/Data2/v-xiruiliu/ICSE/traffic_rasing/train-ticket/changing.py"", line 178, in order_service
+    response.failure(""Unexpected response: "" + response.text)
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/clients.py"", line 446, in _missing_catch_response_True
+    raise LocustError(
+",local
+63190,"If you want to change the state of the request using .success() or .failure(), you must pass catch_response=True. See http://docs.locust.io/en/stable/writing-a-locustfile.html#validating-responses","  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 340, in run
+    self.execute_next_task()
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 373, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 490, in execute_task
+    task(self.user)
+  File ""/Data2/v-xiruiliu/ICSE/traffic_rasing/train-ticket/changing.py"", line 69, in route_service
+    response.failure(""Unexpected response: "" + response.text)
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/clients.py"", line 446, in _missing_catch_response_True
+    raise LocustError(
+",local
+35,"If you want to change the state of the request using .success() or .failure(), you must pass catch_response=True. See http://docs.locust.io/en/stable/writing-a-locustfile.html#validating-responses","  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 340, in run
+    self.execute_next_task()
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 373, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 490, in execute_task
+    task(self.user)
+  File ""/Data2/v-xiruiliu/ICSE/traffic_rasing/train-ticket/changing.py"", line 190, in order_service
+    response.failure(""Unexpected response: "" + response.text)
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/clients.py"", line 446, in _missing_catch_response_True
+    raise LocustError(
+",local
+274,"If you want to change the state of the request using .success() or .failure(), you must pass catch_response=True. See http://docs.locust.io/en/stable/writing-a-locustfile.html#validating-responses","  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 340, in run
+    self.execute_next_task()
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 373, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/user/task.py"", line 490, in execute_task
+    task(self.user)
+  File ""/Data2/v-xiruiliu/ICSE/traffic_rasing/train-ticket/changing.py"", line 132, in travel_service
+    response.failure(""Unexpected response: "" + response.text)
+  File ""/home/v-xiruiliu/miniconda3/envs/ACV/lib/python3.10/site-packages/locust/clients.py"", line 446, in _missing_catch_response_True
+    raise LocustError(
+",local

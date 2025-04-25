@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Check for existing K8s monitoring processes and kill them
-if pgrep -f "python.*--namespace social-network" > /dev/null; then
+if pgrep -f "python.*--namespace train-ticket" > /dev/null; then
     echo "Found existing K8s monitoring processes. Terminating them..."
-    pkill -f "python.*--namespace social-network"
+    pkill -f "python.*--namespace train-ticket"
     sleep 2
     
     # Force kill if any processes are still running
-    if pgrep -f "python.*--namespace social-network" > /dev/null; then
+    if pgrep -f "python.*--namespace train-ticket" > /dev/null; then
         echo "Some K8s monitoring processes still running. Force terminating..."
-        pkill -9 -f "python.*--namespace social-network"
+        pkill -9 -f "python.*--namespace train-ticket"
     fi
     echo "All existing K8s monitoring processes terminated."
 else
@@ -17,15 +17,15 @@ else
 fi
 
 # Check for existing Locust processes and kill them
-if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
+if pgrep -f "locust.*changing.py" > /dev/null; then
     echo "Found existing Locust processes. Terminating them..."
-    pkill -f "locust.*diurnal_traffic.py"
+    pkill -f "locust.*changing.py"
     sleep 2
     
     # Force kill if any processes are still running
-    if pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
+    if pgrep -f "locust.*changing.py" > /dev/null; then
         echo "Some Locust processes still running. Force terminating..."
-        pkill -9 -f "locust.*diurnal_traffic.py"
+        pkill -9 -f "locust.*changing.py"
     fi
     echo "All existing Locust processes terminated."
 else
@@ -63,7 +63,7 @@ echo "test_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Start K8s resource monitoring
 echo "Starting K8s resource monitoring..."
-python -m src.intent_exec.monitor --namespace social-network --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
+python -m src.intent_exec.monitor --namespace train-ticket --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
 MONITOR_PID=$!
 echo "K8s resource monitoring started with PID: $MONITOR_PID"
 
@@ -72,8 +72,8 @@ echo "monitoring_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Start Locust for load testing
 echo "Starting Locust load testing..."
-locust -f traffic_rasing/social-network/diurnal_traffic.py --headless \
-    --host http://192.168.49.2:30080 \
+locust -f traffic_rasing/train-ticket/changing.py --headless \
+    --host http://192.168.49.2:32677 \
     --csv=locust_results > /dev/null 2>&1 &
 LOCUST_PID=$!
 echo "Locust started with PID: $LOCUST_PID"
@@ -116,9 +116,9 @@ kill $LOCUST_PID
 
 # Verify Locust termination
 sleep 2
-if ps -p $LOCUST_PID > /dev/null || pgrep -f "locust.*diurnal_traffic.py" > /dev/null; then
+if ps -p $LOCUST_PID > /dev/null || pgrep -f "locust.*changing.py" > /dev/null; then
     echo "Locust didn't terminate gracefully, forcing..."
-    pkill -9 -f "locust.*diurnal_traffic.py"
+    pkill -9 -f "locust.*changing.py"
 else
     echo "Locust successfully terminated."
 fi
@@ -129,9 +129,9 @@ kill $MONITOR_PID
 
 # Verify monitoring termination
 sleep 2
-if ps -p $MONITOR_PID > /dev/null || pgrep -f "python.*--namespace social-network" > /dev/null; then
+if ps -p $MONITOR_PID > /dev/null || pgrep -f "python.*--namespace train-ticket" > /dev/null; then
     echo "K8s monitoring didn't terminate gracefully, forcing..."
-    pkill -9 -f "python.*--namespace social-network"
+    pkill -9 -f "python.*--namespace train-ticket"
 else
     echo "K8s monitoring successfully terminated."
 fi

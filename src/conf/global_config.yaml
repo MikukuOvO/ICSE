@@ -48,7 +48,7 @@ rabbitmq:
   url: pyamqp://guest@localhost//
 
 # traffic_file_path: "traffic_rasing/train-ticket/train-ticket-load-generator/main.py"
-traffic_file_path: "traffic_rasing/train-ticket/mix.py"
+traffic_file_path: "traffic_rasing/train-ticket/changing.py"
 
 chaos_injection:
   namespace: "train-ticket"

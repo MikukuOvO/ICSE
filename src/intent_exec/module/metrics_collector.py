@@ -45,8 +45,8 @@ def get_metrics_map():
     yaml_path = os.path.join('src', 'conf', metrics_file)
     with open(yaml_path, encoding="utf-8") as input_file:
         data = yaml.safe_load(input_file)
-    # The YAML file is expected to have a top-level key 'social-network'
-    return data.get('social-network', {})
+    # The YAML file is expected to have a top-level key 'train-ticket'
+    return data.get('train-ticket', {})
 
 def monitor_service_metrics():
     """
@@ -60,11 +60,11 @@ def monitor_service_metrics():
     # Filter metrics for home-timeline-service
     home_timeline_metrics = {}
     for metric_name, metric_info in metrics_map.items():
-        if metric_info.get('deploymentName') == "home-timeline-service":
+        if metric_info.get('deploymentName') == "ts-route-service":
             home_timeline_metrics[metric_name] = metric_info
     
     if not home_timeline_metrics:
-        message = "No metrics found for home-timeline-service in the configuration."
+        message = "No metrics found for ts-route-service in the configuration."
         print(message)
         report_result(
             component="metrics-monitor", 
@@ -74,7 +74,7 @@ def monitor_service_metrics():
         return
     
     # Report starting monitoring
-    start_message = f"Starting continuous monitoring of home-timeline-service metrics. Found {len(home_timeline_metrics)} metrics to monitor."
+    start_message = f"Starting continuous monitoring of ts-route-service metrics. Found {len(home_timeline_metrics)} metrics to monitor."
     print(start_message)
     report_result(
         component="metrics-monitor",

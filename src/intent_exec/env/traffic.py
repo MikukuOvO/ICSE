@@ -27,7 +27,7 @@ def start_traffic():
     with open("src/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/mix.py")
+    traffic_file = config.get("traffic_file_path", "traffic_rasing/train-ticket/changing.py")
     print(f"Using traffic file: {traffic_file}")
     minikube_ip = get_minikube_ip()
     command = [

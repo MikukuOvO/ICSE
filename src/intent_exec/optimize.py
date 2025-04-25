@@ -55,7 +55,7 @@ def main():
         # Refresh the API
         subprocess.run(["bash", "scripts/ops/api.sh"])
 
-        namespace = 'social-network'
+        namespace = 'train-ticket'
         timestamp = time.strftime("%Y%m%d-%H%M%S")
 
         result_dir = os.path.join(

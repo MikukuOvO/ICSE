@@ -8,7 +8,7 @@ data:
     #!/bin/bash
 
     # Configuration
-    NAMESPACE="social-network"  # Your microservices namespace
+    NAMESPACE="train-ticket"  # Your microservices namespace
     THRESHOLD=50                # CPU utilization threshold (50 = 50%)
     INTERVAL=15                 # Sampling interval in seconds (m=15)
     WINDOW=300                  # Window size in seconds (s=300)

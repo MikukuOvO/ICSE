@@ -226,19 +226,28 @@ def monitor_k8s_resources(namespace, output_file, metrics_config_file="src/conf/
                 try:
                     # Use kubectl describe pod to get the pod details
                     result = subprocess.run(
-                        ["kubectl", "describe", "pod", pod_name, "-n", namespace],
+                        ["kubectl", "get", "pod", pod_name, "-n", namespace, "-o", "json"],
                         check=True,
                         capture_output=True,
                         text=True
                     )
                     
-                    # Extract CPU and memory requests using regex
-                    # Look for the pattern in kubectl describe pod output
-                    cpu_match = re.search(r'Requests:\s+cpu:\s+([^\s,]+)', result.stdout)
-                    mem_match = re.search(r'memory:\s+([^\s,]+)', result.stdout)
-                    
-                    cpu_requests = cpu_match.group(1) if cpu_match else "N/A"
-                    mem_requests = mem_match.group(1) if mem_match else "N/A"
+                    pod_data = json.loads(result.stdout)
+
+                    SIDECAR_KEYWORDS = ['sidecar', 'istio', 'linkerd']
+
+                    cpu_requests = "N/A"
+                    mem_requests = "N/A"
+
+                    # 遍历容器信息
+                    for container in pod_data["spec"]["containers"]:
+                        container_name = container["name"]
+                        is_sidecar = any(keyword in container_name.lower() for keyword in SIDECAR_KEYWORDS)
+
+                        if not is_sidecar:
+                            requests = container.get("resources", {}).get("requests", {})
+                            cpu_requests = requests.get("cpu", "not set")
+                            mem_requests = requests.get("memory", "not set")
                     
                     # Query Prometheus for CPU and memory usage
                     try:
