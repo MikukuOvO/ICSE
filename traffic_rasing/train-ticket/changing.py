@@ -113,51 +113,51 @@ class BasicServiceUser(HttpUser):
     #     if response.status_code != 200:
     #         response.failure("Unexpected response: " + response.text)
 
-    @task(20)
-    def travel_service(self):
-        path = "/api/v1/travelservice/trips"
-        headers = {
-            "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json"
-        }
-        response = self.client.get(path, headers=headers)
-        if response.status_code == 403:
-            self.admin_login()
-            headers = {
-                "Authorization": f"Bearer {self.token}",
-                "Content-Type": "application/json"
-            }
-            response = self.client.get(path, headers=headers) 
-        if response.status_code != 200:
-            response.failure("Unexpected response: " + response.text)
-        travels = response.json()['data']
-        travel = random.choice(travels)
-        trip_id = travel['tripId']['type'] + travel['tripId']['number']
+    # @task(20)
+    # def travel_service(self):
+    #     path = "/api/v1/travelservice/trips"
+    #     headers = {
+    #         "Authorization": f"Bearer {self.token}",
+    #         "Content-Type": "application/json"
+    #     }
+    #     response = self.client.get(path, headers=headers)
+    #     if response.status_code == 403:
+    #         self.admin_login()
+    #         headers = {
+    #             "Authorization": f"Bearer {self.token}",
+    #             "Content-Type": "application/json"
+    #         }
+    #         response = self.client.get(path, headers=headers) 
+    #     if response.status_code != 200:
+    #         response.failure("Unexpected response: " + response.text)
+    #     travels = response.json()['data']
+    #     travel = random.choice(travels)
+    #     trip_id = travel['tripId']['type'] + travel['tripId']['number']
         
-        # path = f"/api/v1/travelservice/routes/{trip_id}"
-        # response = self.client.get(path, headers=headers)
-        # if response.status_code == 403:
-        #     self.admin_login()
-        #     headers = {
-        #         "Authorization": f"Bearer {self.token}",
-        #         "Content-Type": "application/json"
-        #     }
-        #     response = self.client.get(path, headers=headers)
-        # if response.status_code != 200:
-        #     response.failure("Unexpected response: " + response.text)
+    #     # path = f"/api/v1/travelservice/routes/{trip_id}"
+    #     # response = self.client.get(path, headers=headers)
+    #     # if response.status_code == 403:
+    #     #     self.admin_login()
+    #     #     headers = {
+    #     #         "Authorization": f"Bearer {self.token}",
+    #     #         "Content-Type": "application/json"
+    #     #     }
+    #     #     response = self.client.get(path, headers=headers)
+    #     # if response.status_code != 200:
+    #     #     response.failure("Unexpected response: " + response.text)
 
-        path = "/api/v1/travelservice/trips"
-        travel['tripId'] = trip_id
-        response = self.client.put(path, json=travel, headers=headers)
-        if response.status_code == 403:
-            self.admin_login()
-            headers = {
-                "Authorization": f"Bearer {self.token}",
-                "Content-Type": "application/json"
-            }
-            response = self.client.put(path, json=travel, headers=headers)
-        if response.status_code != 200:
-            response.failure("Unexpected response: " + response.text)
+    #     path = "/api/v1/travelservice/trips"
+    #     travel['tripId'] = trip_id
+    #     response = self.client.put(path, json=travel, headers=headers)
+    #     if response.status_code == 403:
+    #         self.admin_login()
+    #         headers = {
+    #             "Authorization": f"Bearer {self.token}",
+    #             "Content-Type": "application/json"
+    #         }
+    #         response = self.client.put(path, json=travel, headers=headers)
+    #     if response.status_code != 200:
+    #         response.failure("Unexpected response: " + response.text)
         
     @task(20)
     def order_service(self):
@@ -186,6 +186,36 @@ class BasicServiceUser(HttpUser):
                 "Content-Type": "application/json"
             }
             response = self.client.put(path, json=order, headers=headers)
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+
+    @task(20)
+    def station_service(self):
+        path = "/api/v1/stationservice/stations"
+        headers = {
+            "Authorization": f"Bearer {self.token}",
+            "Content-Type": "application/json"
+        }
+        response = self.client.get(path, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.get(path, headers=headers) 
+        if response.status_code != 200:
+            response.failure("Unexpected response: " + response.text)
+        stations = response.json()['data']
+        station = random.choice(stations)
+        response = self.client.put(path, json=station, headers=headers)
+        if response.status_code == 403:
+            self.admin_login()
+            headers = {
+                "Authorization": f"Bearer {self.token}",
+                "Content-Type": "application/json"
+            }
+            response = self.client.put(path, json=station, headers=headers)
         if response.status_code != 200:
             response.failure("Unexpected response: " + response.text)
 
@@ -338,7 +368,8 @@ class ModifiedLoadShape(LoadTestShape):
     - Quick ramp down to low (60% to 80% of total time)
     - Stable low traffic (80% to 100% of total time)
     """
-    total_time = 7200      # 120 minutes in seconds; adjust as needed
+    # total_time = 3600*6      # 120 minutes in seconds; adjust as needed
+    total_time = 3600
     max_users = 200        # peak concurrency; adjust to suit your test scale
     min_users = 20         # baseline/low traffic level
     

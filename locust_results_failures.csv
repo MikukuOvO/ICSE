@@ -1,13 +1,8 @@
 Method,Name,Error,Occurrences
-GET,/api/v1/routeservice/routes,HTTPError('504 Server Error: Gateway Timeout for url: /api/v1/routeservice/routes'),503
-GET,/api/v1/orderservice/order,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/orderservice/order'),1111
-GET,/api/v1/routeservice/routes,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/routeservice/routes'),62551
-GET,/api/v1/travelservice/trips,HTTPError('403 Client Error: Forbidden for url: /api/v1/travelservice/trips'),20
-GET,/api/v1/travelservice/trips,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/travelservice/trips'),273
-GET,/api/v1/routeservice/routes,HTTPError('500 Server Error: Internal Server Error for url: /api/v1/routeservice/routes'),136
-PUT,/api/v1/orderservice/order,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/orderservice/order'),35
-PUT,/api/v1/orderservice/order,HTTPError('403 Client Error: Forbidden for url: /api/v1/orderservice/order'),98
-GET,/api/v1/travelservice/trips,HTTPError('504 Server Error: Gateway Timeout for url: /api/v1/travelservice/trips'),1
-PUT,/api/v1/travelservice/trips,HTTPError('403 Client Error: Forbidden for url: /api/v1/travelservice/trips'),102
-GET,/api/v1/orderservice/order,HTTPError('403 Client Error: Forbidden for url: /api/v1/orderservice/order'),24
-GET,/api/v1/routeservice/routes,HTTPError('403 Client Error: Forbidden for url: /api/v1/routeservice/routes'),16
+GET,/api/v1/orderservice/order,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/orderservice/order'),113
+GET,/api/v1/routeservice/routes,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/routeservice/routes'),310
+PUT,/api/v1/orderservice/order,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/orderservice/order'),160
+PUT,/api/v1/stationservice/stations,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/stationservice/stations'),136
+GET,/api/v1/stationservice/stations,HTTPError('503 Server Error: Service Unavailable for url: /api/v1/stationservice/stations'),132
+PUT,/api/v1/orderservice/order,HTTPError('403 Client Error: Forbidden for url: /api/v1/orderservice/order'),68
+PUT,/api/v1/stationservice/stations,HTTPError('403 Client Error: Forbidden for url: /api/v1/stationservice/stations'),58

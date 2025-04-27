@@ -68,7 +68,7 @@ def test_routes(token):
     print(response.json())
 
 def test(token):
-    API_URL = "http://192.168.49.2:32677/api/v1/adminorderservice/adminorder"
+    API_URL = "http://192.168.49.2:32677/api/v1/stationservice/stations"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"

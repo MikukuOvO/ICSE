@@ -47,18 +47,16 @@ rabbitmq:
       - '{{component}}'
   url: pyamqp://guest@localhost//
 
-# traffic_file_path: "traffic_rasing/train-ticket/train-ticket-load-generator/main.py"
+# traffic_file_path: "traffic_rasing/social-network/diurnal_traffic.py"
 traffic_file_path: "traffic_rasing/train-ticket/changing.py"
 
 chaos_injection:
   namespace: "train-ticket"
   service: "ts-route-service"
-  container: "ts-route-service"
-  chaos_type: "CPU hog"
+  container: "rs-route-service"
+  chaos_type: "packet"
   # chaos_type: "MEMORY leak"
-  # chaos_type: "latency"
-  # chaos_type: "packet"
-  duration: 40m
+  duration: 50m
 
 heartbeat:
   detection_task: |-
@@ -110,15 +108,15 @@ heartbeat:
     - Step 1: Monitor the metrics mentioned in the SLO and determine if the SLO is being met.
     - Step 2: If the SLO is barely met, no action is needed.
     - Step 3: If the SLO is met with a good margin, take action to decrease resource allocation with following rules to save costs:
-      - Rule 1: When decreasing resource allocation, not smaller than 1/2 of the current allocation.
+      - Rule 1: When decreasing resource allocation, not smaller than 80% of the current allocation.
       - Rule 2: When decreasing resource allocation, not smaller than 50m for CPU.
     - Step 4: If the SLO is not met, take action to increase resource allocation with following rules to ensure the SLO is met:
-      - Rule 1: When increasing resource allocation, not larger than 2x of the current allocation.
-      - Rule 2: When increasing resource allocation, not larger than 400m for CPU.
+      - Rule 1: When increasing resource allocation, not larger than 120% of the current allocation.
+      - Rule 2: When increasing resource allocation, not larger than 3000m for CPU.
 
     # Other Requirements
     - Focus on the optimization of resource allocation, SLO violation are caused by the resource allocation.
     - Not do modification on the deployment instead of CPU resource allocation, such as image, env, replicas, etc.
   
   group_task_prefix: |-
-    TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n 
+    TASK: You are a manager of kubernetes cluster, you need to finish tasks for all components you maintaining with below: \n

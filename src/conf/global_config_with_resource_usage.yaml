@@ -109,10 +109,10 @@ heartbeat:
     - Step 2: If the SLO is barely met, no action is needed.
     - Step 3: If the SLO is met with a good margin, take action to decrease resource allocation as follows to save costs:
       - Sub-Step 3.1: Check the current resource allocation and usage.
-      - Sub-Step 3.2: If the resource usage is significantly lower than the allocated resources, consider decreasing the resource allocation, not smaller than 1/2 of the current allocation as well as (75m for CPU and 96Mi for MEM) as the lower bound.
+      - Sub-Step 3.2: If the resource usage is significantly lower than the allocated resources, consider decreasing the resource allocation, not smaller than 80% of the current allocation as well as (75m for CPU and 96Mi for MEM) as the lower bound.
     - Step 4: If the SLO is not met, take action to increase resource allocation as follows:
       - Sub-Step 4.1: Check the current resource allocation and usage.
-      - Sub-Step 4.2: If the resource usage is significantly higher than the allocated resources, consider increasing the resource allocation, not larger than 2 times of the current allocation.
+      - Sub-Step 4.2: If the resource usage is significantly higher than the allocated resources, consider increasing the resource allocation, not larger than 120% of the current allocation.
 
     # Other Requirements
     - Do not analyze the root cause for the SLO violation, just focus on the optimization of resource allocation.

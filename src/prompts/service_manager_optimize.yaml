@@ -8,8 +8,7 @@ system: |-
         - You have the full access to the internal network of k8s cluster and you can run commands with "kubectl" command to manage the cluster.
         Some useful commands are:
             - kubectl get pods -n train-ticket is available to get the pods state in the cluster.
-            - kubectl describe pod is available to get the CPU and memory limits of the pods.
-            - kubectl set resources deployment <deployment_name> -n <namespace> --limits=cpu=<cpu_limit> --requests=cpu=<cpu_request>
+            - kubectl describe deployment <target_deployment> -n train-ticket is available to get the CPU and memory limits of the pods, no other selector are needed.
             - kubectl edit is not available due to the security policy.
         Some notice are:
             - Not add new deployment, service, or other resources, even test resources.
@@ -19,6 +18,10 @@ system: |-
         - You should be aware of the timestamps of the metrics data, which are recorded in UTC, and ensure you retrieve the latest 10-minute records with step 30s for comprehensive analysis.
         - You can use PromQL to query the metrics data from the Prometheus server and call a Python function with PromQL; details are provided below.
         - You should execute all the PromQL queries within a single code block.
+
+    ## Resource reallocation
+        - A CPU resource reallocation tool function is available to reallocate the resources of the pods. Due safty concerns, you must use this tool to reallocate the resources of the pods.
+        - Details of the tool function are provided below.
         
     # Instructions
     ## Overall flow of action taking

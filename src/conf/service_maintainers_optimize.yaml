@@ -36,12 +36,12 @@ deployments:
   # - ts-seat-service
   # - ts-security-service
   # - ts-station-food-service
-  # - ts-station-service
+  - ts-station-service
   # - ts-ticket-office-service
   # - ts-train-food-service
   # - ts-train-service
   # - ts-travel-plan-service
-  - ts-travel-service
+  # - ts-travel-service
   # - ts-travel2-service
   # - ts-ui-dashboard
   # - ts-user-service

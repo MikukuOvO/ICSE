@@ -10,3 +10,5 @@ src/previous_results
 **/__pycache__/
 *.log
 src/api/
+service_visualizations/
+optimize_results/

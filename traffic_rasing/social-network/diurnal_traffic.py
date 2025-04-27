@@ -99,7 +99,8 @@ class ModifiedLoadShape(LoadTestShape):
     - Quick ramp down to low (60% to 80% of total time)
     - Stable low traffic (80% to 100% of total time)
     """
-    total_time = 7200      # 120 minutes in seconds; adjust as needed
+    # total_time = 7200      # 120 minutes in seconds; adjust as needed
+    total_time = 3600 * 6 # 6 hours in seconds; adjust as needed
     max_users = 200        # peak concurrency; adjust to suit your test scale
     min_users = 20         # baseline/low traffic level
     

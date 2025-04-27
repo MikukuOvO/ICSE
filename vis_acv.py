@@ -41,7 +41,7 @@ locust_workload_data = pd.DataFrame({
 })
 
 # Set the specific services to visualize
-target_services = ['ts-route-service', 'ts-order-service', 'ts-travel-service']
+target_services = ['ts-route-service', 'ts-order-service', 'ts-station-service']
 
 # Updated function to convert resource strings to numeric values
 def convert_resource_to_numeric(value):
