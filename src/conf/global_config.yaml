@@ -108,10 +108,10 @@ heartbeat:
     - Step 1: Monitor the metrics mentioned in the SLO and determine if the SLO is being met.
     - Step 2: If the SLO is barely met, no action is needed.
     - Step 3: If the SLO is met with a good margin, take action to decrease resource allocation with following rules to save costs:
-      - Rule 1: When decreasing resource allocation, not smaller than 1/2 of the current allocation.
+      - Rule 1: When decreasing resource allocation, not smaller than 80% of the current allocation.
       - Rule 2: When decreasing resource allocation, not smaller than 50m for CPU.
     - Step 4: If the SLO is not met, take action to increase resource allocation with following rules to ensure the SLO is met:
-      - Rule 1: When increasing resource allocation, not larger than 2x of the current allocation.
+      - Rule 1: When increasing resource allocation, not larger than 120% of the current allocation.
       - Rule 2: When increasing resource allocation, not larger than 2000m for CPU.
 
     # Other Requirements
