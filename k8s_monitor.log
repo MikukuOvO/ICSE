@@ -1,0 +1,601 @@
+Monitoring 27 deployments in namespace 'social-network'
+Data will be saved to k8s_resources.csv
+Polling every 60 seconds
+Monitoring will run until interrupted (Ctrl+C)
+[94m[{'metric': {}, 'value': [1745754943.515, '0.0008713793260969645']}][0m
+[94m[{'metric': {}, 'value': [1745754943.635, '5595136']}][0m
+[94m[{'metric': {}, 'value': [1745754943.798, '0.0008747604983750904']}][0m
+[94m[{'metric': {}, 'value': [1745754943.915, '7827456']}][0m
+[94m[{'metric': {}, 'value': [1745754944.087, '0.0008297747136042348']}][0m
+[94m[{'metric': {}, 'value': [1745754944.205, '7110656']}][0m
+[94m[{'metric': {}, 'value': [1745754944.364, '0.00009361705214366781']}][0m
+[94m[{'metric': {}, 'value': [1745754944.463, '13303808']}][0m
+[94m[{'metric': {}, 'value': [1745754944.644, '0']}][0m
+[94m[{'metric': {}, 'value': [1745754944.75, '15912960']}][0m
+[94m[{'metric': {}, 'value': [1745754944.932, '0.00008557293209529721']}][0m
+[94m[{'metric': {}, 'value': [1745754945.03, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745754945.195, '0.0027193628344390082']}][0m
+[94m[{'metric': {}, 'value': [1745754945.303, '99356672']}][0m
+[94m[{'metric': {}, 'value': [1745754945.459, '0.0009343473591996985']}][0m
+[94m[{'metric': {}, 'value': [1745754945.566, '2998272']}][0m
+[94m[{'metric': {}, 'value': [1745754945.717, '0.000017090327719955805']}][0m
+[94m[{'metric': {}, 'value': [1745754945.812, '52645888']}][0m
+[94m[{'metric': {}, 'value': [1745754945.971, '0.00018692667929789448']}][0m
+[94m[{'metric': {}, 'value': [1745754946.068, '29114368']}][0m
+[94m[{'metric': {}, 'value': [1745754946.214, '0.0026382798939545322']}][0m
+[94m[{'metric': {}, 'value': [1745754946.311, '101068800']}][0m
+[94m[{'metric': {}, 'value': [1745754946.458, '0.0009130333761583272']}][0m
+[94m[{'metric': {}, 'value': [1745754946.554, '13950976']}][0m
+[94m[{'metric': {}, 'value': [1745754946.704, '0.0027564410010453037']}][0m
+[94m[{'metric': {}, 'value': [1745754946.802, '100802560']}][0m
+[94m[{'metric': {}, 'value': [1745754946.959, '0.000860638361452217']}][0m
+[94m[{'metric': {}, 'value': [1745754947.053, '5840896']}][0m
+[94m[{'metric': {}, 'value': [1745754947.205, '0.000965268148164837']}][0m
+[94m[{'metric': {}, 'value': [1745754947.301, '5591040']}][0m
+[94m[{'metric': {}, 'value': [1745754947.451, '0.0007726992446431426']}][0m
+[94m[{'metric': {}, 'value': [1745754947.548, '8691712']}][0m
+[94m[{'metric': {}, 'value': [1745754947.69, '0.0009306315575856983']}][0m
+[94m[{'metric': {}, 'value': [1745754947.788, '3084288']}][0m
+[94m[{'metric': {}, 'value': [1745754947.958, '0.00008737155996263557']}][0m
+[94m[{'metric': {}, 'value': [1745754948.054, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745754948.212, '0.002665988532731686']}][0m
+[94m[{'metric': {}, 'value': [1745754948.319, '132759552']}][0m
+[94m[{'metric': {}, 'value': [1745754948.467, '0.0008947169925682998']}][0m
+[94m[{'metric': {}, 'value': [1745754948.568, '8110080']}][0m
+[94m[{'metric': {}, 'value': [1745754948.716, '0.00009236302237230716']}][0m
+[94m[{'metric': {}, 'value': [1745754948.826, '2215936']}][0m
+[94m[{'metric': {}, 'value': [1745754948.998, '0.0009880264791640413']}][0m
+[94m[{'metric': {}, 'value': [1745754949.105, '4923392']}][0m
+[94m[{'metric': {}, 'value': [1745754949.255, '0.00279479875778954']}][0m
+[94m[{'metric': {}, 'value': [1745754949.356, '101601280']}][0m
+[94m[{'metric': {}, 'value': [1745754949.521, '0.0009712249471820999']}][0m
+[94m[{'metric': {}, 'value': [1745754949.623, '4657152']}][0m
+[94m[{'metric': {}, 'value': [1745754949.785, '0.002763980040043534']}][0m
+[94m[{'metric': {}, 'value': [1745754949.907, '115044352']}][0m
+[94m[{'metric': {}, 'value': [1745754950.075, '0.0008929444676169002']}][0m
+[94m[{'metric': {}, 'value': [1745754950.185, '9408512']}][0m
+[94m[{'metric': {}, 'value': [1745754950.343, '0.0010353293957292141']}][0m
+[94m[{'metric': {}, 'value': [1745754950.462, '6672384']}][0m
+Querying metrics for application: social-network
+Querying Prometheus for user-service-latency in deployment user-service
+[94m[{'metric': {}, 'value': [1745754950.562, '0']}][0m
+Querying Prometheus for media-service-latency in deployment media-service
+[94m[{'metric': {}, 'value': [1745754950.671, '1.2499999999999973']}][0m
+Querying Prometheus for compose-post-service-latency in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745754950.777, '12.249999999999982']}][0m
+Querying Prometheus for text-service-latency in deployment text-service
+[94m[{'metric': {}, 'value': [1745754950.879, '4.75']}][0m
+Querying Prometheus for unique-id-service-latency in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745754950.975, '0']}][0m
+Querying Prometheus for url-shorten-service-latency in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745754951.078, '0.5000000000000051']}][0m
+Querying Prometheus for user-mention-service-latency in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745754951.175, '3.5']}][0m
+Querying Prometheus for social-graph-service-latency in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745754951.271, '3.5']}][0m
+Querying Prometheus for home-timeline-service-read-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745754951.367, '1.3749999999999973']}][0m
+Querying Prometheus for home-timeline-service-write-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745754951.468, '4.472222222222221']}][0m
+Querying Prometheus for post-storage-service-read-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745754951.566, 'NaN']}][0m
+Querying Prometheus for post-storage-service-write-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745754951.663, '0.5000000000000051']}][0m
+Querying Prometheus for user-timeline-service-read-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745754951.756, '4.71875']}][0m
+Querying Prometheus for user-timeline-service-write-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745754951.854, '3.9374999999999987']}][0m
+Querying Prometheus for user-service-cpu in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745754951.957, '0.0009712249471821001']}][0m
+Querying Prometheus for media-service-cpu in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745754952.057, '0.0009343473591996984']}][0m
+Querying Prometheus for compose-post-service-cpu in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745754952.154, '0.0008713793260969645']}][0m
+Querying Prometheus for text-service-cpu in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745754952.25, '0.0007736821360272191']}][0m
+Querying Prometheus for unique-id-service-cpu in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745754952.348, '0.0009306315575856983']}][0m
+Querying Prometheus for url-shorten-service-cpu in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745754952.458, '0.0008942524458058073']}][0m
+Querying Prometheus for user-mention-service-cpu in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745754952.561, '0.0009880264791640415']}][0m
+Querying Prometheus for social-graph-service-cpu in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745754952.683, '0.0010020455389958434']}][0m
+Querying Prometheus for home-timeline-service-cpu in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745754952.788, '0.0008295679616933286']}][0m
+Querying Prometheus for post-storage-service-cpu in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745754952.898, '0.0008898791967807762']}][0m
+Querying Prometheus for user-timeline-service-cpu in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745754953.012, '0.001159229254707776']}][0m
+Querying Prometheus for user-service-memory in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745754953.119, '4734976.000000001']}][0m
+Querying Prometheus for media-service-memory in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745754953.216, '2999134.3157894737']}][0m
+Querying Prometheus for compose-post-service-memory in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745754953.319, '5596979.199999999']}][0m
+Querying Prometheus for text-service-memory in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745754953.422, '8713269.894736841']}][0m
+Querying Prometheus for unique-id-service-memory in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745754953.524, '3107020.8000000003']}][0m
+Querying Prometheus for url-shorten-service-memory in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745754953.631, '8234900.210526316']}][0m
+Querying Prometheus for user-mention-service-memory in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745754953.735, '5106688']}][0m
+Querying Prometheus for social-graph-service-memory in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745754953.864, '5589530.947368422']}][0m
+Querying Prometheus for home-timeline-service-memory in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745754953.969, '7110041.6']}][0m
+Querying Prometheus for post-storage-service-memory in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745754954.081, '14450688.000000002']}][0m
+Querying Prometheus for user-timeline-service-memory in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745754954.177, '6668697.6']}][0m
+Querying Prometheus for user-service-workload in deployment user-service
+[94m[{'metric': {}, 'value': [1745754954.277, '0.09698996655518395']}][0m
+Querying Prometheus for media-service-workload in deployment media-service
+[94m[{'metric': {}, 'value': [1745754954.385, '0.08361204013377926']}][0m
+Querying Prometheus for compose-post-service-workload in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745754954.493, '0.08695652173913043']}][0m
+Querying Prometheus for text-service-workload in deployment text-service
+[94m[{'metric': {}, 'value': [1745754954.586, '0.08695652173913043']}][0m
+Querying Prometheus for unique-id-service-workload in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745754954.685, '0.08361204013377926']}][0m
+Querying Prometheus for url-shorten-service-workload in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745754954.785, '0.08361204013377926']}][0m
+Querying Prometheus for user-mention-service-workload in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745754954.893, '0.08361204013377926']}][0m
+Querying Prometheus for social-graph-service-workload in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745754954.994, '0.08361204013377926']}][0m
+Querying Prometheus for home-timeline-service-read-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745754955.092, '0.4013377926421405']}][0m
+Querying Prometheus for home-timeline-service-write-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745754955.189, '0.10033444816053512']}][0m
+Querying Prometheus for post-storage-service-workload in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745754955.287, '0.49498327759197325']}][0m
+Querying Prometheus for user-timeline-service-read-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745754955.402, '0.10367892976588629']}][0m
+Querying Prometheus for user-timeline-service-write-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745754955.499, '0.0903010033444816']}][0m
+Recorded metrics at 2025-04-27 11:55:39
+[94m[{'metric': {}, 'value': [1745755017.1, '0.001692284682754447']}][0m
+[94m[{'metric': {}, 'value': [1745755017.204, '6107136']}][0m
+[94m[{'metric': {}, 'value': [1745755017.348, '0.0010865979726899556']}][0m
+[94m[{'metric': {}, 'value': [1745755017.441, '7852032']}][0m
+[94m[{'metric': {}, 'value': [1745755017.595, '0.0016613576495839672']}][0m
+[94m[{'metric': {}, 'value': [1745755017.688, '7139328']}][0m
+[94m[{'metric': {}, 'value': [1745755017.834, '0.0000944670041680824']}][0m
+[94m[{'metric': {}, 'value': [1745755017.93, '13303808']}][0m
+[94m[{'metric': {}, 'value': [1745755018.081, '0']}][0m
+[94m[{'metric': {}, 'value': [1745755018.173, '15912960']}][0m
+[94m[{'metric': {}, 'value': [1745755018.315, '0.00008467708710247157']}][0m
+[94m[{'metric': {}, 'value': [1745755018.408, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755018.552, '0.002655471909876936']}][0m
+[94m[{'metric': {}, 'value': [1745755018.647, '99356672']}][0m
+[94m[{'metric': {}, 'value': [1745755018.802, '0.0010037377614484917']}][0m
+[94m[{'metric': {}, 'value': [1745755018.906, '2953216']}][0m
+[94m[{'metric': {}, 'value': [1745755019.065, '0.0015399741480274995']}][0m
+[94m[{'metric': {}, 'value': [1745755019.157, '52662272']}][0m
+[94m[{'metric': {}, 'value': [1745755019.3, '0.00023585319804273535']}][0m
+[94m[{'metric': {}, 'value': [1745755019.395, '29114368']}][0m
+[94m[{'metric': {}, 'value': [1745755019.536, '0.0029825341943357122']}][0m
+[94m[{'metric': {}, 'value': [1745755019.628, '101310464']}][0m
+[94m[{'metric': {}, 'value': [1745755019.771, '0.001511603508755787']}][0m
+[94m[{'metric': {}, 'value': [1745755019.871, '13930496']}][0m
+[94m[{'metric': {}, 'value': [1745755020.028, '0.0029336888844074854']}][0m
+[94m[{'metric': {}, 'value': [1745755020.121, '100806656']}][0m
+[94m[{'metric': {}, 'value': [1745755020.266, '0.0009102403429103298']}][0m
+[94m[{'metric': {}, 'value': [1745755020.359, '6115328']}][0m
+[94m[{'metric': {}, 'value': [1745755020.505, '0.0012117777956662194']}][0m
+[94m[{'metric': {}, 'value': [1745755020.601, '5402624']}][0m
+[94m[{'metric': {}, 'value': [1745755020.755, '0.0011956297328318457']}][0m
+[94m[{'metric': {}, 'value': [1745755020.869, '8421376']}][0m
+[94m[{'metric': {}, 'value': [1745755021.026, '0.0010525877174238187']}][0m
+[94m[{'metric': {}, 'value': [1745755021.12, '3031040']}][0m
+[94m[{'metric': {}, 'value': [1745755021.265, '0.00008631551511867568']}][0m
+[94m[{'metric': {}, 'value': [1745755021.36, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755021.507, '0.0030137686297127494']}][0m
+[94m[{'metric': {}, 'value': [1745755021.603, '132759552']}][0m
+[94m[{'metric': {}, 'value': [1745755021.745, '0.0010700203161895284']}][0m
+[94m[{'metric': {}, 'value': [1745755021.844, '8142848']}][0m
+[94m[{'metric': {}, 'value': [1745755021.994, '0.00019877526407718424']}][0m
+[94m[{'metric': {}, 'value': [1745755022.092, '2220032']}][0m
+[94m[{'metric': {}, 'value': [1745755022.244, '0.0013304782806012245']}][0m
+[94m[{'metric': {}, 'value': [1745755022.342, '4923392']}][0m
+[94m[{'metric': {}, 'value': [1745755022.488, '0.0030051220424447147']}][0m
+[94m[{'metric': {}, 'value': [1745755022.584, '101601280']}][0m
+[94m[{'metric': {}, 'value': [1745755022.728, '0.001066537115125901']}][0m
+[94m[{'metric': {}, 'value': [1745755022.828, '4689920']}][0m
+[94m[{'metric': {}, 'value': [1745755022.98, '0.0031804788942067564']}][0m
+[94m[{'metric': {}, 'value': [1745755023.083, '115040256']}][0m
+[94m[{'metric': {}, 'value': [1745755023.23, '0.0010789820051058652']}][0m
+[94m[{'metric': {}, 'value': [1745755023.324, '9424896']}][0m
+[94m[{'metric': {}, 'value': [1745755023.47, '0.001626879084496837']}][0m
+[94m[{'metric': {}, 'value': [1745755023.564, '6742016']}][0m
+Querying metrics for application: social-network
+Querying Prometheus for user-service-latency in deployment user-service
+[94m[{'metric': {}, 'value': [1745755023.658, '0']}][0m
+Querying Prometheus for media-service-latency in deployment media-service
+[94m[{'metric': {}, 'value': [1745755023.756, '0']}][0m
+Querying Prometheus for compose-post-service-latency in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755023.856, '4.964824120603015']}][0m
+Querying Prometheus for text-service-latency in deployment text-service
+[94m[{'metric': {}, 'value': [1745755023.955, '4.783505154639175']}][0m
+Querying Prometheus for unique-id-service-latency in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745755024.054, '0']}][0m
+Querying Prometheus for url-shorten-service-latency in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745755024.153, '0']}][0m
+Querying Prometheus for user-mention-service-latency in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745755024.249, '0']}][0m
+Querying Prometheus for social-graph-service-latency in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745755024.343, '0.24999999999998943']}][0m
+Querying Prometheus for home-timeline-service-read-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755024.439, '0']}][0m
+Querying Prometheus for home-timeline-service-write-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755024.535, '4.192307692307693']}][0m
+Querying Prometheus for post-storage-service-read-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755024.632, '0']}][0m
+Querying Prometheus for post-storage-service-write-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755024.732, '0']}][0m
+Querying Prometheus for user-timeline-service-read-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755024.833, '4.701388888888888']}][0m
+Querying Prometheus for user-timeline-service-write-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755024.938, '1.7343749999999927']}][0m
+Querying Prometheus for user-service-cpu in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755025.039, '0.001070787183472317']}][0m
+Querying Prometheus for media-service-cpu in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755025.137, '0.0010600460445887125']}][0m
+Querying Prometheus for compose-post-service-cpu in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755025.235, '0.0016922846827544468']}][0m
+Querying Prometheus for text-service-cpu in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755025.332, '0.0012652098344726396']}][0m
+Querying Prometheus for unique-id-service-cpu in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755025.425, '0.0010525877174238187']}][0m
+Querying Prometheus for url-shorten-service-cpu in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755025.526, '0.0011562197495476286']}][0m
+Querying Prometheus for user-mention-service-cpu in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755025.622, '0.001355196876533586']}][0m
+Querying Prometheus for social-graph-service-cpu in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755025.718, '0.001292812446790398']}][0m
+Querying Prometheus for home-timeline-service-cpu in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755025.814, '0.0016613576495839672']}][0m
+Querying Prometheus for post-storage-service-cpu in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755025.925, '0.0015768563127505292']}][0m
+Querying Prometheus for user-timeline-service-cpu in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755026.024, '0.0018710650663648445']}][0m
+Querying Prometheus for user-service-memory in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755026.123, '4726374.399999999']}][0m
+Querying Prometheus for media-service-memory in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755026.219, '2990489.6']}][0m
+Querying Prometheus for compose-post-service-memory in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755026.313, '5703270.399999999']}][0m
+Querying Prometheus for text-service-memory in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755026.406, '8610611.2']}][0m
+Querying Prometheus for unique-id-service-memory in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755026.502, '3096360.421052632']}][0m
+Querying Prometheus for url-shorten-service-memory in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755026.6, '8214851.3684210535']}][0m
+Querying Prometheus for user-mention-service-memory in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755026.696, '5070848']}][0m
+Querying Prometheus for social-graph-service-memory in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755026.793, '5540163.368421053']}][0m
+Querying Prometheus for home-timeline-service-memory in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755026.894, '7112908.8']}][0m
+Querying Prometheus for post-storage-service-memory in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755026.996, '14325145.6']}][0m
+Querying Prometheus for user-timeline-service-memory in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755027.092, '6676275.200000001']}][0m
+Querying Prometheus for user-service-workload in deployment user-service
+[94m[{'metric': {}, 'value': [1745755027.19, '0.5852842809364548']}][0m
+Querying Prometheus for media-service-workload in deployment media-service
+[94m[{'metric': {}, 'value': [1745755027.288, '0.7123745819397993']}][0m
+Querying Prometheus for compose-post-service-workload in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755027.393, '0.7190635451505016']}][0m
+Querying Prometheus for text-service-workload in deployment text-service
+[94m[{'metric': {}, 'value': [1745755027.491, '0.7190635451505016']}][0m
+Querying Prometheus for unique-id-service-workload in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745755027.601, '0.7123745819397993']}][0m
+Querying Prometheus for url-shorten-service-workload in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745755027.731, '0.7123745819397993']}][0m
+Querying Prometheus for user-mention-service-workload in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745755027.841, '0.7123745819397993']}][0m
+Querying Prometheus for social-graph-service-workload in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745755027.951, '0.7123745819397993']}][0m
+Querying Prometheus for home-timeline-service-read-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755028.064, '2.4983277591973243']}][0m
+Querying Prometheus for home-timeline-service-write-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755028.161, '0.7224080267558528']}][0m
+Querying Prometheus for post-storage-service-workload in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755028.274, '3.0936454849498327']}][0m
+Querying Prometheus for user-timeline-service-read-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755028.387, '0.5919732441471571']}][0m
+Querying Prometheus for user-timeline-service-write-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755028.491, '0.7190635451505016']}][0m
+Recorded metrics at 2025-04-27 11:56:55
+[94m[{'metric': {}, 'value': [1745755090.161, '0.0023747250916927557']}][0m
+[94m[{'metric': {}, 'value': [1745755090.261, '6197248']}][0m
+[94m[{'metric': {}, 'value': [1745755090.432, '0.0012877277690753954']}][0m
+[94m[{'metric': {}, 'value': [1745755090.552, '8101888']}][0m
+[94m[{'metric': {}, 'value': [1745755090.712, '0.0024209481661236986']}][0m
+[94m[{'metric': {}, 'value': [1745755090.825, '7143424']}][0m
+[94m[{'metric': {}, 'value': [1745755091.008, '0.00010089308782146577']}][0m
+[94m[{'metric': {}, 'value': [1745755091.111, '13303808']}][0m
+[94m[{'metric': {}, 'value': [1745755091.298, '0']}][0m
+[94m[{'metric': {}, 'value': [1745755091.408, '15912960']}][0m
+[94m[{'metric': {}, 'value': [1745755091.568, '0.00008239803987086135']}][0m
+[94m[{'metric': {}, 'value': [1745755091.675, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755091.838, '0.0027155969465864666']}][0m
+[94m[{'metric': {}, 'value': [1745755091.937, '99356672']}][0m
+[94m[{'metric': {}, 'value': [1745755092.084, '0.0011416245536255158']}][0m
+[94m[{'metric': {}, 'value': [1745755092.181, '2973696']}][0m
+[94m[{'metric': {}, 'value': [1745755092.327, '0.003074807769842187']}][0m
+[94m[{'metric': {}, 'value': [1745755092.425, '52436992']}][0m
+[94m[{'metric': {}, 'value': [1745755092.57, '0.00030271554156755735']}][0m
+[94m[{'metric': {}, 'value': [1745755092.665, '29114368']}][0m
+[94m[{'metric': {}, 'value': [1745755092.814, '0.003329010495528301']}][0m
+[94m[{'metric': {}, 'value': [1745755092.922, '101097472']}][0m
+[94m[{'metric': {}, 'value': [1745755093.074, '0.0021734906243205078']}][0m
+[94m[{'metric': {}, 'value': [1745755093.211, '13930496']}][0m
+[94m[{'metric': {}, 'value': [1745755093.362, '0.0031171004904918353']}][0m
+[94m[{'metric': {}, 'value': [1745755093.463, '100814848']}][0m
+[94m[{'metric': {}, 'value': [1745755093.614, '0.0009825334616146435']}][0m
+[94m[{'metric': {}, 'value': [1745755093.711, '5844992']}][0m
+[94m[{'metric': {}, 'value': [1745755093.873, '0.0014873562499130924']}][0m
+[94m[{'metric': {}, 'value': [1745755093.987, '5410816']}][0m
+[94m[{'metric': {}, 'value': [1745755094.163, '0.0016039161449480468']}][0m
+[94m[{'metric': {}, 'value': [1745755094.281, '8339456']}][0m
+[94m[{'metric': {}, 'value': [1745755094.433, '0.001159976431251313']}][0m
+[94m[{'metric': {}, 'value': [1745755094.539, '3031040']}][0m
+[94m[{'metric': {}, 'value': [1745755094.687, '0.00008503360915455995']}][0m
+[94m[{'metric': {}, 'value': [1745755094.782, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755094.94, '0.0033451681174627317']}][0m
+[94m[{'metric': {}, 'value': [1745755095.038, '132755456']}][0m
+[94m[{'metric': {}, 'value': [1745755095.188, '0.001381047115512838']}][0m
+[94m[{'metric': {}, 'value': [1745755095.283, '8118272']}][0m
+[94m[{'metric': {}, 'value': [1745755095.428, '0.00032274621491907803']}][0m
+[94m[{'metric': {}, 'value': [1745755095.535, '2215936']}][0m
+[94m[{'metric': {}, 'value': [1745755095.682, '0.0016231405308685207']}][0m
+[94m[{'metric': {}, 'value': [1745755095.778, '4923392']}][0m
+[94m[{'metric': {}, 'value': [1745755095.933, '0.003181862614101476']}][0m
+[94m[{'metric': {}, 'value': [1745755096.033, '101601280']}][0m
+[94m[{'metric': {}, 'value': [1745755096.176, '0.0011864005270461602']}][0m
+[94m[{'metric': {}, 'value': [1745755096.27, '4689920']}][0m
+[94m[{'metric': {}, 'value': [1745755096.415, '0.00362003236457211']}][0m
+[94m[{'metric': {}, 'value': [1745755096.511, '115036160']}][0m
+[94m[{'metric': {}, 'value': [1745755096.659, '0.0012664928506541375']}][0m
+[94m[{'metric': {}, 'value': [1745755096.758, '9437184']}][0m
+[94m[{'metric': {}, 'value': [1745755096.913, '0.002413826870348609']}][0m
+[94m[{'metric': {}, 'value': [1745755097.013, '6565888']}][0m
+Querying metrics for application: social-network
+Querying Prometheus for user-service-latency in deployment user-service
+[94m[{'metric': {}, 'value': [1745755097.109, '0']}][0m
+Querying Prometheus for media-service-latency in deployment media-service
+[94m[{'metric': {}, 'value': [1745755097.204, '0']}][0m
+Querying Prometheus for compose-post-service-latency in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755097.302, '4.940508021390373']}][0m
+Querying Prometheus for text-service-latency in deployment text-service
+[94m[{'metric': {}, 'value': [1745755097.399, '4.797050561797752']}][0m
+Querying Prometheus for unique-id-service-latency in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745755097.498, '0']}][0m
+Querying Prometheus for url-shorten-service-latency in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745755097.592, '0']}][0m
+Querying Prometheus for user-mention-service-latency in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745755097.688, '0']}][0m
+Querying Prometheus for social-graph-service-latency in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745755097.794, '0']}][0m
+Querying Prometheus for home-timeline-service-read-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755097.892, '0']}][0m
+Querying Prometheus for home-timeline-service-write-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755097.988, '4.168803418803417']}][0m
+Querying Prometheus for post-storage-service-read-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755098.086, '0']}][0m
+Querying Prometheus for post-storage-service-write-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755098.184, '0']}][0m
+Querying Prometheus for user-timeline-service-read-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755098.28, '4.701851851851852']}][0m
+Querying Prometheus for user-timeline-service-write-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755098.38, '2.1397058823529385']}][0m
+Querying Prometheus for user-service-cpu in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755098.477, '0.0011864005270461606']}][0m
+Querying Prometheus for media-service-cpu in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755098.577, '0.0011563819790970523']}][0m
+Querying Prometheus for compose-post-service-cpu in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755098.672, '0.0024521670803793064']}][0m
+Querying Prometheus for text-service-cpu in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755098.773, '0.0017159393817104496']}][0m
+Querying Prometheus for unique-id-service-cpu in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755098.876, '0.0011677586719575144']}][0m
+Querying Prometheus for url-shorten-service-cpu in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755098.971, '0.0013810471155128378']}][0m
+Querying Prometheus for user-mention-service-cpu in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755099.066, '0.0016504722429842955']}][0m
+Querying Prometheus for social-graph-service-cpu in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755099.185, '0.0014873562499130924']}][0m
+Querying Prometheus for home-timeline-service-cpu in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755099.279, '0.0025985549122726362']}][0m
+Querying Prometheus for post-storage-service-cpu in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755099.375, '0.0023305715139057496']}][0m
+Querying Prometheus for user-timeline-service-cpu in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755099.472, '0.0024357908377902063']}][0m
+Querying Prometheus for user-service-memory in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755099.571, '4719820.800000001']}][0m
+Querying Prometheus for media-service-memory in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755099.669, '2985398.8571428573']}][0m
+Querying Prometheus for compose-post-service-memory in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755099.768, '5855329.523809524']}][0m
+Querying Prometheus for text-service-memory in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755099.872, '8521932.8']}][0m
+Querying Prometheus for unique-id-service-memory in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755099.967, '3077324.8000000003']}][0m
+Querying Prometheus for url-shorten-service-memory in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755100.064, '8188335.157894736']}][0m
+Querying Prometheus for user-mention-service-memory in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755100.165, '5023451.428571429']}][0m
+Querying Prometheus for social-graph-service-memory in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755100.262, '5499790.222222223']}][0m
+Querying Prometheus for home-timeline-service-memory in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755100.361, '7123763.199999999']}][0m
+Querying Prometheus for post-storage-service-memory in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755100.458, '14177621.333333332']}][0m
+Querying Prometheus for user-timeline-service-memory in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755100.557, '6671952.842105264']}][0m
+Querying Prometheus for user-service-workload in deployment user-service
+[94m[{'metric': {}, 'value': [1745755100.654, '1.0468227424749164']}][0m
+Querying Prometheus for media-service-workload in deployment media-service
+[94m[{'metric': {}, 'value': [1745755100.752, '1.3311036789297659']}][0m
+Querying Prometheus for compose-post-service-workload in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755100.86, '1.334448160535117']}][0m
+Querying Prometheus for text-service-workload in deployment text-service
+[94m[{'metric': {}, 'value': [1745755100.96, '1.334448160535117']}][0m
+Querying Prometheus for unique-id-service-workload in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745755101.058, '1.3377926421404682']}][0m
+Querying Prometheus for url-shorten-service-workload in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745755101.159, '1.3377926421404682']}][0m
+Querying Prometheus for user-mention-service-workload in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745755101.259, '1.3377926421404682']}][0m
+Querying Prometheus for social-graph-service-workload in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745755101.356, '1.3377926421404682']}][0m
+Querying Prometheus for home-timeline-service-read-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755101.452, '4.6755852842809364']}][0m
+Querying Prometheus for home-timeline-service-write-workload in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755101.549, '1.3377926421404682']}][0m
+Querying Prometheus for post-storage-service-workload in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755101.649, '5.712374581939799']}][0m
+Querying Prometheus for user-timeline-service-read-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755101.747, '1.0568561872909699']}][0m
+Querying Prometheus for user-timeline-service-write-workload in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755101.853, '1.334448160535117']}][0m
+Recorded metrics at 2025-04-27 11:58:08
+[94m[{'metric': {}, 'value': [1745755163.429, '0.00304608020358934']}][0m
+[94m[{'metric': {}, 'value': [1745755163.539, '6295552']}][0m
+[94m[{'metric': {}, 'value': [1745755163.697, '0.0014439047048180776']}][0m
+[94m[{'metric': {}, 'value': [1745755163.798, '8085504']}][0m
+[94m[{'metric': {}, 'value': [1745755163.961, '0.003272827115675278']}][0m
+[94m[{'metric': {}, 'value': [1745755164.06, '7168000']}][0m
+[94m[{'metric': {}, 'value': [1745755164.217, '0.00009466667598780785']}][0m
+[94m[{'metric': {}, 'value': [1745755164.316, '13303808']}][0m
+[94m[{'metric': {}, 'value': [1745755164.473, '0']}][0m
+[94m[{'metric': {}, 'value': [1745755164.582, '15912960']}][0m
+[94m[{'metric': {}, 'value': [1745755164.741, '0.00008593555093555119']}][0m
+[94m[{'metric': {}, 'value': [1745755164.861, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755165.037, '0.0027222016321335847']}][0m
+[94m[{'metric': {}, 'value': [1745755165.161, '99356672']}][0m
+[94m[{'metric': {}, 'value': [1745755165.328, '0.0012605880687798128']}][0m
+[94m[{'metric': {}, 'value': [1745755165.441, '2973696']}][0m
+[94m[{'metric': {}, 'value': [1745755165.606, '0.004801950070346501']}][0m
+[94m[{'metric': {}, 'value': [1745755165.709, '52387840']}][0m
+[94m[{'metric': {}, 'value': [1745755165.881, '0.00035887473687966137']}][0m
+[94m[{'metric': {}, 'value': [1745755165.994, '29134848']}][0m
+[94m[{'metric': {}, 'value': [1745755166.177, '0.0038056918682680117']}][0m
+[94m[{'metric': {}, 'value': [1745755166.332, '101105664']}][0m
+[94m[{'metric': {}, 'value': [1745755166.522, '0.002877993917012155']}][0m
+[94m[{'metric': {}, 'value': [1745755166.664, '13983744']}][0m
+[94m[{'metric': {}, 'value': [1745755166.876, '0.003331568282941961']}][0m
+[94m[{'metric': {}, 'value': [1745755166.985, '100814848']}][0m
+[94m[{'metric': {}, 'value': [1745755167.155, '0.001058684809435705']}][0m
+[94m[{'metric': {}, 'value': [1745755167.254, '5849088']}][0m
+[94m[{'metric': {}, 'value': [1745755167.404, '0.001777748036806183']}][0m
+[94m[{'metric': {}, 'value': [1745755167.503, '5423104']}][0m
+[94m[{'metric': {}, 'value': [1745755167.655, '0.002113567371460602']}][0m
+[94m[{'metric': {}, 'value': [1745755167.758, '8339456']}][0m
+[94m[{'metric': {}, 'value': [1745755167.915, '0.0012682054513389023']}][0m
+[94m[{'metric': {}, 'value': [1745755168.012, '3031040']}][0m
+[94m[{'metric': {}, 'value': [1745755168.16, '0.00008404642470738704']}][0m
+[94m[{'metric': {}, 'value': [1745755168.254, '2101248']}][0m
+[94m[{'metric': {}, 'value': [1745755168.399, '0.003700580777802981']}][0m
+[94m[{'metric': {}, 'value': [1745755168.496, '132763648']}][0m
+[94m[{'metric': {}, 'value': [1745755168.641, '0.0016112855185143762']}][0m
+[94m[{'metric': {}, 'value': [1745755168.74, '8126464']}][0m
+[94m[{'metric': {}, 'value': [1745755168.904, '0.00044103085062859195']}][0m
+[94m[{'metric': {}, 'value': [1745755169.002, '2215936']}][0m
+[94m[{'metric': {}, 'value': [1745755169.152, '0.001966847884020901']}][0m
+[94m[{'metric': {}, 'value': [1745755169.259, '4923392']}][0m
+[94m[{'metric': {}, 'value': [1745755169.408, '0.0033701754509732024']}][0m
+[94m[{'metric': {}, 'value': [1745755169.514, '101601280']}][0m
+[94m[{'metric': {}, 'value': [1745755169.66, '0.0012620417933923093']}][0m
+[94m[{'metric': {}, 'value': [1745755169.758, '4685824']}][0m
+[94m[{'metric': {}, 'value': [1745755169.912, '0.0041025100870090364']}][0m
+[94m[{'metric': {}, 'value': [1745755170.008, '115044352']}][0m
+[94m[{'metric': {}, 'value': [1745755170.156, '0.0014426374863657097']}][0m
+[94m[{'metric': {}, 'value': [1745755170.256, '9433088']}][0m
+[94m[{'metric': {}, 'value': [1745755170.413, '0.0032099615815423914']}][0m
+[94m[{'metric': {}, 'value': [1745755170.513, '6791168']}][0m
+Querying metrics for application: social-network
+Querying Prometheus for user-service-latency in deployment user-service
+[94m[{'metric': {}, 'value': [1745755170.611, '0']}][0m
+Querying Prometheus for media-service-latency in deployment media-service
+[94m[{'metric': {}, 'value': [1745755170.711, '0']}][0m
+Querying Prometheus for compose-post-service-latency in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755170.813, '4.934628975265017']}][0m
+Querying Prometheus for text-service-latency in deployment text-service
+[94m[{'metric': {}, 'value': [1745755170.921, '4.794495412844037']}][0m
+Querying Prometheus for unique-id-service-latency in deployment unique-id-service
+[94m[{'metric': {}, 'value': [1745755171.03, '0']}][0m
+Querying Prometheus for url-shorten-service-latency in deployment url-shorten-service
+[94m[{'metric': {}, 'value': [1745755171.136, '0']}][0m
+Querying Prometheus for user-mention-service-latency in deployment user-mention-service
+[94m[{'metric': {}, 'value': [1745755171.234, '0']}][0m
+Querying Prometheus for social-graph-service-latency in deployment social-graph-service
+[94m[{'metric': {}, 'value': [1745755171.329, '0']}][0m
+Querying Prometheus for home-timeline-service-read-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755171.431, '0']}][0m
+Querying Prometheus for home-timeline-service-write-latency in deployment home-timeline-service
+[94m[{'metric': {}, 'value': [1745755171.528, '4.174157303370787']}][0m
+Querying Prometheus for post-storage-service-read-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755171.626, '0']}][0m
+Querying Prometheus for post-storage-service-write-latency in deployment post-storage-service
+[94m[{'metric': {}, 'value': [1745755171.724, '0']}][0m
+Querying Prometheus for user-timeline-service-read-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755171.821, '4.711267605633803']}][0m
+Querying Prometheus for user-timeline-service-write-latency in deployment user-timeline-service
+[94m[{'metric': {}, 'value': [1745755171.934, '1.8723404255319178']}][0m
+Querying Prometheus for user-service-cpu in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755172.04, '0.0013091276706321297']}][0m
+Querying Prometheus for media-service-cpu in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755172.136, '0.001279306981658581']}][0m
+Querying Prometheus for compose-post-service-cpu in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755172.235, '0.0033545563748852802']}][0m
+Querying Prometheus for text-service-cpu in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755172.332, '0.002113567371460602']}][0m
+Querying Prometheus for unique-id-service-cpu in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755172.44, '0.0012682054513389023']}][0m
+Querying Prometheus for url-shorten-service-cpu in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755172.537, '0.0016732478620476651']}][0m
+Querying Prometheus for user-mention-service-cpu in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755172.635, '0.001966847884020901']}][0m
+Querying Prometheus for social-graph-service-cpu in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755172.731, '0.001777748036806183']}][0m
+Querying Prometheus for home-timeline-service-cpu in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755172.832, '0.0033329371006408084']}][0m
+Querying Prometheus for post-storage-service-cpu in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755172.944, '0.003004254231408295']}][0m
+Querying Prometheus for user-timeline-service-cpu in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755173.042, '0.0032099615815423905']}][0m
+Querying Prometheus for user-service-memory in deployment user-service
+[94m[{'metric': {'pod': 'user-service-57fd6f65c6-z8snh'}, 'value': [1745755173.14, '4712038.4']}][0m
+Querying Prometheus for media-service-memory in deployment media-service
+[94m[{'metric': {'pod': 'media-service-5ff6449c9-sbs8q'}, 'value': [1745755173.233, '2979430.4']}][0m
+Querying Prometheus for compose-post-service-memory in deployment compose-post-service
+[94m[{'metric': {'pod': 'compose-post-service-68bd4c44f9-9rw2s'}, 'value': [1745755173.328, '5998796.8']}][0m
+Querying Prometheus for text-service-memory in deployment text-service
+[94m[{'metric': {'pod': 'text-service-76b7f46588-h6ttm'}, 'value': [1745755173.422, '8452778.666666666']}][0m
+Querying Prometheus for unique-id-service-memory in deployment unique-id-service
+[94m[{'metric': {'pod': 'unique-id-service-5c5f7885d5-9g7l4'}, 'value': [1745755173.522, '3064422.3999999994']}][0m
+Querying Prometheus for url-shorten-service-memory in deployment url-shorten-service
+[94m[{'metric': {'pod': 'url-shorten-service-7d86d9979c-l976w'}, 'value': [1745755173.621, '8162508.800000001']}][0m
+Querying Prometheus for user-mention-service-memory in deployment user-mention-service
+[94m[{'metric': {'pod': 'user-mention-service-6fc659b68-k4xm4'}, 'value': [1745755173.717, '4985446.4']}][0m
+Querying Prometheus for social-graph-service-memory in deployment social-graph-service
+[94m[{'metric': {'pod': 'social-graph-service-d6849b774-p245g'}, 'value': [1745755173.815, '5461261.47368421']}][0m
+Querying Prometheus for home-timeline-service-memory in deployment home-timeline-service
+[94m[{'metric': {'pod': 'home-timeline-service-5769fb77cb-5dlv8'}, 'value': [1745755173.927, '7142448.761904761']}][0m
+Querying Prometheus for post-storage-service-memory in deployment post-storage-service
+[94m[{'metric': {'pod': 'post-storage-service-886c559b8-tgw9z'}, 'value': [1745755174.024, '14058495.999999998']}][0m
+Querying Prometheus for user-timeline-service-memory in deployment user-timeline-service
+[94m[{'metric': {'pod': 'user-timeline-service-6c8bcfd4dc-r27dv'}, 'value': [1745755174.12, '6677708.800000001']}][0m
+Querying Prometheus for user-service-workload in deployment user-service
+[94m[{'metric': {}, 'value': [1745755174.213, '1.5819397993311037']}][0m
+Querying Prometheus for media-service-workload in deployment media-service
+[94m[{'metric': {}, 'value': [1745755174.312, '1.9966555183946488']}][0m
+Querying Prometheus for compose-post-service-workload in deployment compose-post-service
+[94m[{'metric': {}, 'value': [1745755174.409, '2.0066889632107023']}][0m
+Querying Prometheus for text-service-workload in deployment text-service
+[94m[{'metric': {}, 'value': [1745755174.507, '2.0066889632107023']}][0m
