@@ -8,7 +8,7 @@ system: |-
         - You have the full access to the internal network of k8s cluster and you can run commands with "kubectl" command to manage the cluster.
         Some useful commands are:
             - kubectl get pods -n social-network is available to get the pods state in the cluster.
-            - kubectl describe deployment <target_deployment> -n social-network is available to get the CPU and memory limits of the pods, no other selector are needed.
+            - kubectl describe pod <target_pod> -n social-network is available to get the CPU and memory limits of the pod, no other selector are needed.
             - kubectl edit is not available due to the security policy.
         Some notice are:
             - Not add new deployment, service, or other resources, even test resources.

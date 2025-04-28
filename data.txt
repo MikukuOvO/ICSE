@@ -1,0 +1,60 @@
+SLO Violation Analysis
+
+======================
+
+
+home-timeline Service:
+----------------------
+No SLO violations detected.
+
+Average Resource Allocation (All Time):
+  CPU Requests: 109.80m
+  Memory Requests: 128.00Mi
+  CPU Usage: 4.46m
+  Memory Usage: 10.06Mi
+
+==================================================
+
+compose-post Service:
+---------------------
+Total violation periods: 13
+Total violation duration: 4949.00 seconds
+
+Violation Periods:
+  1. Start: 2025-04-27 13:20:11, End: 2025-04-27 13:29:59, Duration: 588.00s
+  2. Start: 2025-04-27 14:31:31, End: 2025-04-27 14:35:12, Duration: 221.00s
+  3. Start: 2025-04-27 14:54:59, End: 2025-04-27 15:17:12, Duration: 1333.00s
+  4. Start: 2025-04-27 15:19:39, End: 2025-04-27 15:20:53, Duration: 74.00s
+  5. Start: 2025-04-27 15:22:07, End: 2025-04-27 15:24:36, Duration: 149.00s
+  6. Start: 2025-04-27 15:54:10, End: 2025-04-27 15:59:05, Duration: 295.00s
+  7. Start: 2025-04-27 16:11:29, End: 2025-04-27 16:17:39, Duration: 370.00s
+  8. Start: 2025-04-27 16:22:35, End: 2025-04-27 16:32:26, Duration: 591.00s
+  9. Start: 2025-04-27 16:33:40, End: 2025-04-27 16:39:49, Duration: 369.00s
+  10. Start: 2025-04-27 17:00:47, End: 2025-04-27 17:02:01, Duration: 74.00s
+  11. Start: 2025-04-27 17:16:47, End: 2025-04-27 17:21:42, Duration: 295.00s
+  12. Start: 2025-04-27 17:29:06, End: 2025-04-27 17:34:01, Duration: 295.00s
+  13. Start: 2025-04-27 17:48:48, End: 2025-04-27 17:53:43, Duration: 295.00s
+
+Average Resource Allocation (All Time):
+  CPU Requests: 107.47m
+  Memory Requests: 512.00Mi
+  CPU Usage: 4.18m
+  Memory Usage: 8.63Mi
+
+==================================================
+
+user-timeline Service:
+----------------------
+Total violation periods: 1
+Total violation duration: 74.00 seconds
+
+Violation Periods:
+  1. Start: 2025-04-27 14:27:49, End: 2025-04-27 14:29:03, Duration: 74.00s
+
+Average Resource Allocation (All Time):
+  CPU Requests: 88.23m
+  Memory Requests: 512.00Mi
+  CPU Usage: 3.34m
+  Memory Usage: 9.12Mi
+
+==================================================
