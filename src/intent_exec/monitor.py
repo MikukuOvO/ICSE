@@ -250,7 +250,7 @@ def monitor_k8s_resources(namespace, output_file, metrics_config_file="src/conf/
                             mem_requests = requests.get("memory", "not set")
 
                     if cpu_requests[-1] != "m":
-                        cpu_requests = f"{int(cpu_requests)*1000}m"
+                        cpu_requests = f"{int(float(cpu_requests)*1000)}m"
                     
                     # Query Prometheus for CPU and memory usage
                     try:

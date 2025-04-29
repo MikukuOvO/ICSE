@@ -120,7 +120,7 @@ run_deployment() {
 }
 
 # Run the deployments in sequence
-NUM_ITERATIONS=36
+NUM_ITERATIONS=12
 echo "--- Starting ${NUM_ITERATIONS} Optimization Iterations ---"
 for i in $(seq 1 ${NUM_ITERATIONS})
 do
