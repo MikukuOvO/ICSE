@@ -9,15 +9,15 @@ def assign_tasks(components: list, messages: list) -> str:
     return: str, the result of the assignment
 
     Example:
-    >>> from intent_exec.agent.tool_functions_for_manager import assign_tasks
+    >>> from acv.detect.agent.tool_functions_for_manager import assign_tasks
     >>> components = ['catalogue', 'front-end']
     >>> messages = ['Please update the service.', 'Please restart the service.']
     >>> result = assign_tasks(components, messages)
     >>> print(result)
     Tasks assigned.
     """
-    from intent_exec.module import RabbitMQ, load_config
-    from intent_exec.agent.utils import AWAITING_FLAG
+    from acv.detect.module import RabbitMQ, load_config
+    from acv.detect.agent.utils import AWAITING_FLAG
     import json
     global_config = load_config()
 

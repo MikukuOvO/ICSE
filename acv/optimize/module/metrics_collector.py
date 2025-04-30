@@ -42,7 +42,7 @@ def get_metrics_map():
     if len(sys.argv) > 4:
         metrics_file = sys.argv[4]
     
-    yaml_path = os.path.join('src', 'conf', metrics_file)
+    yaml_path = os.path.join('acv', 'conf', metrics_file)
     with open(yaml_path, encoding="utf-8") as input_file:
         data = yaml.safe_load(input_file)
     # The YAML file is expected to have a top-level key 'social-network'

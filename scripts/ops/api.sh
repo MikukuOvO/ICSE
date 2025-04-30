@@ -9,7 +9,7 @@ NC='\033[0m'        # No color
 
 # Update the GPT-4 API key
 echo -e "${YELLOW}Updating GPT-4 API key...${NC}"
-api_key=$(python src/api/cloudgpt_aoai.py)
+api_key=$(python acv/api/cloudgpt_aoai.py)
 
 if [ -z "$api_key" ]; then
     echo -e "${RED}Error: Failed to fetch GPT-4 API key. Please check your Python script.${NC}"
@@ -17,7 +17,7 @@ if [ -z "$api_key" ]; then
 fi
 
 echo -e "${BLUE}Fetched API key:${NC} $api_key"
-sed -i "s|api_key:.*|api_key: \"$api_key\"|" src/api/secret.yaml
+sed -i "s|api_key:.*|api_key: \"$api_key\"|" acv/api/secret.yaml
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}Successfully updated GPT-4 API key in secret.yaml.${NC}"
@@ -26,7 +26,7 @@ else
     exit 1
 fi
 
-sed -i "s|api_key:.*|api_key: \"$api_key\"|" src/api/secret_reasoning.yaml
+sed -i "s|api_key:.*|api_key: \"$api_key\"|" acv/api/secret_reasoning.yaml
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}Successfully updated GPT-4 API key in secret_reasoning.yaml.${NC}"

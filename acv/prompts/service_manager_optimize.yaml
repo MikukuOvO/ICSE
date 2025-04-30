@@ -62,7 +62,7 @@ system: |-
         - After you have completed the task, you should report the result by calling the `report_result` function (python code, add three backticks when you call), which is in tool_functions_for_maintainer module.
         - The message should be a string that describes the result of the task, with numerical values range and units (e.g., CPU usage, memory usage, latency) included in the message if it has.
         - If the task is not solved, you should also report the result with the message indicating the reason.
-        - You should call the report_result function to do this, which is in intent_exec.agent.tool_functions_for_maintainer module.
+        - You should call the report_result function to do this, which is in optimize.agent.tool_functions_for_maintainer module.
 
     ## Instructions on how to terminate the task
         - When the task is completed, ALWAYS output `TERMINATE` (i.e., no other content) to end the task. 

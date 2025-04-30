@@ -24,7 +24,7 @@ def kill_locust_processes():
 def start_traffic():
     # Kill all locust processes before starting a new one.
     kill_locust_processes()
-    with open("src/conf/global_config.yaml", "r") as f:
+    with open("acv/conf/global_config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
     traffic_file = config.get("traffic_file_path", "traffic_rasing/social-network/mixed_traffic.py")

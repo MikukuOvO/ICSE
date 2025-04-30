@@ -11,12 +11,12 @@ import subprocess
 from typing import Dict, List, Optional, Tuple
 import yaml
 
-with open('src/conf/global_config.yaml', 'r') as f:
+with open('acv/conf/global_config.yaml', 'r') as f:
     global_config = yaml.safe_load(f)
     NAMESPACE = global_config.get('namespace', 'social-network')
 
 # Load service from service_maintainers_optimize.yaml
-with open('src/conf/service_maintainers_optimize.yaml', 'r') as f:
+with open('acv/conf/service_maintainers_optimize.yaml', 'r') as f:
     service_config = yaml.safe_load(f)
     # Extract from deployment section with <NAMESPACE> as subsection
     SERVICES = service_config.get('deployments', {}).get(NAMESPACE, {})

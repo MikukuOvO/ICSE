@@ -159,7 +159,7 @@ class ClusterManager(SocietyOfMindAgent):
             "service_list": components
         })
         # Generate function descriptions for the cluster manager
-        prompter.generate_function_descriptions(os.path.join(base_path, 'intent_exec/agent/tool_functions_for_manager.py'))
+        prompter.generate_function_descriptions(os.path.join(base_path, 'detect/agent/tool_functions_for_manager.py'))
 
         description = 'Cluster manager service. It controls task distribution among service maintainers.'
         return ClusterManager(

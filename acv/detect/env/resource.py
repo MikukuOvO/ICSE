@@ -108,7 +108,7 @@ def parse_memory_limit(mem_str):
         print(f"Error parsing memory limit '{mem_str}': {e}")
         return mem_str
 
-def inject(config_path="src/conf/global_config.yaml"):
+def inject(config_path="acv/conf/global_config.yaml"):
     try:
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)

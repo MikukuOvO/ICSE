@@ -68,7 +68,7 @@ def main():
         execution_file_path = os.path.join(result_dir, 'logs')
         os.makedirs(execution_file_path, exist_ok=True) 
         
-        components = list_deployments(namespace, "src/conf/service_maintainers_optimize.yaml")
+        components = list_deployments(namespace, "acv/conf/service_maintainers_optimize.yaml")
         cluster_manager = ClusterManager._init_from_config(
             cache_seed=42,
             components=components

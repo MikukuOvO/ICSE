@@ -6,7 +6,7 @@
 TRAFFIC_TYPE="diurnal" # CHANGE THIS VALUE
 
 # Load namespace from global config
-CONFIG_FILE="src/conf/global_config.yaml"
+CONFIG_FILE="acv/conf/global_config.yaml"
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Error: Configuration file not found at ${CONFIG_FILE}"
     exit 1
@@ -105,7 +105,7 @@ echo "test_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Start K8s resource monitoring
 echo "Starting K8s resource monitoring..."
-python -m src.intent_exec.monitor --namespace ${NAMESPACE} --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
+python -m acv.optimize.monitor --namespace ${NAMESPACE} --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
 MONITOR_PID=$!
 echo "K8s resource monitoring started with PID: $MONITOR_PID"
 
@@ -125,7 +125,7 @@ echo "load_test_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Start the CPU controller
 echo "Starting K8s CPU controller..."
-python -m src.intent_exec.k8s-cpu > cpu_controller_${TRAFFIC_TYPE}.log 2>&1 &
+python -m acv.optimize.k8s-cpu > cpu_controller_${TRAFFIC_TYPE}.log 2>&1 &
 CPU_CONTROLLER_PID=$!
 echo "K8s CPU controller started with PID: $CPU_CONTROLLER_PID"
 

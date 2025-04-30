@@ -8,12 +8,12 @@ import yaml
 from datetime import datetime
  
 def query_prometheus(promQL: str, **kwargs) -> list:
-    from src.intent_exec.module.prometheus_client import PrometheusClient
+    from acv.optimize.module.prometheus_client import PrometheusClient
     prometheus_client = PrometheusClient()
     result = prometheus_client.query(promQL, **kwargs)
     return result
  
-def load_metrics_config(config_file="src/conf/metrics_collection.yaml"):
+def load_metrics_config(config_file="acv/conf/metrics_collection.yaml"):
     """
     Load metrics configuration from YAML file.
    
@@ -127,7 +127,7 @@ def get_running_pods_for_deployments(namespace, deployment_names):
    
     return deployment_to_pod
  
-def monitor_k8s_resources(namespace, output_file, metrics_config_file="src/conf/metrics_collection.yaml",
+def monitor_k8s_resources(namespace, output_file, metrics_config_file="acv/conf/metrics_collection.yaml",
                          interval_seconds=60, duration_minutes=None):
     """
     Monitor Kubernetes CPU, memory requests, CPU usage, memory usage, and both latency and workload metrics
@@ -348,7 +348,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Monitor Kubernetes resource requests, latency and workload metrics")
     parser.add_argument("--namespace", "-n", required=True, help="Kubernetes namespace to monitor")
     parser.add_argument("--output", "-o", default="k8s_resource_metrics.csv", help="Output CSV file path")
-    parser.add_argument("--metrics-config", "-m", default="src/conf/metrics_collection.yaml", help="Metrics configuration file path")
+    parser.add_argument("--metrics-config", "-m", default="acv/conf/metrics_collection.yaml", help="Metrics configuration file path")
     parser.add_argument("--interval", "-i", type=int, default=60, help="Polling interval in seconds")
     parser.add_argument("--duration", "-d", type=int, help="Total monitoring duration in minutes")
    

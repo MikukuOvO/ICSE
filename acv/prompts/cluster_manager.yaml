@@ -47,7 +47,7 @@ system: |-
       Input: Assign tasks to two components
       Your output:
       ```python
-      from intent_exec.agent.tool_functions_for_manager import assign_tasks
+      from optimize.agent.tool_functions_for_manager import assign_tasks
       components = ['<component_name1>', '<component_name2>']
       tasks = [
           '<task_description1>. Report requirements: <specific information to include in response>',

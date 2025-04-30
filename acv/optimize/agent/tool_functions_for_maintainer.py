@@ -15,13 +15,13 @@ def query_prometheus(promQL: str, **kwargs) -> list:
     - ALWAYS call query_prometheus with full parameters, including promQL, duration and step. (Shown as example)
 
     Example: 
-    >>> from src.agent.tool_functions_for_maintainer import query_prometheus
+    >>> from acv.optimize.agent.tool_functions_for_maintainer import query_prometheus
     >>> promQL = '<metric_name>{<label_selector>}'
     >>> result = query_prometheus(promQL=promQL, duration='?min', step='?s')
     >>> print(result) # output the result so that planner can get it.
     [['2024-06-20 02:17:20', 0.0], ['2024-06-20 02:18:20', 0.0], ['2024-06-20 02:19:20', 0.0]], ...
     """
-    from intent_exec.module.prometheus_client import PrometheusClient
+    from acv.optimize.module.prometheus_client import PrometheusClient
     prometheus_client = PrometheusClient()
     result: list[list[str, int]] = prometheus_client.query_range(promQL, **kwargs)
     return result
@@ -39,7 +39,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
     Note: ALWAYS call print() to report the result so that planner can get the result.
 
     Example:
-    >>> from intent_exec.agent.tool_functions_for_maintainer import report_result
+    >>> from acv.optimize.agent.tool_functions_for_maintainer import report_result
     >>> component = 'catalogue'
     >>> message = 'The task is completed.'
     >>> message_type = 'RESPONSE'
@@ -47,7 +47,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
     >>> print(result) # output the result so that planner can get it.
     Message sent to manager.
     """
-    from intent_exec.module import RabbitMQ, load_config
+    from acv.optimize.module import RabbitMQ, load_config
 
     global_config = load_config()
 

@@ -1,1 +1,0 @@
-python -m src.curriculum_builder.main

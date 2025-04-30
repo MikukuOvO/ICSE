@@ -108,7 +108,7 @@ class Prompter:
 
         module = load_module(tool_functions_path)
         functions = module.__dict__["functions"]
-        model_name = convert_path_to_module(Path(tool_functions_path)).removeprefix("src.")
+        model_name = convert_path_to_module(Path(tool_functions_path)).removeprefix("acv.")
         executor = LocalCommandLineCodeExecutor(work_dir=base_path, functions=functions)
         prompt_template = f"""
         \n# Introduction for Tool Functions

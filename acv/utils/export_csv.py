@@ -17,7 +17,7 @@ def get_metrics_map():
     metrics_file = 'metrics_collection.yaml'
     if len(sys.argv) > 4:
         metrics_file = sys.argv[4]
-    with open('src/conf/' + metrics_file, encoding="utf-8") as input_file:
+    with open('acv/conf/' + metrics_file, encoding="utf-8") as input_file:
         data = yaml.safe_load(input_file)
     # The YAML file is expected to have a top-level key 'social-network'
     return data.get('social-network', {})
@@ -122,7 +122,7 @@ def export_metrics():
     metrics_map = get_metrics_map()
     now = datetime.now
     ts_title = now().strftime('%Y-%m-%d-%H:%M:%S')
-    new_folder = 'src/results/csv/metrics_' + ts_title
+    new_folder = 'acv/results/csv/metrics_' + ts_title
     mkdir(new_folder)
 
     # Go through each metric entry

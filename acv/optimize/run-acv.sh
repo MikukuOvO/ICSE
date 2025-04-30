@@ -7,7 +7,7 @@
 TRAFFIC_TYPE="diurnal" # CHANGE THIS VALUE (e.g., "bursty", "constant")
 
 # Load namespace from global config
-CONFIG_FILE="src/conf/global_config.yaml"
+CONFIG_FILE="acv/conf/global_config.yaml"
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Error: Configuration file not found at ${CONFIG_FILE}"
     exit 1
@@ -100,7 +100,7 @@ sleep 60
 
 # Start K8s resource monitoring in the background
 echo "Starting K8s resource monitoring..."
-python -m src.intent_exec.monitor --namespace ${NAMESPACE} --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
+python -m acv.optimize.monitor --namespace ${NAMESPACE} --output k8s_resources.csv --interval 60 > k8s_monitor.log 2>&1 &
 MONITOR_PID=$!
 echo "K8s monitor started (PID: $MONITOR_PID)."
 
@@ -115,7 +115,7 @@ run_deployment() {
 
     # Run the optimization
     echo "[${START_TIME}] Running optimization process..."
-    python -m src.intent_exec.optimize
+    python -m acv.optimize.optimize
     OPTIMIZE_STATUS=$? # Capture exit status if needed
 
     # Record end time and calculate duration

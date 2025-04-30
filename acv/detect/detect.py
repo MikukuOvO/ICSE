@@ -60,7 +60,7 @@ def main():
 
     logger.warning(f'Injection details are available at: {injection_file_path}')
     
-    components = list_deployments(namespace, "src/conf/service_maintainers_detect.yaml")
+    components = list_deployments(namespace, "acv/conf/service_maintainers_detect.yaml")
     cluster_manager = ClusterManager._init_from_config(
         cache_seed=42,
         components=components

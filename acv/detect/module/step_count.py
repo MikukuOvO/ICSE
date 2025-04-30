@@ -167,7 +167,7 @@ def main():
     # Set up command line arguments
     parser = argparse.ArgumentParser(
         description='Process markdown files in each subfolder and create JSON outputs.')
-    parser.add_argument('--parent_dir', default='src/results/social-network/user-timeline', help='Parent directory containing subfolders to process')
+    parser.add_argument('--parent_dir', default='acv/results/social-network/user-timeline', help='Parent directory containing subfolders to process')
     parser.add_argument('--output', '-o', default='step_results', 
                         help='Directory to save JSON output files (default: step_results)')
     

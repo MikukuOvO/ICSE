@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
-import yaml
 import os
 import glob
+import yaml
 
 # Clear all CSV files from the output directory first
 output_dir = 'service_visualizations'
@@ -20,10 +20,13 @@ for png_file in glob.glob(f"{output_dir}/*.png"):
 
 # Read the data files
 resource_data = pd.read_csv('k8s_resources.csv')
+action_time_data = pd.read_csv('optimization_timing.csv')
 locust_data = pd.read_csv('locust_results_stats_history.csv')
 
 # Convert timestamp columns to datetime
 resource_data['timestamp'] = pd.to_datetime(resource_data['timestamp'])
+action_time_data['start_time'] = pd.to_datetime(action_time_data['start_time'])
+action_time_data['end_time'] = pd.to_datetime(action_time_data['end_time'])
 
 # Convert Unix timestamp in locust data to datetime
 locust_data['datetime'] = pd.to_datetime(locust_data['Timestamp'], unit='s')
@@ -38,17 +41,17 @@ locust_workload_data = pd.DataFrame({
     'request_rate': aggregated_locust_data['Requests/s']
 })
 
-with open('src/conf/global_config.yaml', 'r') as f:
+with open('acv/conf/global_config.yaml', 'r') as f:
     global_config = yaml.safe_load(f)
     NAMESPACE = global_config.get('namespace', 'social-network')
 
 # Load service from service_maintainers_optimize.yaml
-with open('src/conf/service_maintainers_optimize.yaml', 'r') as f:
+with open('acv/conf/service_maintainers_optimize.yaml', 'r') as f:
     service_config = yaml.safe_load(f)
     # Extract from deployment section with <NAMESPACE> as subsection
     target_services = service_config.get('deployments', {}).get(NAMESPACE, {})
 
-# Updated function to convert resource strings to numeric values (fixed to handle 'k' suffix)
+# Updated function to convert resource strings to numeric values
 def convert_resource_to_numeric(value):
     if isinstance(value, str):
         if value == 'N/A' or value == 'ERROR':
@@ -59,10 +62,6 @@ def convert_resource_to_numeric(value):
             return float(value.rstrip('Mi'))
         elif value.endswith('Gi'):  # Memory: 1Gi = 1024 MiB
             return float(value.rstrip('Gi')) * 1024
-        elif value.endswith('k'):  # Memory: 262144k in KiB, convert to MiB
-            return float(value.rstrip('k')) / 1024
-        elif value.endswith('Ki'):  # Memory: In KiB, convert to MiB
-            return float(value.rstrip('Ki')) / 1024
     return value
 
 # Process resource data
@@ -92,12 +91,19 @@ for column in metric_columns:
     resource_data[column] = resource_data[column].apply(convert_na_to_nan)
     resource_data[column] = pd.to_numeric(resource_data[column], errors='coerce')
 
+# Use the closest timestamp in resource_data to merge with locust_workload_data
+# First, create a function to find the closest timestamp
+def find_closest_timestamp(target_time, time_series):
+    return min(time_series, key=lambda x: abs(x - target_time))
+
 # Create workload columns for each service in locust_workload_data
 for service in target_services:
     # Using loc to properly set values and avoid SettingWithCopyWarning
     locust_workload_data.loc[:, f'request_rate_{service}'] = locust_workload_data['request_rate']
 
 # Merge locust data with resource data based on closest timestamp
+# This is a bit tricky since timestamps might not exactly match
+# We'll use a merge_asof which is designed for this purpose
 merged_data = pd.merge_asof(
     resource_data.sort_values('timestamp'),
     locust_workload_data.sort_values('datetime'),
@@ -107,6 +113,8 @@ merged_data = pd.merge_asof(
 )
 
 # If merge_asof doesn't work well for your specific data, here's an alternative approach:
+# This creates a new dataframe with all the same timestamps as resource_data
+# but with the workload metrics from the closest timestamp in locust_data
 if 'request_rate' not in merged_data.columns:
     print("Using alternative timestamp matching method...")
     # For each timestamp in resource_data, find the closest in locust_data
@@ -134,18 +142,29 @@ else:
 service_to_metrics_map = {}
 for service in target_services:
     # Find all metrics related to this service
+    # With the new naming format, metrics will end with the service name
     related_metrics = [col for col in metric_columns if col.endswith(f"_{service}")]
     
-    # Group metrics by type
+    # Group metrics by type (only latency metrics from the original data)
     latency_metrics = [m for m in related_metrics if any(k in m.lower() for k in ['latency', 'duration', 'response_time'])]
     
-    # Add our new workload metrics from locust
+    # Add our new workload metrics from locust (only using request rate)
     workload_metrics = [f'request_rate_{service}']
+    
+    # Not adding response_time as latency metric since existing latency metrics are already available
     
     service_to_metrics_map[service] = {
         'latency': latency_metrics,
         'workload': workload_metrics
     }
+
+# Function to add action time vertical lines to a plot
+def add_action_times(ax, action_time_data):
+    for idx, row in action_time_data.iterrows():
+        ax.axvline(x=row['start_time'], color='green', linestyle='--', alpha=0.7, 
+                  label='Action Start' if idx == 0 else '')
+        ax.axvline(x=row['end_time'], color='red', linestyle='--', alpha=0.7, 
+                  label='Action End' if idx == 0 else '')
 
 # Function to format time axis
 def format_time_axis(ax):
@@ -184,6 +203,7 @@ for service in target_services:
     axes[0].set_xlabel('Time')
     axes[0].set_ylabel('CPU Cores')
     axes[0].plot(merged_data['timestamp'], merged_data[cpu_requests_col], color='tab:blue', marker='o', label='CPU Requests')
+    add_action_times(axes[0], action_time_data)
     format_time_axis(axes[0])
     axes[0].grid(True, linestyle='--', alpha=0.7)
     axes[0].legend()
@@ -198,6 +218,7 @@ for service in target_services:
         axes[1].text(0.5, 0.5, 'No CPU usage data available', 
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[1].transAxes)
+    add_action_times(axes[1], action_time_data)
     format_time_axis(axes[1])
     axes[1].grid(True, linestyle='--', alpha=0.7)
     axes[1].legend()
@@ -207,6 +228,7 @@ for service in target_services:
     axes[2].set_xlabel('Time')
     axes[2].set_ylabel('Memory (MiB)')
     axes[2].plot(merged_data['timestamp'], merged_data[mem_requests_col], color='tab:green', marker='s', label='Memory Requests')
+    add_action_times(axes[2], action_time_data)
     format_time_axis(axes[2])
     axes[2].grid(True, linestyle='--', alpha=0.7)
     axes[2].legend()
@@ -221,6 +243,7 @@ for service in target_services:
         axes[3].text(0.5, 0.5, 'No memory usage data available', 
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[3].transAxes)
+    add_action_times(axes[3], action_time_data)
     format_time_axis(axes[3])
     axes[3].grid(True, linestyle='--', alpha=0.7)
     axes[3].legend()
@@ -246,6 +269,7 @@ for service in target_services:
     if cpu_usage_col in merged_data.columns:
         axes[0].plot(merged_data['timestamp'], merged_data[cpu_usage_col], color='tab:orange', marker='x', label='CPU Usage')
     
+    add_action_times(axes[0], action_time_data)
     format_time_axis(axes[0])
     axes[0].grid(True, linestyle='--', alpha=0.7)
     axes[0].legend()
@@ -276,6 +300,7 @@ for service in target_services:
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[1].transAxes)
     
+    add_action_times(axes[1], action_time_data)
     format_time_axis(axes[1])
     axes[1].grid(True, linestyle='--', alpha=0.7)
     axes[1].legend()
@@ -306,6 +331,7 @@ for service in target_services:
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[2].transAxes)
     
+    add_action_times(axes[2], action_time_data)
     format_time_axis(axes[2])
     axes[2].grid(True, linestyle='--', alpha=0.7)
     axes[2].legend()
@@ -331,6 +357,7 @@ for service in target_services:
     if mem_usage_col in merged_data.columns:
         axes[0].plot(merged_data['timestamp'], merged_data[mem_usage_col], color='tab:orange', marker='x', label='Memory Usage')
     
+    add_action_times(axes[0], action_time_data)
     format_time_axis(axes[0])
     axes[0].grid(True, linestyle='--', alpha=0.7)
     axes[0].legend()
@@ -361,6 +388,7 @@ for service in target_services:
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[1].transAxes)
     
+    add_action_times(axes[1], action_time_data)
     format_time_axis(axes[1])
     axes[1].grid(True, linestyle='--', alpha=0.7)
     axes[1].legend()
@@ -391,6 +419,7 @@ for service in target_services:
                      horizontalalignment='center', verticalalignment='center', 
                      transform=axes[2].transAxes)
     
+    add_action_times(axes[2], action_time_data)
     format_time_axis(axes[2])
     axes[2].grid(True, linestyle='--', alpha=0.7)
     axes[2].legend()
@@ -405,6 +434,18 @@ for service in target_services:
 print(f"Created top-down CPU and memory visualizations for the specified services in the '{output_dir}' directory")
 print(f"Also created 1x4 resource dashboard visualizations showing both requests and usage")
 
+# Create a summary figure showing action durations
+plt.figure(figsize=(10, 5))
+plt.bar(action_time_data['iteration'], action_time_data['duration_seconds'])
+plt.xlabel('Iteration')
+plt.ylabel('Duration (seconds)')
+plt.title('Action Duration by Iteration')
+plt.xticks(action_time_data['iteration'])
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.savefig(f'{output_dir}/action_durations.png')
+plt.close()
+
 # Create a summary figure showing request rate over time from Locust
 if not locust_workload_data.empty:
     plt.figure(figsize=(10, 5))
@@ -412,6 +453,9 @@ if not locust_workload_data.empty:
             color='tab:blue', marker='o', label='Request Rate')
     plt.xlabel('Time')
     plt.ylabel('Requests/sec')
+    
+    # Add action times if available
+    add_action_times(plt.gca(), action_time_data)
     
     # Format time axis
     format_time_axis(plt.gca())
@@ -426,3 +470,5 @@ if not locust_workload_data.empty:
     plt.close()
     
     print("Also created a summary of Locust request rates")
+
+print("Also created a summary of action durations")
