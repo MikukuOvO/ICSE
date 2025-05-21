@@ -115,9 +115,9 @@ echo "K8s CPU controller started with PID: $CPU_CONTROLLER_PID"
 echo "cpu_controller_start_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG
 
 # Wait for the tests to complete (120 minutes = 7200 seconds)
-echo "Running test for 120 minutes..."
-sleep 7200
-# sleep 21600
+echo "Running test for 360 minutes..."
+# sleep 7200
+sleep 21600
 
 # Record test end time
 echo "test_end_time,$(date +"%Y-%m-%d %H:%M:%S")" >> $TIMING_LOG

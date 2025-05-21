@@ -101,8 +101,8 @@ heartbeat:
     - Refer to the "Other Requirements" section for any other requirements that you need to follow while performing the task.
 
     # Service Level Objective
-    - The SLO for the microservice component is to maintain a latency of less than 200ms.
-    - The SLO is defined as the 95th percentile latency over a rolling 5-min window.
+    - The SLO for the microservice component is to maintain a latency of less than 300ms.
+    - The SLO is defined as the 95th percentile latency over a 40 minute rolling time window.
 
     # Guidelines for Optimization
     - Step 1: Monitor the metrics mentioned in the SLO and determine if the SLO is being met.

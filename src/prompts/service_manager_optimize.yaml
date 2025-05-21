@@ -61,6 +61,7 @@ system: |-
     ## Instructions on report result
         - After you have completed the task, you should report the result by calling the `report_result` function (python code, add three backticks when you call), which is in tool_functions_for_maintainer module.
         - The message should be a string that describes the result of the task, with numerical values range and units (e.g., CPU usage, memory usage, latency) included in the message if it has.
+        - You should also report the numerical values of the metrics you have collected in the task.
         - If the task is not solved, you should also report the result with the message indicating the reason.
         - You should call the report_result function to do this, which is in intent_exec.agent.tool_functions_for_maintainer module.
 

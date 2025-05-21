@@ -4,7 +4,7 @@ from collections import defaultdict
 
 def analyze_slo_violations(file_path):
     """
-    Analyze SLO violations for home-timeline, compose-post, and user-timeline services
+    Analyze SLO violations for ts-route, ts-order, and ts-station services
     and calculate average resource allocation during those periods.
     
     Args:
@@ -14,34 +14,34 @@ def analyze_slo_violations(file_path):
         tuple: (slo_violations, avg_resources) dictionaries with analysis results
     """
     # Service names we're interested in
-    services = ['home-timeline-service', 'compose-post-service', 'user-timeline-service']
+    services = ['ts-route-service', 'ts-order-service', 'ts-station-service']
     
     # Define SLO thresholds (ms)
     slo_thresholds = {
-        'home-timeline': 200,
-        'compose-post': 200,
-        'user-timeline': 200
+        'ts-route': 200,
+        'ts-order': 200,
+        'ts-station': 200
     }
     
     # Track violation periods
     violation_periods = {
-        'home-timeline': [],
-        'compose-post': [],
-        'user-timeline': []
+        'ts-route': [],
+        'ts-order': [],
+        'ts-station': []
     }
     
     # Track resources for all time periods
     resources_all_time = {
-        'home-timeline': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []},
-        'compose-post': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []},
-        'user-timeline': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []}
+        'ts-route': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []},
+        'ts-order': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []},
+        'ts-station': {'cpu_requests': [], 'mem_requests': [], 'cpu_usage': [], 'mem_usage': []}
     }
     
     # For tracking current violation state
     current_violations = {
-        'home-timeline': {'start': None, 'ongoing': False},
-        'compose-post': {'start': None, 'ongoing': False},
-        'user-timeline': {'start': None, 'ongoing': False}
+        'ts-route': {'start': None, 'ongoing': False},
+        'ts-order': {'start': None, 'ongoing': False},
+        'ts-station': {'start': None, 'ongoing': False}
     }
     
     # Parse the CSV file
@@ -52,76 +52,83 @@ def analyze_slo_violations(file_path):
             timestamp = datetime.datetime.strptime(row['timestamp'], '%Y-%m-%d %H:%M:%S')
             
             # Check for violations in each service
-            for service_base in ['home-timeline', 'compose-post', 'user-timeline']:
+            for service_base in ['ts-route', 'ts-order', 'ts-station']:
                 service = f"{service_base}-service"
                 
                 # Find and check latency fields for the service
                 latency_value = None
+
+                field = f"{service_base}-service-latency_{service}"
+                if field in row and row[field] not in ['nan', 'N/A', '']:
+                    try:
+                        latency_value = float(row[field])
+                    except (ValueError, TypeError):
+                        latency_value = None
                 
-                # For compose-post service
-                if service_base == 'compose-post':
-                    field = f"{service_base}-service-latency_{service}"
-                    if field in row and row[field] not in ['nan', 'N/A', '']:
-                        try:
-                            latency_value = float(row[field])
-                        except (ValueError, TypeError):
-                            latency_value = None
+                # # For ts-order service
+                # if service_base == 'ts-order':
+                #     field = f"{service_base}-service-latency_{service}"
+                #     if field in row and row[field] not in ['nan', 'N/A', '']:
+                #         try:
+                #             latency_value = float(row[field])
+                #         except (ValueError, TypeError):
+                #             latency_value = None
                 
-                # For home-timeline service, check both read and write latency
-                elif service_base == 'home-timeline':
-                    read_field = f"{service_base}-service-read-latency_{service}"
-                    write_field = f"{service_base}-service-write-latency_{service}"
+                # # For ts-route service, check both read and write latency
+                # elif service_base == 'ts-route':
+                #     read_field = f"{service_base}-service-read-latency_{service}"
+                #     write_field = f"{service_base}-service-write-latency_{service}"
                     
-                    read_latency = None
-                    write_latency = None
+                #     read_latency = None
+                #     write_latency = None
                     
-                    if read_field in row and row[read_field] not in ['nan', 'N/A', '']:
-                        try:
-                            read_latency = float(row[read_field])
-                        except (ValueError, TypeError):
-                            pass
+                #     if read_field in row and row[read_field] not in ['nan', 'N/A', '']:
+                #         try:
+                #             read_latency = float(row[read_field])
+                #         except (ValueError, TypeError):
+                #             pass
                     
-                    if write_field in row and row[write_field] not in ['nan', 'N/A', '']:
-                        try:
-                            write_latency = float(row[write_field])
-                        except (ValueError, TypeError):
-                            pass
+                #     if write_field in row and row[write_field] not in ['nan', 'N/A', '']:
+                #         try:
+                #             write_latency = float(row[write_field])
+                #         except (ValueError, TypeError):
+                #             pass
                     
-                    # Take the maximum of read and write latency if both exist
-                    if read_latency is not None and write_latency is not None:
-                        latency_value = max(read_latency, write_latency)
-                    elif read_latency is not None:
-                        latency_value = read_latency
-                    elif write_latency is not None:
-                        latency_value = write_latency
+                #     # Take the maximum of read and write latency if both exist
+                #     if read_latency is not None and write_latency is not None:
+                #         latency_value = max(read_latency, write_latency)
+                #     elif read_latency is not None:
+                #         latency_value = read_latency
+                #     elif write_latency is not None:
+                #         latency_value = write_latency
                 
-                # For user-timeline service, check both read and write latency
-                elif service_base == 'user-timeline':
-                    read_field = f"{service_base}-service-read-latency_{service}"
-                    write_field = f"{service_base}-service-write-latency_{service}"
+                # # For ts-station service, check both read and write latency
+                # elif service_base == 'ts-station':
+                #     read_field = f"{service_base}-service-read-latency_{service}"
+                #     write_field = f"{service_base}-service-write-latency_{service}"
                     
-                    read_latency = None
-                    write_latency = None
+                #     read_latency = None
+                #     write_latency = None
                     
-                    if read_field in row and row[read_field] not in ['nan', 'N/A', '']:
-                        try:
-                            read_latency = float(row[read_field])
-                        except (ValueError, TypeError):
-                            pass
+                #     if read_field in row and row[read_field] not in ['nan', 'N/A', '']:
+                #         try:
+                #             read_latency = float(row[read_field])
+                #         except (ValueError, TypeError):
+                #             pass
                     
-                    if write_field in row and row[write_field] not in ['nan', 'N/A', '']:
-                        try:
-                            write_latency = float(row[write_field])
-                        except (ValueError, TypeError):
-                            pass
+                #     if write_field in row and row[write_field] not in ['nan', 'N/A', '']:
+                #         try:
+                #             write_latency = float(row[write_field])
+                #         except (ValueError, TypeError):
+                #             pass
                     
-                    # Take the maximum of read and write latency if both exist
-                    if read_latency is not None and write_latency is not None:
-                        latency_value = max(read_latency, write_latency)
-                    elif read_latency is not None:
-                        latency_value = read_latency
-                    elif write_latency is not None:
-                        latency_value = write_latency
+                #     # Take the maximum of read and write latency if both exist
+                #     if read_latency is not None and write_latency is not None:
+                #         latency_value = max(read_latency, write_latency)
+                #     elif read_latency is not None:
+                #         latency_value = read_latency
+                #     elif write_latency is not None:
+                #         latency_value = write_latency
                 
                 # Always collect resource metrics for all time periods
                 cpu_requests_field = f"cpu_requests_{service}"
@@ -169,7 +176,7 @@ def analyze_slo_violations(file_path):
                         current_violations[service_base]['start'] = None
     
     # Close any ongoing violations at the end of the data
-    for service_base in ['home-timeline', 'compose-post', 'user-timeline']:
+    for service_base in ['ts-route', 'ts-order', 'ts-station']:
         if current_violations[service_base]['ongoing']:
             # Use the last timestamp as the end time
             start_time = current_violations[service_base]['start']
@@ -185,7 +192,7 @@ def analyze_slo_violations(file_path):
     # Calculate average resource metrics for all time
     avg_resources_all_time = {}
     
-    for service_base in ['home-timeline', 'compose-post', 'user-timeline']:
+    for service_base in ['ts-route', 'ts-order', 'ts-station']:
         avg_resources_all_time[service_base] = {
             'cpu_requests': 'N/A',
             'mem_requests': 'N/A',
@@ -238,7 +245,7 @@ def main():
     print("SLO Violation Analysis\n")
     print("======================\n")
     
-    for service in ['home-timeline', 'compose-post', 'user-timeline']:
+    for service in ['ts-route', 'ts-order', 'ts-station']:
         print(f"\n{service} Service:")
         print("-" * (len(service) + 9))
         

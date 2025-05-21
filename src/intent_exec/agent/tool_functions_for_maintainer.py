@@ -24,6 +24,9 @@ def query_prometheus(promQL: str, **kwargs) -> list:
     from intent_exec.module.prometheus_client import PrometheusClient
     prometheus_client = PrometheusClient()
     result: list[list[str, int]] = prometheus_client.query_range(promQL, **kwargs)
+    result = result[0]['values']
+    for item in result:
+        item[1] = round(item[1], 3)
     return result
 
 @with_requirements(python_packages=['Literal'], global_imports=[ImportFromModule('typing', 'Literal')])

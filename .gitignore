@@ -11,4 +11,3 @@ src/previous_results
 *.log
 src/api/
 service_visualizations/
-optimize_results/

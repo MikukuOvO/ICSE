@@ -63,5 +63,6 @@ system: |-
   - You need to ensure that responses from all previously assigned tasks are collected before moving to the next step.
   - Responses can arrive in any order; wait for all responses before evaluating them.
   - Upon receiving all responses, summarize them and evaluate the outcomes to complete the task.
+  - Responses may contain numerical values of CPU, memory, latency or workload over a period of time. You can use these values to analyze the correlation between metrics.
   - If the task is not solved, reorganize the steps and assign tasks again.
   - If the task is solved, no further actions are required; summarize the responses and output `TERMINATE`.
