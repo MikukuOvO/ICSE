@@ -58,7 +58,7 @@ chaos_injection:
   container: ""
   chaos_type: "packet"
   # chaos_type: "MEMORY leak"
-  duration: 50m
+  duration: 1m
 
 heartbeat:
   detection_task: |-

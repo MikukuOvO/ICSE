@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: media-frontend
+  name: media-frontend
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: media-frontend
+  template:
+    metadata:
+      labels:
+        service: media-frontend
+        app: media-frontend
+    spec:
+      containers:
+      - name: media-frontend
+        image: docker.io/yg397/media-frontend:xenial
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        - containerPort: 9464
+        env:
+        - name: fqdn_suffix
+          value: .social-network.svc.cluster.local
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - name: media-frontend-config
+          mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+          subPath: nginx.conf
+        - name: media-frontend-config
+          mountPath: /config/jaeger-config.yml
+          subPath: jaeger-config.yml
+        - name: media-frontend-config
+          mountPath: /config/service-config.json
+          subPath: service-config.json
+        - name: lua-scripts
+          mountPath: /usr/local/openresty/nginx/lua-scripts
+      initContainers:
+      - name: alpine-container
+        image: docker.io/alpine/git:latest
+        imagePullPolicy: Always
+        command:
+        - /bin/sh
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        args:
+        - -c
+        - cp -r /DeathStarBench/socialNetwork/media-frontend/lua-scripts/* /lua-scripts/
+        volumeMounts:
+        - name: lua-scripts
+          mountPath: /lua-scripts
+        - name: pv-social-network
+          mountPath: /DeathStarBench
+      volumes:
+      - name: media-frontend-config
+        configMap:
+          name: media-frontend
+      - name: lua-scripts
+        emptyDir: {}
+      - name: pv-social-network
+        persistentVolumeClaim:
+          claimName: pvc-social-network
+      hostname: media-frontend
+      restartPolicy: Always

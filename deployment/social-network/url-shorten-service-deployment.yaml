@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: url-shorten-service
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: url-shorten-service
+  template:
+    metadata:
+      labels:
+        service: url-shorten-service
+        app: url-shorten-service
+    spec:
+      containers:
+      - name: url-shorten-service
+        image: docker.io/airis03/social-network:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+        - containerPort: 9464
+        command:
+        - UrlShortenService
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - name: url-shorten-service-config
+          mountPath: /config/jaeger-config.yml
+          subPath: jaeger-config.yml
+        - name: url-shorten-service-config
+          mountPath: /config/service-config.json
+          subPath: service-config.json
+      volumes:
+      - name: url-shorten-service-config
+        configMap:
+          name: url-shorten-service
+      hostname: url-shorten-service
+      restartPolicy: Always

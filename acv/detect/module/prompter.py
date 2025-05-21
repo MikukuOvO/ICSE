@@ -61,36 +61,16 @@ class Prompter:
         template = Template(self.prompt["user"])
         self._user_content = template.render(**placeholders)
 
-    def generate_service_slos(self, deployment_name: str, slo_path: str):
-        import yaml
+    def generate_service_slos(self):
 
-        # Load the SLO YAML file
-        with open(slo_path, "r", encoding="utf-8") as f:
-            slo_data = yaml.safe_load(f)
-
-        # Extract data under 'social-network' and filter entries matching the deployment_name
-        network_data = slo_data.get("social-network", {})
-        filtered_data = {}
-        for slo_key, slo_info in network_data.items():
-            if isinstance(slo_info, dict) and slo_info.get("deploymentName") == deployment_name:
-                filtered_data[slo_key] = slo_info
-
-        # If we found matches, generate a prompt template; otherwise, note no matches
-        if filtered_data:
-            slo_str = yaml.dump(filtered_data, sort_keys=False)
-            prompt_template = f"""
-            # Healthy State Judgement
-            
-            To determine whether the service is anomaly, you should judge based on following rules:
-            - A service is considered an anomaly if it is part of a sequence of at least one consecutive anomalous points or if its latency continues to plummet or surge abruptly.
-            - A service is considered an anomaly if it is identified as a continuous high latency anomaly, remaining above a normal level for a prolonged duration, thereby deviating from the anticipated norm.
-            - Normal service latency may exhibit variability, which should not be confused with anomalies.
-            """
-        else:
-            prompt_template = (
-                f"No SLO data found for the deployment '{deployment_name}'."
-            )
-
+        prompt_template = f"""
+        # Healthy State Judgement
+        
+        To determine whether the service is anomaly, you should judge based on following rules:
+        - A service is considered an anomaly if it is part of a sequence of at least one consecutive anomalous points or if its latency continues to plummet or surge abruptly.
+        - A service is considered an anomaly if it is identified as a continuous high latency anomaly, remaining above a normal level for a prolonged duration, thereby deviating from the anticipated norm.
+        - Normal service latency may exhibit variability, which should not be confused with anomalies.
+        """
         # Store or return the generated description
         self._service_slo_descriptions = prompt_template
 

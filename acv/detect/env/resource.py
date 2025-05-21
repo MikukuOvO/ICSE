@@ -225,7 +225,7 @@ def inject(config_path="acv/conf/global_config.yaml"):
 
     injection_time = datetime.utcnow()
     print("Stress-ng has been started. Waiting for stability...")
-    time.sleep(600)
+    time.sleep(60)
     print("The system is assumed to be stable.")
 
     injection_info = {
