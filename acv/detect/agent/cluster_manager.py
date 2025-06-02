@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
-
 import os
 from typing import Literal
 from autogen.agentchat.contrib.society_of_mind_agent import SocietyOfMindAgent
@@ -21,7 +18,6 @@ from .utils import (
 )
 from ..module.utils import get_ancestor_path
 
-# Base path for relative directory resolution
 base_path = get_ancestor_path(2)
 
 class ClusterManager(SocietyOfMindAgent):
@@ -54,7 +50,6 @@ class ClusterManager(SocietyOfMindAgent):
         - kwargs: Additional arguments for parent class initialization.
         """
         self.description = description
-        # llm_config = load_gpt_4_turbo_config(cache_seed=cache_seed)
         # llm_config = load_gpt_config(cache_seed=cache_seed)
         llm_config = load_reasoning_config(cache_seed=cache_seed)
 

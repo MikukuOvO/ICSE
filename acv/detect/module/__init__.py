@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
 from .message_collector import MessageCollector
 from .consumer import ManagerConsumer, ServiceMaintainerConsumer
 from .message_queue import RabbitMQ

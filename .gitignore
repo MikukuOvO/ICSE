@@ -2,10 +2,11 @@
 acv/api/
 acv/results/
 baro/
-utils/
+/utils/
 figure/
 deployment/
 *.pyc
 *.csv
 *.log
 *.bin
+command.md

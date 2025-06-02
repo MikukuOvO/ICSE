@@ -3,10 +3,6 @@ import logging
 import colorlog
 
 from typing import Union
-from .utils import load_config
-from .utils import get_ancestor_path
-
-base_path = get_ancestor_path(2)
 
 color_map = {
     'DEBUG': 'cyan',
@@ -15,6 +11,7 @@ color_map = {
     'ERROR': 'red',
     'CRITICAL': 'bold_red',
 }
+current_path = os.path.dirname(os.path.abspath(__file__))
 
 class Logger(logging.Logger):
 
@@ -30,7 +27,7 @@ class Logger(logging.Logger):
         self.setLevel(level)
 
         file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        file_handler = logging.FileHandler(os.path.join(base_path, 'logs', os.path.splitext(os.path.basename(filename))[0] + '.log'))
+        file_handler = logging.FileHandler(os.path.join(current_path, '../..', 'logs', os.path.splitext(os.path.basename(filename))[0] + '.log'))
         file_handler.setLevel(level)
         file_handler.setFormatter(file_formatter)
         self.addHandler(file_handler)

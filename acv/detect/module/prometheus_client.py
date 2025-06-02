@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
 import traceback
 from typing import overload
 from datetime import datetime, timedelta

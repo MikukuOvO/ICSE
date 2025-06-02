@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
 from autogen.coding.func_with_reqs import with_requirements, ImportFromModule
 from typing import Literal
 

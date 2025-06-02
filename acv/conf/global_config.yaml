@@ -10,15 +10,7 @@ rabbitmq:
       name: manager
       routing_keys:
       - manager
-  # message_collector:
-  #   exchange:
-  #     exchange_name: collector
-  #     exchange_type: direct
-  #   queues:
-  #   - auto_delete: true
-  #     name: collector
-  #     routing_keys:
-  #     - collector
+      
   message_collector:
     exchange:
       exchange_name: collector
@@ -49,15 +41,13 @@ rabbitmq:
       - '{{component}}'
   url: pyamqp://guest@localhost//
 
-# traffic_file_path: "traffic_rasing/social-network/diurnal_traffic.py"
 traffic_file_path: "traffic_rasing/social-network/mixed_traffic.py"
 
 chaos_injection:
   namespace: "social-network"
   service: "home-timeline-service"
   container: ""
-  chaos_type: "latency"
-  # chaos_type: "MEMORY leak"
+  chaos_type: "memory leak"
   duration: 40m
 
 heartbeat:

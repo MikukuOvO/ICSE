@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
 def assign_tasks(components: list, messages: list) -> str:
     """
     This function can help you assign the task to the specific component.

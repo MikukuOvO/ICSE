@@ -7,5 +7,4 @@ deployments:
     - home-timeline-service
     - user-timeline-service
     - compose-post-service
-  train-ticket:
     
