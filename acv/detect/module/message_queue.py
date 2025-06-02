@@ -19,7 +19,7 @@ class RabbitMQ(Base):
         self.exchange_type = exchange_type
         connection_params = pika.ConnectionParameters(
             host='localhost',
-            heartbeat=180,  # Set heartbeat interval to 3 minutes
+            heartbeat=360,  # Set heartbeat interval to 6 minutes
         )
         self.connection = pika.BlockingConnection(connection_params)
         self.channel = self.connection.channel()

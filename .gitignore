@@ -2,9 +2,9 @@
 acv/api/
 acv/results/
 baro/
-EXP_results/
-previous_results/
-service_visualizations/
+utils/
+figure/
+deployment/
 *.pyc
 *.csv
 *.log

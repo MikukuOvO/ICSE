@@ -1,3 +1,7 @@
+minikube start --kubernetes-version=latest --cpus=24 --memory=1048576MB
+
+# Social Network
+
 minikube mount deployment/DeathStarBench/:/DeathStarBench
 minikube addons enable metrics-server
 

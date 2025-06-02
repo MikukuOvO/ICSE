@@ -40,7 +40,7 @@ def main():
     # export_metrics()
 
     # Refresh the API
-    subprocess.run(["bash", "scripts/ops/api.sh"])
+    subprocess.run(["bash", "acv/api/refersh.sh"])
 
     namespace = inject_info['namespace']
     timestamp = time.strftime("%Y%m%d-%H%M%S")

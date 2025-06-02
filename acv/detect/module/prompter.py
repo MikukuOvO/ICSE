@@ -122,7 +122,7 @@ class Prompter:
         # PromQL Queries Mapping
         The following YAML content defines Prometheus queries mapped to service metrics.
         These entries match the deployment name '{deployment_name}':
-
+        FYI: The scale of the metric is provided in the 'scale' field.
         {promql_str}
         """
         self._promql_descriptions = prompt_template

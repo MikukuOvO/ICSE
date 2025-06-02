@@ -54,17 +54,17 @@ traffic_file_path: "traffic_rasing/social-network/mixed_traffic.py"
 
 chaos_injection:
   namespace: "social-network"
-  service: "user-timeline-service"
+  service: "home-timeline-service"
   container: ""
-  chaos_type: "packet"
+  chaos_type: "latency"
   # chaos_type: "MEMORY leak"
-  duration: 1m
+  duration: 40m
 
 heartbeat:
   detection_task: |-
     This task is a detection for the state of your microservice component. 
     # Follow the steps below to complete the task:
-      1. Check the state of the microservice component to see if the healthy state is maintained.
+      1. Check the state of the microservice component to see if the healthy state is maintained. (To define the unhealthy state, you should check the current metrics and the past metrics to see if the metrics are out of the normal range.)
       2. If NONE of the above healthy state criteria is violated, you can report healthy directly.
       3. If ANY of the above healthy state criteria is violated, you should follow the steps below:
         - Analyze the root cause of the unhealthy state. You should try your best to identify the root cause. DO NOT take any action to fix the unhealthy state.

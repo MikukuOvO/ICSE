@@ -15,16 +15,44 @@ def query_prometheus(promQL: str, **kwargs) -> list:
     - ALWAYS call query_prometheus with full parameters, including promQL, duration and step. (Shown as example)
 
     Example: 
-    >>> from acv.detect.agent.tool_functions_for_maintainer import query_prometheus
+    >>> from detect.agent.tool_functions_for_maintainer import query_prometheus
     >>> promQL = '<metric_name>{<label_selector>}'
     >>> result = query_prometheus(promQL=promQL, duration='?min', step='?s')
     >>> print(result) # output the result so that planner can get it.
     [['2024-06-20 02:17:20', 0.0], ['2024-06-20 02:18:20', 0.0], ['2024-06-20 02:19:20', 0.0]], ...
     """
-    from acv.detect.module.prometheus_client import PrometheusClient
+    from ..module.prometheus_client import PrometheusClient
     prometheus_client = PrometheusClient()
     result: list[list[str, int]] = prometheus_client.query_range(promQL, **kwargs)
     return result
+
+def query_prometheus_list(promQL_list: list, **kwargs) -> dict:
+    """
+    This function is used to query prometheus with a list of promQL queries at once.
+    - param promQL_list: list, a list of promQL queries to be executed
+    - param kwargs: dict, parameters to be passed to the query, must contain one of the following: (start_time, end_time), duration
+    - return: dict, a dictionary mapping each promQL to its query result
+
+    Note: 
+    - ALWAYS call print() to report the result so that planner can get the result.
+    - ALWAYS call query_prometheus_list with full parameters, including promQL_list, duration and step.
+
+    Example: 
+    >>> from detect.agent.tool_functions_for_maintainer import query_prometheus_list
+    >>> promQL_list = ['<metric1>{<label_selector>}', '<metric2>{<label_selector>}']
+    >>> result = query_prometheus_list(promQL_list=promQL_list, duration='10m', step='30s')
+    >>> print(result) # output the result so that planner can get it.
+    {'<metric1>{<label_selector>}': [['2024-06-20 02:17:20', 0.0], ['2024-06-20 02:18:20', 0.0]], '<metric2>{<label_selector>}': [['2024-06-20 02:17:20', 1.0], ['2024-06-20 02:18:20', 1.5]]}
+    """
+    from ..module.prometheus_client import PrometheusClient
+    prometheus_client = PrometheusClient()
+    
+    results = {}
+    for promQL in promQL_list:
+        result: list[list[str, int]] = prometheus_client.query_range(promQL, **kwargs)
+        results[promQL] = result
+    
+    return results
 
 @with_requirements(python_packages=['Literal'], global_imports=[ImportFromModule('typing', 'Literal')])
 def report_result(component: str, message: str, message_type: Literal['ISSUE', 'RESPONSE']) -> str:
@@ -39,7 +67,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
     Note: ALWAYS call print() to report the result so that planner can get the result.
 
     Example:
-    >>> from acv.detect.agent.tool_functions_for_maintainer import report_result
+    >>> from detect.agent.tool_functions_for_maintainer import report_result
     >>> component = 'catalogue'
     >>> message = 'The task is completed.'
     >>> message_type = 'RESPONSE'
@@ -47,7 +75,7 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
     >>> print(result) # output the result so that planner can get it.
     Message sent to manager.
     """
-    from acv.detect.module import RabbitMQ, load_config
+    from ..module import RabbitMQ, load_config
 
     global_config = load_config()
 
@@ -71,4 +99,4 @@ def report_result(component: str, message: str, message_type: Literal['ISSUE', '
         
     return 'Message sent to manager.'
 
-functions = [report_result, query_prometheus]
+functions = [report_result, query_prometheus, query_prometheus_list]
